@@ -79,7 +79,7 @@ public static class Server
                             foreach (Verse verse in book.Verses)
                             {
                                 string text = verse.Translations["ar.emlaaei"];
-                                verse.Translations["ar.emlaaei"] = SimplifyText(text, "Simplified29");
+                                verse.Translations["ar.emlaaei"] = SimplifyText(text, "Simplified37");
                             }
                         }
 
@@ -2020,46 +2020,61 @@ public static class Server
         {
             if (text_mode == "all")
             {
+                /////////////////////////////////////////////////////
+                // ٱ أ إ آ ء ؤ ة ى ئ problematic letter variations //
+                /////////////////////////////////////////////////////
+
                 List<Phrase> new_phrases = null;
 
-                // simplify to target text_mode and search
-                text = SimplifyText(text, text_mode);
-                result = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
+                // search all other text_modes from most complex to simplest 
+                if (
+                        text.Contains("ٱ") ||
+                        text.Contains("أ") ||
+                        text.Contains("إ") ||
+                        text.Contains("آ") ||
+                        text.Contains("ؤ") ||
+                        text.Contains("ئ")
+                   )
+                {
+                    text_mode = "Simplified37";
+                    new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
+                    AddNewPhrasesWithoutDuplication(ref result, new_phrases);
+                }
+                else if (
+                            text.Contains("ة") ||
+                            text.Contains("ى")
+                        )
+                {
+                    text_mode = "Simplified31";
+                    new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
+                    AddNewPhrasesWithoutDuplication(ref result, new_phrases);
+                }
+                else if (text.Contains("ء"))
+                {
+                    text_mode = "Simplified29";
+                    new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
+                    AddNewPhrasesWithoutDuplication(ref result, new_phrases);
 
-                text_mode = "Simplified37";
-                text = SimplifyText(text, text_mode);
-                new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
-                AddNewPhrasesWithoutDuplication(ref result, new_phrases);
-
-                text_mode = "Simplified31";
-                text = SimplifyText(text, text_mode);
-                new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
-                AddNewPhrasesWithoutDuplication(ref result, new_phrases);
-
-                text_mode = "Simplified29";
-                text = SimplifyText(text, text_mode);
-                new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
-                AddNewPhrasesWithoutDuplication(ref result, new_phrases);
-
-                text_mode = "Simplified29Shadda";
-                text = SimplifyText(text, text_mode);
-                new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
-                AddNewPhrasesWithoutDuplication(ref result, new_phrases);
-
-                text_mode = "Simplified28";
-                text = SimplifyText(text, text_mode);
-                new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
-                AddNewPhrasesWithoutDuplication(ref result, new_phrases);
+                    text_mode = "Simplified29Shadda";
+                    new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
+                    AddNewPhrasesWithoutDuplication(ref result, new_phrases);
+                }
+                else
+                {
+                    text_mode = "Simplified28";
+                    new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
+                    AddNewPhrasesWithoutDuplication(ref result, new_phrases);
+                }
 
                 // try emlaaei too
                 text_mode = "Original"; // Original most likely will not find a match so automatically tries emalaaei text 
-                text = SimplifyText(text, text_mode);
+                text = text.Replace("ءا", "آ");
                 new_phrases = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, true);
                 AddNewPhrasesWithoutDuplication(ref result, new_phrases);
             }
             else
             {
-                // don't simplify
+                // don't simplify, try it exactly for mathematical codes
                 result = DoFindPhrases(text_mode, find_scope, current_selection, previous_result, text, language_type, translation, text_location, case_sensitive, wordness, multiplicity, anywhere_in_word, false);
             }
         }
@@ -2466,7 +2481,7 @@ public static class Server
                             if (try_emlaaei_if_nothing_found)
                             {
                                 // used simplified emlaaei and simplified search pattern
-                                pattern = SimplifyText(pattern, "Simplified29");
+                                pattern = SimplifyText(pattern, "Simplified37");
                                 if ((source != null) && (source.Count > 0))
                                 {
                                     Book book = Book.Instance;
@@ -2862,7 +2877,7 @@ public static class Server
     }
     private static void AddNewPhrasesWithoutDuplication(ref List<Phrase> old_phrases, List<Phrase> new_phrases)
     {
-        if (old_phrases == null) return;
+        if (old_phrases == null) old_phrases = new List<Phrase>();
         if (new_phrases == null) return;
 
         List<Phrase> temp = new List<Phrase>();
@@ -3304,7 +3319,7 @@ public static class Server
                         // fill it up with a copy of the first root search result
                         previous_phrases = new List<Phrase>(current_phrases);
                         previous_verses = new List<Verse>(current_verses);
-                        
+
                         // prepare for nested search by search
                         find_scope = FindScope.SearchResult;
                     }
@@ -3544,28 +3559,6 @@ public static class Server
                                 {
                                     for (int j = 0; j < source.Count; j++)
                                     {
-                                        if (verse.GetText(text_mode).HasSimilarFirstHalfTo(source[j].GetText(text_mode), similarity_percentage))
-                                        {
-                                            result.Add(source[j]);
-                                        }
-                                    }
-                                }
-                                break;
-                            case FindBySimilarityMethod.SimilarEnd:
-                                {
-                                    for (int j = 0; j < source.Count; j++)
-                                    {
-                                        if (verse.GetText(text_mode).HasSimilarSecondHalfTo(source[j].GetText(text_mode), similarity_percentage))
-                                        {
-                                            result.Add(source[j]);
-                                        }
-                                    }
-                                }
-                                break;
-                            case FindBySimilarityMethod.SimilarFirstWord:
-                                {
-                                    for (int j = 0; j < source.Count; j++)
-                                    {
                                         if (verse.GetText(text_mode).HasSimilarFirstWordTo(source[j].GetText(text_mode), similarity_percentage))
                                         {
                                             result.Add(source[j]);
@@ -3573,7 +3566,7 @@ public static class Server
                                     }
                                 }
                                 break;
-                            case FindBySimilarityMethod.SimilarLastWord:
+                            case FindBySimilarityMethod.SimilarEnd:
                                 {
                                     for (int j = 0; j < source.Count; j++)
                                     {
@@ -3695,68 +3688,6 @@ public static class Server
                                     {
                                         if (!already_compared[j])
                                         {
-                                            if (source[i].GetText(text_mode).HasSimilarFirstHalfTo(source[j].GetText(text_mode), similarity_percentage))
-                                            {
-                                                if (!verse_ranges.ContainsKey(source[i])) // first time matching verses found
-                                                {
-                                                    List<Verse> similar_verses = new List<Verse>();
-                                                    verse_ranges.Add(source[i], similar_verses);
-                                                    similar_verses.Add(source[i]);
-                                                    similar_verses.Add(source[j]);
-                                                    already_compared[i] = true;
-                                                    already_compared[j] = true;
-                                                }
-                                                else // matching verses already exists
-                                                {
-                                                    List<Verse> similar_verses = verse_ranges[source[i]];
-                                                    similar_verses.Add(source[j]);
-                                                    already_compared[j] = true;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            break;
-                        case FindBySimilarityMethod.SimilarEnd:
-                            {
-                                for (int i = 0; i < source.Count - 1; i++)
-                                {
-                                    for (int j = i + 1; j < source.Count; j++)
-                                    {
-                                        if (!already_compared[j])
-                                        {
-                                            if (source[i].GetText(text_mode).HasSimilarSecondHalfTo(source[j].GetText(text_mode), similarity_percentage))
-                                            {
-                                                if (!verse_ranges.ContainsKey(source[i])) // first time matching verses found
-                                                {
-                                                    List<Verse> similar_verses = new List<Verse>();
-                                                    verse_ranges.Add(source[i], similar_verses);
-                                                    similar_verses.Add(source[i]);
-                                                    similar_verses.Add(source[j]);
-                                                    already_compared[i] = true;
-                                                    already_compared[j] = true;
-                                                }
-                                                else // matching verses already exists
-                                                {
-                                                    List<Verse> similar_verses = verse_ranges[source[i]];
-                                                    similar_verses.Add(source[j]);
-                                                    already_compared[j] = true;
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            break;
-                        case FindBySimilarityMethod.SimilarFirstWord:
-                            {
-                                for (int i = 0; i < source.Count - 1; i++)
-                                {
-                                    for (int j = i + 1; j < source.Count; j++)
-                                    {
-                                        if (!already_compared[j])
-                                        {
                                             if (source[j].GetText(text_mode).HasSimilarFirstWordTo(source[j].GetText(text_mode), similarity_percentage))
                                             {
                                                 if (!verse_ranges.ContainsKey(source[i])) // first time matching verses found
@@ -3780,7 +3711,7 @@ public static class Server
                                 }
                             }
                             break;
-                        case FindBySimilarityMethod.SimilarLastWord:
+                        case FindBySimilarityMethod.SimilarEnd:
                             {
                                 for (int i = 0; i < source.Count - 1; i++)
                                 {

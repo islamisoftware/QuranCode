@@ -12,7 +12,7 @@ namespace Model
     public enum FindByTextLocation { Anywhere, AtStart, AtMiddle, AtEnd, AllWords, AnyWord };
     public enum FindByTextWordness { WholeWord, PartOfWord, Any };
 
-    public enum FindBySimilarityMethod { SimilarText, SimilarWords, SimilarStart, SimilarEnd, SimilarFirstWord, SimilarLastWord };
+    public enum FindBySimilarityMethod { SimilarText, SimilarWords, SimilarStart, SimilarEnd };
     public enum FindBySimilaritySource { CurrentVerse, AllVerses };
 
     public enum FindByNumbersTextRange { Word, WordRange, Verse, VerseRange, Chapter, ChapterVerses };

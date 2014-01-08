@@ -3418,12 +3418,11 @@ public partial class MainForm : Form
         this.ToolTip.SetToolTip(this.FindByTextLanguageTypeLabel, "Search in Uthmani or emlaaei Arabic");
         this.ToolTip.SetToolTip(this.FindByTextSearchTypeLabel, "Search for exact word or phrase");
         this.ToolTip.SetToolTip(this.FindBySimilaritySourceLabel, "as current verse");
+        this.ToolTip.SetToolTip(this.FindBySimilarityPercentageTrackBar, "similarity percentage");
         this.ToolTip.SetToolTip(this.FindBySimilaritySimilarTextRadioButton, "verses with similar text");
         this.ToolTip.SetToolTip(this.FindBySimilaritySimilarWordsRadioButton, "verses with similar words");
-        this.ToolTip.SetToolTip(this.FindBySimilaritySimilarStartRadioButton, "verses with similar first half");
-        this.ToolTip.SetToolTip(this.FindBySimilaritySimilarEndRadioButton, "verses with similar last half");
-        this.ToolTip.SetToolTip(this.FindBySimilaritySimilarFirstWordRadioButton, "verses with similar first word");
-        this.ToolTip.SetToolTip(this.FindBySimilaritySimilarLastWordRadioButton, "verses with similar last word");
+        this.ToolTip.SetToolTip(this.FindBySimilaritySimilarStartRadioButton, "verses with similar first word");
+        this.ToolTip.SetToolTip(this.FindBySimilaritySimilarEndRadioButton, "verses with similar last word");
         this.ToolTip.SetToolTip(this.FindByNumbersTextRangeLabel, "for any verse matching conditions");
         this.ToolTip.SetToolTip(this.FindByTextAtEndRadioButton, "find at the end of the verse");
         this.ToolTip.SetToolTip(this.FindByTextAtStartRadioButton, "find at the beginning of the verse");
@@ -10642,12 +10641,13 @@ public partial class MainForm : Form
         //    FindBySimilarityButton_Click(sender, e);
         //}
     }
-    private void FindBySimilarityPercentageNumericUpDown_ValueChanged(object sender, EventArgs e)
+    private void FindBySimilarityPercentageTrackBar_Scroll(object sender, EventArgs e)
     {
-        if (m_find_by_similarity_source == FindBySimilaritySource.CurrentVerse)
-        {
-            FindBySimilarityButton_Click(sender, e);
-        }
+        FindBySimilarityPercentageLabel.Text = FindBySimilarityPercentageTrackBar.Value.ToString() + " %";
+        //if (m_find_by_similarity_source == FindBySimilaritySource.CurrentVerse)
+        //{
+        //    FindBySimilarityButton_Click(sender, e);
+        //}
     }
     private void FindBySimilarityControls_Enter(object sender, EventArgs e)
     {
@@ -10685,20 +10685,12 @@ public partial class MainForm : Form
                 {
                     find_by_similarity_method = FindBySimilarityMethod.SimilarEnd;
                 }
-                else if (FindBySimilaritySimilarFirstWordRadioButton.Checked)
-                {
-                    find_by_similarity_method = FindBySimilarityMethod.SimilarFirstWord;
-                }
-                else if (FindBySimilaritySimilarLastWordRadioButton.Checked)
-                {
-                    find_by_similarity_method = FindBySimilarityMethod.SimilarLastWord;
-                }
                 else
                 {
                     //
                 }
 
-                double similarity_percentage = (double)FindBySimilarityPercentageNumericUpDown.Value / 100.0;
+                double similarity_percentage = (double)FindBySimilarityPercentageTrackBar.Value / 100.0;
 
                 string similarity_source = "";
                 if (m_find_by_similarity_source == FindBySimilaritySource.CurrentVerse)

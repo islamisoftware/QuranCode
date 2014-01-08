@@ -92,7 +92,6 @@
         this.FindByTextAnyWordRadioButton = new System.Windows.Forms.RadioButton();
         this.HadiLabel = new System.Windows.Forms.Label();
         this.FindByTextLanguageTypeLabel = new System.Windows.Forms.Label();
-        this.FindBySimilarityPercentageNumericUpDown = new System.Windows.Forms.NumericUpDown();
         this.FindBySimilaritySourceLabel = new System.Windows.Forms.Label();
         this.FindByNumbersTextRangeLabel = new System.Windows.Forms.Label();
         this.FindByFrequencyPhraseLabel = new System.Windows.Forms.Label();
@@ -152,8 +151,8 @@
         this.FindByNumbersLettersLabel = new System.Windows.Forms.Label();
         this.FindByNumbersWordsLabel = new System.Windows.Forms.Label();
         this.FindBySimilarityPanel = new System.Windows.Forms.Panel();
-        this.FindBySimilaritySimilarLastWordRadioButton = new System.Windows.Forms.RadioButton();
-        this.FindBySimilaritySimilarFirstWordRadioButton = new System.Windows.Forms.RadioButton();
+        this.FindBySimilarityPercentageTrackBar = new System.Windows.Forms.TrackBar();
+        this.FindBySimilaritySimilarityLabel = new System.Windows.Forms.Label();
         this.FindBySimilarityPercentageLabel = new System.Windows.Forms.Label();
         this.FindBySimilarityButton = new System.Windows.Forms.Button();
         this.FindBySimilarityLabel = new System.Windows.Forms.Label();
@@ -353,7 +352,6 @@
         this.PlayerTimer = new System.Windows.Forms.Timer(this.components);
         this.StatusPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)(this.PlayerSilenceTrackBar)).BeginInit();
-        ((System.ComponentModel.ISupportInitialize)(this.FindBySimilarityPercentageNumericUpDown)).BeginInit();
         this.BrowseGroupBox.SuspendLayout();
         this.ToolbarPanel.SuspendLayout();
         this.MainSplitContainer.Panel1.SuspendLayout();
@@ -374,6 +372,7 @@
         ((System.ComponentModel.ISupportInitialize)(this.FindByNumbersLettersNumericUpDown)).BeginInit();
         ((System.ComponentModel.ISupportInitialize)(this.FindByNumbersWordsNumericUpDown)).BeginInit();
         this.FindBySimilarityPanel.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)(this.FindBySimilarityPercentageTrackBar)).BeginInit();
         this.FindByTextPanel.SuspendLayout();
         this.KeyboardPanel.SuspendLayout();
         ((System.ComponentModel.ISupportInitialize)(this.FindByTextMultiplicityNumericUpDown)).BeginInit();
@@ -945,7 +944,7 @@
         this.FindBySimilaritySimilarStartRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.FindBySimilaritySimilarStartRadioButton.Location = new System.Drawing.Point(4, 61);
         this.FindBySimilaritySimilarStartRadioButton.Name = "FindBySimilaritySimilarStartRadioButton";
-        this.FindBySimilaritySimilarStartRadioButton.Size = new System.Drawing.Size(77, 17);
+        this.FindBySimilaritySimilarStartRadioButton.Size = new System.Drawing.Size(143, 17);
         this.FindBySimilaritySimilarStartRadioButton.TabIndex = 43;
         this.FindBySimilaritySimilarStartRadioButton.Text = "similar start";
         this.FindBySimilaritySimilarStartRadioButton.UseVisualStyleBackColor = false;
@@ -960,7 +959,7 @@
         this.FindBySimilaritySimilarTextRadioButton.Name = "FindBySimilaritySimilarTextRadioButton";
         this.FindBySimilaritySimilarTextRadioButton.Size = new System.Drawing.Size(143, 17);
         this.FindBySimilaritySimilarTextRadioButton.TabIndex = 42;
-        this.FindBySimilaritySimilarTextRadioButton.Text = "similar letters";
+        this.FindBySimilaritySimilarTextRadioButton.Text = "similar text";
         this.FindBySimilaritySimilarTextRadioButton.UseVisualStyleBackColor = false;
         this.FindBySimilaritySimilarTextRadioButton.Enter += new System.EventHandler(this.FindBySimilarityControls_Enter);
         this.FindBySimilaritySimilarTextRadioButton.CheckedChanged += new System.EventHandler(this.FindBySimilarityRadioButton_CheckedChanged);
@@ -971,7 +970,7 @@
         this.FindBySimilaritySimilarEndRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.FindBySimilaritySimilarEndRadioButton.Location = new System.Drawing.Point(4, 77);
         this.FindBySimilaritySimilarEndRadioButton.Name = "FindBySimilaritySimilarEndRadioButton";
-        this.FindBySimilaritySimilarEndRadioButton.Size = new System.Drawing.Size(77, 17);
+        this.FindBySimilaritySimilarEndRadioButton.Size = new System.Drawing.Size(143, 17);
         this.FindBySimilaritySimilarEndRadioButton.TabIndex = 44;
         this.FindBySimilaritySimilarEndRadioButton.Text = "similar end";
         this.FindBySimilaritySimilarEndRadioButton.UseVisualStyleBackColor = false;
@@ -1413,28 +1412,6 @@
         this.FindByTextLanguageTypeLabel.Enter += new System.EventHandler(this.FindByTextControls_Enter);
         this.FindByTextLanguageTypeLabel.MouseEnter += new System.EventHandler(this.FindByTextSearchTypeLabel_MouseEnter);
         // 
-        // FindBySimilarityPercentageNumericUpDown
-        // 
-        this.FindBySimilarityPercentageNumericUpDown.BackColor = System.Drawing.SystemColors.Window;
-        this.FindBySimilarityPercentageNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.FindBySimilarityPercentageNumericUpDown.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-        this.FindBySimilarityPercentageNumericUpDown.Location = new System.Drawing.Point(98, 44);
-        this.FindBySimilarityPercentageNumericUpDown.Name = "FindBySimilarityPercentageNumericUpDown";
-        this.FindBySimilarityPercentageNumericUpDown.Size = new System.Drawing.Size(48, 17);
-        this.FindBySimilarityPercentageNumericUpDown.TabIndex = 47;
-        this.FindBySimilarityPercentageNumericUpDown.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-        this.FindBySimilarityPercentageNumericUpDown.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-        this.FindBySimilarityPercentageNumericUpDown.ValueChanged += new System.EventHandler(this.FindBySimilarityPercentageNumericUpDown_ValueChanged);
-        this.FindBySimilarityPercentageNumericUpDown.Enter += new System.EventHandler(this.FindBySimilarityControls_Enter);
-        // 
         // FindBySimilaritySourceLabel
         // 
         this.FindBySimilaritySourceLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1744,7 +1721,7 @@
         this.LetterValuesPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValuesPanel.Location = new System.Drawing.Point(3, 16);
         this.LetterValuesPanel.Name = "LetterValuesPanel";
-        this.LetterValuesPanel.Size = new System.Drawing.Size(155, 52);
+        this.LetterValuesPanel.Size = new System.Drawing.Size(155, 22);
         this.LetterValuesPanel.TabIndex = 150;
         // 
         // LetterValuesSaveButton
@@ -1753,7 +1730,7 @@
         this.LetterValuesSaveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
         this.LetterValuesSaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValuesSaveButton.Image = ((System.Drawing.Image)(resources.GetObject("LetterValuesSaveButton.Image")));
-        this.LetterValuesSaveButton.Location = new System.Drawing.Point(52, 12);
+        this.LetterValuesSaveButton.Location = new System.Drawing.Point(52, -18);
         this.LetterValuesSaveButton.Name = "LetterValuesSaveButton";
         this.LetterValuesSaveButton.Size = new System.Drawing.Size(53, 39);
         this.LetterValuesSaveButton.TabIndex = 9;
@@ -1769,7 +1746,7 @@
         this.LetterValuesCloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         this.LetterValuesCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValuesCloseButton.Image = ((System.Drawing.Image)(resources.GetObject("LetterValuesCloseButton.Image")));
-        this.LetterValuesCloseButton.Location = new System.Drawing.Point(104, 12);
+        this.LetterValuesCloseButton.Location = new System.Drawing.Point(104, -18);
         this.LetterValuesCloseButton.Name = "LetterValuesCloseButton";
         this.LetterValuesCloseButton.Size = new System.Drawing.Size(53, 39);
         this.LetterValuesCloseButton.TabIndex = 10;
@@ -1784,7 +1761,7 @@
         this.LetterValuesRestoreButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
         this.LetterValuesRestoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValuesRestoreButton.Image = ((System.Drawing.Image)(resources.GetObject("LetterValuesRestoreButton.Image")));
-        this.LetterValuesRestoreButton.Location = new System.Drawing.Point(0, 12);
+        this.LetterValuesRestoreButton.Location = new System.Drawing.Point(0, -18);
         this.LetterValuesRestoreButton.Name = "LetterValuesRestoreButton";
         this.LetterValuesRestoreButton.Size = new System.Drawing.Size(53, 39);
         this.LetterValuesRestoreButton.TabIndex = 8;
@@ -1803,7 +1780,7 @@
         this.LetterValuesTabControl.Location = new System.Drawing.Point(0, 0);
         this.LetterValuesTabControl.Name = "LetterValuesTabControl";
         this.LetterValuesTabControl.SelectedIndex = 0;
-        this.LetterValuesTabControl.Size = new System.Drawing.Size(155, 16);
+        this.LetterValuesTabControl.Size = new System.Drawing.Size(155, 0);
         this.LetterValuesTabControl.TabIndex = 5;
         // 
         // LetterValuesTabPage
@@ -2378,9 +2355,8 @@
         // FindBySimilarityPanel
         // 
         this.FindBySimilarityPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-        this.FindBySimilarityPanel.Controls.Add(this.FindBySimilarityPercentageNumericUpDown);
-        this.FindBySimilarityPanel.Controls.Add(this.FindBySimilaritySimilarLastWordRadioButton);
-        this.FindBySimilarityPanel.Controls.Add(this.FindBySimilaritySimilarFirstWordRadioButton);
+        this.FindBySimilarityPanel.Controls.Add(this.FindBySimilarityPercentageTrackBar);
+        this.FindBySimilarityPanel.Controls.Add(this.FindBySimilaritySimilarityLabel);
         this.FindBySimilarityPanel.Controls.Add(this.FindBySimilarityPercentageLabel);
         this.FindBySimilarityPanel.Controls.Add(this.FindBySimilaritySimilarEndRadioButton);
         this.FindBySimilarityPanel.Controls.Add(this.FindBySimilaritySimilarStartRadioButton);
@@ -2394,38 +2370,48 @@
         this.FindBySimilarityPanel.Size = new System.Drawing.Size(157, 98);
         this.FindBySimilarityPanel.TabIndex = 3;
         // 
-        // FindBySimilaritySimilarLastWordRadioButton
+        // FindBySimilarityPercentageTrackBar
         // 
-        this.FindBySimilaritySimilarLastWordRadioButton.BackColor = System.Drawing.Color.Transparent;
-        this.FindBySimilaritySimilarLastWordRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.FindBySimilaritySimilarLastWordRadioButton.Location = new System.Drawing.Point(80, 77);
-        this.FindBySimilaritySimilarLastWordRadioButton.Name = "FindBySimilaritySimilarLastWordRadioButton";
-        this.FindBySimilaritySimilarLastWordRadioButton.Size = new System.Drawing.Size(77, 17);
-        this.FindBySimilaritySimilarLastWordRadioButton.TabIndex = 46;
-        this.FindBySimilaritySimilarLastWordRadioButton.Text = "last word";
-        this.FindBySimilaritySimilarLastWordRadioButton.UseVisualStyleBackColor = false;
+        this.FindBySimilarityPercentageTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                    | System.Windows.Forms.AnchorStyles.Right)));
+        this.FindBySimilarityPercentageTrackBar.AutoSize = false;
+        this.FindBySimilarityPercentageTrackBar.BackColor = System.Drawing.Color.LightSteelBlue;
+        this.FindBySimilarityPercentageTrackBar.LargeChange = 10;
+        this.FindBySimilarityPercentageTrackBar.Location = new System.Drawing.Point(134, 31);
+        this.FindBySimilarityPercentageTrackBar.Maximum = 100;
+        this.FindBySimilarityPercentageTrackBar.Name = "FindBySimilarityPercentageTrackBar";
+        this.FindBySimilarityPercentageTrackBar.Orientation = System.Windows.Forms.Orientation.Vertical;
+        this.FindBySimilarityPercentageTrackBar.Size = new System.Drawing.Size(14, 63);
+        this.FindBySimilarityPercentageTrackBar.SmallChange = 5;
+        this.FindBySimilarityPercentageTrackBar.TabIndex = 48;
+        this.FindBySimilarityPercentageTrackBar.TickFrequency = 10;
+        this.FindBySimilarityPercentageTrackBar.TickStyle = System.Windows.Forms.TickStyle.None;
+        this.FindBySimilarityPercentageTrackBar.Value = 100;
+        this.FindBySimilarityPercentageTrackBar.Scroll += new System.EventHandler(this.FindBySimilarityPercentageTrackBar_Scroll);
+        this.FindBySimilarityPercentageTrackBar.Enter += new System.EventHandler(this.FindBySimilarityControls_Enter);
         // 
-        // FindBySimilaritySimilarFirstWordRadioButton
+        // FindBySimilaritySimilarityLabel
         // 
-        this.FindBySimilaritySimilarFirstWordRadioButton.BackColor = System.Drawing.Color.Transparent;
-        this.FindBySimilaritySimilarFirstWordRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.FindBySimilaritySimilarFirstWordRadioButton.Location = new System.Drawing.Point(80, 61);
-        this.FindBySimilaritySimilarFirstWordRadioButton.Name = "FindBySimilaritySimilarFirstWordRadioButton";
-        this.FindBySimilaritySimilarFirstWordRadioButton.Size = new System.Drawing.Size(77, 17);
-        this.FindBySimilaritySimilarFirstWordRadioButton.TabIndex = 45;
-        this.FindBySimilaritySimilarFirstWordRadioButton.Text = "first word";
-        this.FindBySimilaritySimilarFirstWordRadioButton.UseVisualStyleBackColor = false;
+        this.FindBySimilaritySimilarityLabel.BackColor = System.Drawing.Color.Transparent;
+        this.FindBySimilaritySimilarityLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.FindBySimilaritySimilarityLabel.Location = new System.Drawing.Point(88, 65);
+        this.FindBySimilaritySimilarityLabel.Name = "FindBySimilaritySimilarityLabel";
+        this.FindBySimilaritySimilarityLabel.Size = new System.Drawing.Size(53, 12);
+        this.FindBySimilaritySimilarityLabel.TabIndex = 47;
+        this.FindBySimilaritySimilarityLabel.Text = "Similarity";
+        this.FindBySimilaritySimilarityLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+        this.FindBySimilaritySimilarityLabel.Enter += new System.EventHandler(this.FindBySimilarityControls_Enter);
         // 
         // FindBySimilarityPercentageLabel
         // 
         this.FindBySimilarityPercentageLabel.AutoSize = true;
         this.FindBySimilarityPercentageLabel.BackColor = System.Drawing.Color.Transparent;
-        this.FindBySimilarityPercentageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.FindBySimilarityPercentageLabel.Location = new System.Drawing.Point(96, 32);
+        this.FindBySimilarityPercentageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.FindBySimilarityPercentageLabel.Location = new System.Drawing.Point(101, 53);
         this.FindBySimilarityPercentageLabel.Name = "FindBySimilarityPercentageLabel";
-        this.FindBySimilarityPercentageLabel.Size = new System.Drawing.Size(53, 12);
-        this.FindBySimilarityPercentageLabel.TabIndex = 0;
-        this.FindBySimilarityPercentageLabel.Text = "Similarity %";
+        this.FindBySimilarityPercentageLabel.Size = new System.Drawing.Size(36, 13);
+        this.FindBySimilarityPercentageLabel.TabIndex = 49;
+        this.FindBySimilarityPercentageLabel.Text = "100 %";
         this.FindBySimilarityPercentageLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
         this.FindBySimilarityPercentageLabel.Enter += new System.EventHandler(this.FindBySimilarityControls_Enter);
         // 
@@ -5511,7 +5497,6 @@
         this.StatusPanel.ResumeLayout(false);
         this.StatusPanel.PerformLayout();
         ((System.ComponentModel.ISupportInitialize)(this.PlayerSilenceTrackBar)).EndInit();
-        ((System.ComponentModel.ISupportInitialize)(this.FindBySimilarityPercentageNumericUpDown)).EndInit();
         this.BrowseGroupBox.ResumeLayout(false);
         this.BrowseGroupBox.PerformLayout();
         this.ToolbarPanel.ResumeLayout(false);
@@ -5534,6 +5519,7 @@
         ((System.ComponentModel.ISupportInitialize)(this.FindByNumbersWordsNumericUpDown)).EndInit();
         this.FindBySimilarityPanel.ResumeLayout(false);
         this.FindBySimilarityPanel.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)(this.FindBySimilarityPercentageTrackBar)).EndInit();
         this.FindByTextPanel.ResumeLayout(false);
         this.FindByTextPanel.PerformLayout();
         this.KeyboardPanel.ResumeLayout(false);
@@ -5749,7 +5735,6 @@
     private System.Windows.Forms.Label BrowseHistoryDeleteButton; // changed to Label to look good next to the counter label
     private System.Windows.Forms.Label SelectionCounterLabel;
     private System.Windows.Forms.Label FindCounterLabel;
-    private System.Windows.Forms.NumericUpDown FindBySimilarityPercentageNumericUpDown;
     private System.Windows.Forms.Label FindByFrequencyLabel;
     private System.Windows.Forms.RadioButton FindByTextAllWordsRadioButton;
     private System.Windows.Forms.RadioButton FindByTextAnyWordRadioButton;
@@ -5848,8 +5833,6 @@
     private System.Windows.Forms.CheckBox FindByTextAllTextModesCheckBox;
     private System.Windows.Forms.Label PlayerPreviousLabel;
     private System.Windows.Forms.Label PlayerNextLabel;
-    private System.Windows.Forms.RadioButton FindBySimilaritySimilarLastWordRadioButton;
-    private System.Windows.Forms.RadioButton FindBySimilaritySimilarFirstWordRadioButton;
     private System.Windows.Forms.Label TranslationsCancelSettingsLabel;
     private System.Windows.Forms.Label TranslationsApplySettingsLabel;
     private System.Windows.Forms.ComboBox TranslatorComboBox;
@@ -5908,4 +5891,6 @@
     private System.Windows.Forms.Label RadixValueDownLabel;
     private System.Windows.Forms.Label RadixValueLabel;
     private System.Windows.Forms.Label RadixLabel;
+    private System.Windows.Forms.Label FindBySimilaritySimilarityLabel;
+    private System.Windows.Forms.TrackBar FindBySimilarityPercentageTrackBar;
 }
