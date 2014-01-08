@@ -1,12 +1,12 @@
-QuranCode
-=========
-
-QuranCode is a numerical and similarity research tool for the Generous Quran
+QuranCode 1433
+==============
 
                   QuranCode 1433
              Quran Research Platform
              (c) 2011-2014 Ali Adams
                 www.qurancode.com
+
+QuranCode is a numerical and similarity research tool for the Generous Quran
 
 QuranCode is a free open-source software tool that is built to enable numerical and similarity research into the Quran.
 
@@ -22,6 +22,6 @@ Derived projects can use the first two layers without any change and only replac
 
 Be a guiding light!
 
-Ali Adams
-God > infinity
+Ali Adams<br>
+God > infinity<br>
 www.heliwave.com
