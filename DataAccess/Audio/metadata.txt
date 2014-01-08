@@ -1,0 +1,60 @@
+http://www.everyayah.com/data/	Language	Reciter	Quality
+Abdul_Basit_Mujawwad_128kbps	Arabic	Abdul-Basit [Tajweed]	128
+Abdul_Basit_Murattal_64kbps	Arabic	Abdul-Basit [Tarteel]	64
+Abdurrahmaan_As-Sudais_64kbps	Arabic	Abdur-Rahmaan As-Sudais	64
+Alafasy_64kbps	Arabic	Mishary Rashid Al-Afasy	64
+Ghamadi_40kbps	Arabic	Saad Al-Ghamadi	40
+Hani_Rifai_64kbps	Arabic	Hani Al-Rifai	64
+Hudhaify_64kbps	Arabic	Ali Al-Hudhaify	64
+Husary_Mujawwad_64kbps	Arabic	Al-Husary [Tajweed]	64
+Mohammad_al_Tablaway_64kbps	Arabic	Mohammad Al-Tablaway	64
+Muhammad_AbdulKareem_128kbps	Arabic	Muhammad Abdul-Kareem	128
+Muhammad_Ayyoub_64kbps	Arabic	Muhammad Ayyoub	64
+Muhammad_Jibreel_64kbps	Arabic	Muhammad Jibreel	64
+Parhizgar_48kbps	Arabic	Shahriar Parhizgar	48
+Saood_ash-Shuraym_64kbps	Arabic	Saood Ash-Shuraym	64
+khalefa_al_tunaiji_64kbps	Arabic	Khalifa Al-Tunaiji	64
+mahmoud_ali_al_banna_32kbps	Arabic	Mahmoud Ali Al-Banna	32
+MultiLanguage/Basfar_Walk_192kbps	Arabic/English	AR/EN - Basfar/Walk	192
+translations/azerbaijani/balayev	Azerbaijani	Azerbajan - Rasim Balayev	64
+English/Sahih_Intnl_Ibrahim_Walk_192kbps	English	English - Ibrahim Walk	192
+translations/Fooladvand_Hedayatfar_40Kbps	Persian Persian - Fooladvand Hedayatfar	40
+translations/Makarem_Kabiri_16Kbps	Persian	Persian - Makarem Kabiri	16
+translations/urdu_shamshad_ali_khan_46kbps	Urdu	Urdu - Shamshad Ali Khan	64
+
+
+---------------------------------------------------------------
+--------------------- Offline Recitations ---------------------
+---------------------------------------------------------------
+http://ftp.jaist.ac.jp/pub/sourceforge/z/project/ze/zekr/recit/
+abdulbasit-48kbps-offline.recit.zip	26/07/2010 03:29	627M
+abdulbasit-mujawwad-32kbps-offline.recit.zip	07/08/2010 02:26	786M
+abdulbasit-mujawwad-64kbps-offline.recit.zip	07/08/2010 10:48	1.6G
+afasy-40kbps-offline.recit.zip	08/08/2010 13:10	501M
+afasy-64kbps-offline.recit.zip	26/07/2010 03:13	803M
+ajmy-64kbps-offline.recit.zip	30/03/2011 17:49	702M
+ajmy-128kbps-offline.recit.zip	25/12/2010 05:36	823M
+akhdar-32kbps-offline.recit.zip	25/12/2010 04:30	454M
+ayyub-128kbps-offline.recit.zip	15/09/2011 17:19	1.7G
+basfar-64kbps-offline.recit.zip	07/08/2010 10:27	810M
+fooladvand-hedayatfar-40kbps-offline.recit.zip	14/03/2011 18:34	416M
+ghamdi-40kbps-offline.recit.zip	08/08/2010 13:37	417M
+hudhaifi-32kbps-offline.recit.zip	25/12/2010 04:15	290M
+husary-40kbps-offline.recit.zip	12/08/2010 20:32	715M
+husary-64kbps-offline.recit.zip	12/08/2010 19:33	1.1G
+jebril-64kbps-offline.recit.zip	07/08/2010 11:27	706M
+makarem-kabiri-16kbps-offline.recit.zip	15/03/2011 19:37	222M
+minshawi-48kbps-offline.recit.zip	26/07/2010 02:39	588M
+minshawi-mujawwad-40kbps-offline.recit.zip	07/08/2010 12:20	1.0G
+muaiqly-48kbps-offline.recit.zip	21/10/2010 16:14	425M
+muaiqly-64kbps-offline.recit.zip	21/10/2010 16:17	567M
+parhizgar-24kbps-offline.recit.zip	14/03/2011 19:31	252M
+parhizgar-48kbps-offline.recit.zip	14/03/2011 18:41	534M
+refai-64kbps-offline.recit.zip	08/08/2010 17:43	684M
+shatri-64kbps-offline.recit.zip	07/08/2010 01:57	696M
+shuraim-64kbps-offline.recit.zip	26/07/2010 03:01	495M
+sudais-64kbps-offline.recit.zip	25/07/2010 13:09	573M
+sudais-128kbps-offline.recit.zip	08/08/2010 16:27	1.1G
+tablawi-64kbps-offline.recit.zip	07/08/2010 02:06	602M
+walk-64kbps-offline.recit.zip	14/08/2010 16:14	490M
+---------------------------------------------------------------

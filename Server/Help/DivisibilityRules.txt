@@ -1,0 +1,121 @@
+Divisibility by prime numbers under 50.
+© Stu Savory, 2003 & 2004.
+
+A number is divisible by 2 if its last digit is also (i.e. 0,2,4,6 or 8). 
+
+A number is divisible by 3 if the sum of its digits is also. Example: 534: 5+3+4=12 and 1+2=3 so 534 is divisible by 3. 
+
+A number is divisible by 5 if the last digit is 5 or 0. 
+
+Most people know (only) those 3 rules. Here are my rules for divisibility by the PRIMES up to 50. Why only primes and not also composite numbers? A number is divisible by a composite if it is also divisible by all the prime factors (e.g. is divisible by 21 if divisible by 3 AND by 7). Small numbers are used in these worked examples, so you could have used a pocket calculator. But my rules apply to any number of digits, whereas you cannot test a 30 or more digit number on your pocket calculator otherwise. 
+
+Test for divisibility by 7. Double the last digit and subtract it from the remaining leading truncated number. If the result is divisible by 7, then so was the original number. Apply this rule over and over again as necessary. Example: 826. Twice 6 is 12. So take 12 from the truncated 82. Now 82-12=70. This is divisible by 7, so 826 is divisible by 7 also. 
+
+There are similar rules for the remaining primes under 50, i.e. 11,13, 17,19,23,29,31,37,41,43 and 47. 
+
+Test for divisibility by 11. Subtract the last digit from the remaining leading truncated number. If the result is divisible by 11, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 19151--> 1915-1 =1914 -->191-4=187 -->18-7=11, so yes, 19151 is divisible by 11. 
+
+Test for divisibility by 13. Add four times the last digit to the remaining leading truncated number. If the result is divisible by 13, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 50661-->5066+4=5070-->507+0=507-->50+28=78 and 78 is 6*13, so 50661 is divisible by 13. 
+
+Test for divisibility by 17. Subtract five times the last digit from the remaining leading truncated number. If the result is divisible by 17, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 3978-->397-5*8=357-->35-5*7=0. So 3978 is divisible by 17. 
+
+Test for divisibility by 19. Add two times the last digit to the remaining leading truncated number. If the result is divisible by 19, then so was the first number. Apply this rule over and over again as necessary. 
+EG: 101156-->10115+2*6=10127-->1012+2*7=1026-->102+2*6=114 and 114=6*19, so 101156 is divisible by 19. 
+
+My original divisibilty webpage stopped here. However, I have had a number of mails asking for divisibility tests for larger primes, so I've extended the list up to 50. Actually even with 37 most people cannot do the necessary mental arithmetic easily, because they cannot recognise even single-digit multiples of two-digit numbers on sight. People are no longer taught the multiplication table up to 20*20 as I was as a child. Nowadays we are lucky if they know it up to 10*10. 
+
+Test for divisibility by 23. 3*23=69, ends in a 9, so ADD. Add 7 times the last digit to the remaining leading truncated number. If the result is divisible by 23, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 17043-->1704+7*3=1725-->172+7*5=207 which is 9*23, so 17043 is also divisible by 23. 
+
+Test for divisibility by 29. Add three times the last digit to the remaining leading truncated number. If the result is divisible by 29, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 15689-->1568+3*9=1595-->159+3*5=174-->17+3*4=29, so 15689 is also divisible by 29. 
+
+Test for divisibility by 31. Subtract three times the last digit from the remaining leading truncated number. If the result is divisible by 31, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 7998-->799-3*8=775-->77-3*5=62 which is twice 31, so 7998 is also divisible by 31. 
+
+Test for divisibility by 37. This is (slightly) more difficult, since it perforce uses a double-digit multiplier, namely eleven. People can usually do single digit multiples of 11, so we can use the same technique still. Subtract eleven times the last digit from the remaining leading truncated number. If the result is divisible by 37, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 23384-->2338-11*4=2294-->229-11*4=185 which is five times 37, so 23384 is also divisible by 37. 
+
+Test for divisibility by 41. Subtract four times the last digit from the remaining leading truncated number. If the result is divisible by 41, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 30873-->3087-4*3=3075-->307-4*5=287-->28-4*7=0, remainder is zero and so 30873 is also divisible by 41. 
+
+Test for divisibility by 43. Now it starts to get really difficult for most people, because the multiplier to be used is 13, and most people cannot recognise even single digit multiples of 13 at sight. You may want to make a little list of 13*N first. Nevertheless, for the sake of completeness, we will use the same method. Add thirteen times the last digit to the remaining leading truncated number. If the result is divisible by 43, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 3182-->318+13*2=344-->34+13*4=86 which is recognisably twice 43, and so 3182 is also divisible by 43. 
+Update : Bill Malloy has pointed out that, since we are working to modulo43, instead of adding factor 13 times the last digit, we can subtract 30 times it, because 13+30=43. Why didn't I think of that!!! :-( 
+
+Finally, the Test for divisibility by 47. This too is difficult for most people, because the multiplier to be used is 14, and most people cannot recognise even single digit multiples of 14 at sight. You may want to make a little list of 14*N first. Nevertheless, for the sake of completeness, we will use the same method. Subtract fourteen times the last digit from the remaining leading truncated number. If the result is divisible by 47, then so was the first number. Apply this rule over and over again as necessary. 
+Example: 34827-->3482-14*7=3384-->338-14*4=282-->28-14*2=0 , remainder is zero and so 34827 is divisible by 47. 
+
+I've stopped here at the last prime below 50, for arbitrary but pragmatic reasons as explained above. 
+
+Other blogreaders (sadly even people from .edu domains, who should be able to do the elementary algebra themselves) have asked why I sometimes say ADD and for other primes say SUBTRACT, and ask where the apparently arbitrary factors come from. So let us do some algebra to show the method in my madness. 
+
+Is N divisble by P?
+# Find the minimum x to multiply by P to produce a number ending with 1 or 9.
+# If z9, then M = +z + 1
+# If z1, then M = -z
+# Recursively do
+  N = f + Mr   (f=front, r=rear)
+  until we get f divisible by P, then N is divisible by P too,
+  or if we get f indivisible by P, then N is indivisible by P too
+
+Example:
+Is 964523 divisible by 17
+What is the minimum x to multiply by 17 to produce a number ending with 1 or 9? x = 3.
+3*17 = 51 = z1  (number ends in 1 so SUBTRACT z, z = 5)
+M = -z = -5
+
+126293
+12629   3*-5
+-  15
+12614
+1261    4*-5
+- 20
+1241
+124     1*-5
+- 5
+119
+11      9*-5
+-45
+-34
+ 3      4*-5  [-34 is split into 3 and 4 disregarding the -ve sign]
+-20
+-17     is divisible by 17 so 126293 is divisible by 17 too
+
+
+We have displayed the recursive divisibility test of number N as f-M*r where f are the front digits of N, r is the rear digit of N and M is some multiplier. And we want to see if N is divisible by some prime P. We need a method to work out the values of M. What you do is to calculate (mentally) the smallest multiple of P which ends in a 9 or a 1. If it's a 9 we are going to ADD the leading number of the multiple plus 1 as our M. If it's a 1 we are going to SUBTRACT the leading number of the multiple as our M.
+
+Example for P=17: three times 17 is 51 which is the smallest multiple of 17 that ends in a 1 or 9. Since it's a 1 we are going to SUBTRACT later. The leading digit is a 5, so we are going to SUBTRACT five times the remainder r.
+
+----------------------------
+THE PROOF
+----------------------------
+Let N = 10f + r  [f=front digits, r=rear digit]
+
+Multiply both sides by M = -5 [for P=17]:
+-5N = -50f -5r
+
+Add 51f to both sides 
+51f - 5N = 51f - 50f -5r
+51f - 5N = f - 5r
+[because 51 is the smallest multiple of P=17 to produce a result ending in 1 or 9]
+
+If N is divisible by P (here P=17) then subtitute N = P*x:
+51f - 5 * 17x  = f - 5r
+17 * (3f - 5x) = f - 5r
+therefore f - 5r is a multiple of P=17 too.
+
+Q.E.D. 
+
+
+
+
+
+
+
+
+
+

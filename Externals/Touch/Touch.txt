@@ -1,0 +1,23 @@
+USAGE:
+
+	Touch		// touch all folders and files recursively inside current folder with current datetime
+	Touch .		// touch all folders and files recursively inside current folder with current datetime
+	Touch *.*	// touch all files inside current folder only (not subfolders) with current datetime
+
+	Touch . 2012-07-29
+	Touch *.* 2012-07-29
+	Touch . *.* 2012-07-29
+
+	Touch . 12:34
+	Touch *.* 12:34
+	Touch . *.* 12:34
+
+	Touch . 2012-07-29 12:34
+	Touch *.* 2012-07-29 12:34
+	Touch . *.* 2012-07-29 12:34
+
+	Touch C:\Test
+	Touch C:\Test *.zip
+	Touch C:\Test *.zip 2012-07-29
+	Touch C:\Test *.zip 12:34
+	Touch C:\Test *.zip 2012-07-29 12:34

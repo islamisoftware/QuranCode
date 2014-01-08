@@ -1,0 +1,39 @@
+﻿كل كلمة مرتبطة بكل كلمات القرءان المشتقة من نفس الجذر. إضغط كونترول وإنقر الكلمة
+Ctrl + Click a word to display all verses with words from the same root.
+Al-Quran = The Readable Book (despite being encrypted with prime numbers).
+Prime (P) is a number that is only divisble by 1 or itself without a remainder.
+Additive Prime (AP) is a prime number with the sum of its digits is prime too.
+Pure Prime (PP) is an additive prime number with all digits are prime too.
+A prime number is the mother of all its multiples (الشـفع co-dependent).
+1 is the building unit for all numbers (the father) (الوتر standalone).
+2 is prime, the mother of all even numbers.
+3 is prime, the mother of all multiples of 3.
+4 is composite, a child of the prime 2.
+5 is a mother  |  6 is a child of 2 and 3  |  7 is a mother  |  ...
+The first few primes are 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, ...
+وَلَقَدْ ءَاتَيْنَٰكَ سَبْعًۭا مِّنَ ٱلْمَثَانِى وَٱلْقُرْءَانَ ٱلْعَظِيمَ
+القرءان  =  سورة الفاتحة  +  الرسالة المجـفرة
+Quran =  Key  +  Encrypted Message
+114 Chapters = 1 + 113   |   1 and 113  are additive primes
+6236 Verses  = 7 + 6229  |   7 and 6229 are additive primes
+Prime numbers become rarer as we go up the number ladder but never vanish.
+The gap between prime numbers is irregular and has no known formula.
+There is $1,000,000 prize for whomever solves the mystery of prime numbers.
+Even numbers are just a special case of the general divisibility by a prime.
+Odd  numbers are just a special case of the general non-divisibility by a prime.
+Prime numbers are used as private keys in public key cryptography (علم الجـفر).
+Allah has built chapter The Key with additive primes (7 verses, 29 words, 139 letters).
+Primalogy system was discovered by Ali Adams with the Mercy of Allah in 2008.
+Primalogy assigns prime values to Arabic letters in alphabetical order.
+The PV of chapter The Key (الفاتحة) is additive prime (8317 | 19).
+The PV of chapter Onesess of God (الإخلاص) is AP (4201 | 7) with bismAllah.
+The PV of chapter Onesess of God (الإخلاص) is AP (3167 | 17) without bismAllah.
+The PV of verse The Throne (ءاية الكرسي) is AP (11261 | 11).
+The most repeated verse in the Quran is (فباي ءالاء ربكما تكذبان) in chapter The Merciful.
+The verse (فباي ءالاء ربكما تكذبان) has 4 words and is repeated 31 times.
+The PV of the verse (فباي ءالاء ربكما تكذبان) is AP (683 | 17).
+The PV (683) of the 4-words 31-repetition verse is the 124th prime and 124 = 4 x 31.
+The PV of the proper name of God, "Allah" is AP (269 | 17).
+Prime numbers in the Quran point to similar-valued verses within the Quran.
+Additive prime numbers in the Quran point to countable things in nature.
+Prime numbers are God's Signature in the Quran!

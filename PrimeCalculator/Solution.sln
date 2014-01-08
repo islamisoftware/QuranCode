@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrimeCalculator", "PrimeCalculator.csproj", "{A3890C6B-4433-467F-8B1C-B2D69B3FEDB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "..\Utilities\Utilities.csproj", "{B0138CBF-A11A-4F54-AD14-2D9217D90F27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Globals", "..\Globals\Globals.csproj", "{B749FCA9-B5AF-45E7-9C65-140BC0A90F79}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A3890C6B-4433-467F-8B1C-B2D69B3FEDB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3890C6B-4433-467F-8B1C-B2D69B3FEDB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3890C6B-4433-467F-8B1C-B2D69B3FEDB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3890C6B-4433-467F-8B1C-B2D69B3FEDB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0138CBF-A11A-4F54-AD14-2D9217D90F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0138CBF-A11A-4F54-AD14-2D9217D90F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0138CBF-A11A-4F54-AD14-2D9217D90F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0138CBF-A11A-4F54-AD14-2D9217D90F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B749FCA9-B5AF-45E7-9C65-140BC0A90F79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B749FCA9-B5AF-45E7-9C65-140BC0A90F79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B749FCA9-B5AF-45E7-9C65-140BC0A90F79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B749FCA9-B5AF-45E7-9C65-140BC0A90F79}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

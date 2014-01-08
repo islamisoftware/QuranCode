@@ -1,0 +1,110 @@
+﻿http://tanzil.net/trans/?transID=XXX&type=txt	http://tanzil.net/pub/img/flag/	Language	Translator	Full Translator
+sq.nahi	al.png	Albanian	Hasan Efendi Nahi	Hasan Efendi Nahi
+sq.mehdiu	al.png	Albanian	Feti Mehdiu	Feti Mehdiu
+sq.ahmeti	al.png	Albanian	Sherif Ahmeti	Sherif Ahmeti
+ber.mensur	dz.png	Amazigh	Ramdane At Mansour	Ramdane At Mansour *
+ar.emlaaei	sa.png	Arabic	النص الإملائي	King Fahad Quran Complex *
+ar.jalalayn	sa.png	Arabic	تفسير الجلالين	Jalal ad-Din al-Mahalli and Jalal ad-Din as-Suyuti *
+ar.muyassar	sa.png	Arabic	تفسير المیسر	King Fahad Quran Complex *
+am.sadiq	et.png	Amharic	ሳዲቅ & ሳኒ ሐቢብ	Muhammed Sadiq and Muhammed Sani Habib *
+az.mammadaliyev	az.png	Azerbaijani	Məmmədəliyev & Bünyadov	Vasim Mammadaliyev and Ziya Bunyadov * †
+az.musayev	az.png	Azerbaijani	Alikhan Musayev	Alikhan Musayev
+bn.hoque	bd.png	Bengali	জহুরুল হক	Zohurul Hoque *
+bn.bengali	bd.png	Bengali	মুহিউদ্দীন খান	Muhiuddin Khan
+bs.korkut	ba.png	Bosnian	Besim Korkut	Besim Korkut *
+bs.mlivo	ba.png	Bosnian	Mustafa Mlivo	Mustafa Mlivo
+bg.theophanov	bg.png	Bulgarian	Tzvetan Теофанов	Tzvetan Theophanov
+zh.jian	cn.png	Chinese	Ma Jian	Ma Jian
+zh.majian	cn.png	Chinese	Ma Jian (Traditional)	Ma Jian
+cs.hrbek	cz.png	Czech	Preklad I. Hrbek	Preklad I. Hrbek
+cs.nykl	cz.png	Czech	A. R. Nykl	A. R. Nykl
+dv.divehi	mv.png	Divehi	ދިވެހި	Office of the President of Maldives
+nl.keyzer	nl.png	Dutch	Salomo Keyzer	Salomo Keyzer
+nl.leemhuis	nl.png	Dutch	Fred Leemhuis	Fred Leemhuis
+nl.siregar	nl.png	Dutch	Sofian S. Siregar	Sofian S. Siregar
+en.ahmedali	us.png	English	Ahmed Ali	Ahmed Ali *
+en.ahmedraza	us.png	English	Ahmed Raza Khan	Ahmed Raza Khan *
+en.arberry	us.png	English	A. J. Arberry	A. J. Arberry *
+en.daryabadi	us.png	English	Abdul Majid Daryabadi	Abdul Majid Daryabadi *
+en.hilali	us.png	English	Hilali & Khan	Muhammad Taqi-ud-Din al-Hilali and Muhammad Muhsin Khan *
+en.maududi	us.png	English	Abul Ala Maududi	Abul Ala Maududi *
+en.pickthall	us.png	English	Mohammed Pickthall	Mohammed Marmaduke William Pickthall *
+en.qarai	us.png	English	Ali Quli Qarai	Center for Translation of the Qur'an, Qum, Islamic Republic of Iran
+en.qaribullah	us.png	English	Qaribullah & Darwish	Hasan al-Fatih Qaribullah and Ahmad Darwish
+en.sahih	us.png	English	Saheeh International	Saheeh International *
+en.sarwar	us.png	English	Muhammad Sarwar	Muhammad Sarwar *
+en.shakir	us.png	English	Mohammad Habib Shakir	Mohammad Habib Shakir *
+en.transliteration	us.png	English	Transliteration	English Transliteration
+en.wahiduddin	us.png	English	Wahiduddin Khan	Wahiduddin Khan *
+en.yusufali	us.png	English	Abdullah Yusuf Ali	Abdullah Yusuf Ali *
+fr.hamidullah	fr.png	French	Muhammad Hamidullah	Muhammad Hamidullah *
+de.aburida	de.png	German	Muhammad Ahmad Rassoul	Abu Rida Muhammad ibn Ahmad ibn Rassoul
+de.bubenheim	de.png	German	Bubenheim & Elyas	A. S. F. Bubenheim and N. Elyas *
+de.khoury	de.png	German	Adel Theodor Khoury	Adel Theodor Khoury *
+de.zaidan	de.png	German	Amir Zaidan	Amir Zaidan
+ha.gumi	ng.png	Hausa	Abubakar Mahmoud Gumi	Abubakar Mahmoud Gumi
+hi.farooq	in.png	Hindi	फ़ारूक़ ख़ान & अहमद	Muhammad Farooq Khan and Muhammad Ahmed
+hi.hindi	in.png	Hindi	फ़ारूक़ ख़ान & नदवी	Suhel Farooq Khan and Saifur Rahman Nadwi
+id.indonesian	id.png	Indonesian	Bahasa Indonesia	Indonesian Ministry of Religious Affairs
+id.muntakhab	id.png	Indonesian	Quraish Shihab	Muhammad Quraish Shihab et al. *
+id.jalalayn	id.png	Indonesian	Tafsir Al-Jalalayn	Jalal ad-Din al-Mahalli and Jalal ad-Din as-Suyuti *
+it.piccardo	it.png	Italian	Hamza Roberto Piccardo	Hamza Roberto Piccardo *
+ja.japanese	jp.png	Japanese	Unknown	Unknown
+ko.korean	kr.png	Korean	Unknown	Unknown
+ku.asan	iq.png	Kurdish	ته‌فسیری ئاسان	Burhan Muhammad-Amin
+ms.basmeih	my.png	Malay	Abdullah Muhammad Basmeih	Abdullah Muhammad Basmeih
+ml.abdulhameed	in.png	Malayalam	അബ്ദുല്‍ ഹമീദ് & പറപ്പൂര്‍	Cheriyamundam Abdul Hameed and Kunhi Mohammed Parappoor
+ml.karakunnu	in.png	Malayalam	കാരകുന്ന് & എളയാവൂര്	Muhammad Karakunnu and Vanidas Elayavoor *
+no.berg	no.png	Norwegian	Einar Berg	Einar Berg
+fa.ghomshei	ir.png	Persian	الهی قمشه‌ای	Mahdi Elahi Ghomshei *
+fa.ansarian	ir.png	Persian	انصاریان	Hussain Ansarian *
+fa.ayati	ir.png	Persian	آیتی	AbdolMohammad Ayati *
+fa.bahrampour	ir.png	Persian	بهرام پور	Abolfazl Bahrampour *
+fa.khorramdel	ir.png	Persian	خرمدل	Mostafa Khorramdel *
+fa.khorramshahi	ir.png	Persian	خرمشاهی	Baha'oddin Khorramshahi *
+fa.sadeqi	ir.png	Persian	صادقی تهرانی	Mohammad Sadeqi Tehrani *
+fa.fooladvand	ir.png	Persian	فولادوند	Mohammad Mahdi Fooladvand *
+fa.mojtabavi	ir.png	Persian	مجتبوی	Sayyed Jalaloddin Mojtabavi *
+fa.moezzi	ir.png	Persian	معزی	Mohammad Kazem Moezzi
+fa.makarem	ir.png	Persian	مکارم شیرازی	Naser Makarem Shirazi *
+pl.bielawskiego	pl.png	Polish	Józefa Bielawskiego	Józefa Bielawskiego
+pt.elhayek	pt.png	Portuguese	Samir El-Hayek	Samir El-Hayek
+ro.grigore	ro.png	Romanian	George Grigore	George Grigore
+ru.abuadel	ru.png	Russian	Абу Адель	Abu Adel
+ru.muntahab	ru.png	Russian	Аль-Мунтахаб	Ministry of Awqaf, Egypt
+ru.krachkovsky	ru.png	Russian	Ignaty Yulianovich Krachkovsky	Ignaty Yulianovich Krachkovsky *
+ru.kuliev	ru.png	Russian	Elmir Kuliev	Elmir Kuliev
+ru.kuliev-alsaadi	ru.png	Russian	Кулиев + ас-Саади	Elmir Kuliev (with Abd ar-Rahman as-Saadi's commentaries)
+ru.osmanov	ru.png	Russian	Османов	Magomed-Nuri Osmanovich Osmanov
+ru.porokhova	ru.png	Russian	Порохова	V. Porokhova
+ru.sablukov	ru.png	Russian	Саблуков	Gordy Semyonovich Sablukov
+sd.amroti	pk.png	Sindhi	امروٽي	Taj Mehmood Amroti
+so.abduh	so.png	Somali	Mahmoud Muhammad Abduh	Mahmud Muhammad Abduh
+es.asad	es.png	Spanish	Asad - Abdurrasak Pérez	Muhammad Asad - Abdurrasak Pérez *
+es.cortes	es.png	Spanish	Julio Cortes	Julio Cortes
+sw.barwani	ke.png	Swahili	Ali Muhsin Al-Barwani	Ali Muhsin Al-Barwani
+sv.bernstrom	se.png	Swedish	Knut Bernström	Knut Bernström
+tg.ayati	tj.png	Tajik	Оятӣ	AbdolMohammad Ayati
+ta.tamil	in.png	Tamil	ஜான் டிரஸ்ட்	Jan Turst Foundation
+tt.nugman	ru.png	Tatar	Yakub Ibn Nugman	Yakub Ibn Nugman
+th.thai	th.png	Thai	ภาษาไทย	King Fahad Quran Complex
+tr.golpinarli	tr.png	Turkish	Abdulbakî Gölpınarlı	Abdulbaki Golpinarli
+tr.bulac	tr.png	Turkish	Alİ Bulaç	Alİ Bulaç
+tr.transliteration	tr.png	Turkish	Çeviriyazı	Muhammet Abay
+tr.diyanet	tr.png	Turkish	Diyanet İşleri	Diyanet Isleri
+tr.vakfi	tr.png	Turkish	Diyanet Vakfı	Diyanet Vakfi
+tr.yuksel	tr.png	Turkish	Edip Yüksel	Edip Yüksel
+tr.yazir	tr.png	Turkish	Elmalılı Hamdi Yazır	Elmalili Hamdi Yazir
+tr.ozturk	tr.png	Turkish	Yasar Nuri Öztürk	Yasar Nuri Ozturk *
+tr.yildirim	tr.png	Turkish	Suat Yıldırım	Suat Yildirim
+tr.ates	tr.png	Turkish	Süleyman Ateş	Suleyman Ates
+ur.maududi	pk.png	Urdu	ابوالاعلی مودودی	Abul A'ala Maududi *
+ur.kanzuliman	pk.png	Urdu	احمد رضا خان	Ahmed Raza Khan *
+ur.ahmedali	pk.png	Urdu	احمد علی	Ahmed Ali *
+ur.jalandhry	pk.png	Urdu	جالندہری	Fateh Muhammad Jalandhry
+ur.qadri	pk.png	Urdu	طاہر القادری	Tahir ul Qadri *
+ur.jawadi	pk.png	Urdu	علامہ جوادی	Syed Zeeshan Haider Jawadi
+ur.junagarhi	pk.png	Urdu	محمد جوناگڑھی	Muhammad Junagarhi *
+ur.najafi	pk.png	Urdu	محمد حسین نجفی	Ayatollah Muhammad Hussain Najafi  *
+ug.saleh	cn.png	Uyghur	محمد صالح	Muhammad Saleh
+uz.sodik	uz.png	Uzbek	Мухаммад Содик	Muhammad Sodik Muhammad Yusuf

@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAVMaker", "WAVMaker\WAVMaker.csproj", "{8B694862-E243-4527-AAE4-08BAB299B7A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Evaluator", "Evaluator\Evaluator.csproj", "{1C1CE796-40E7-4117-BE3D-66C5CD836562}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MP3Player", "MP3Player\MP3Player.csproj", "{45191FE0-3A2F-46D4-ADFC-626B69DBF7AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Touch", "Touch\Touch.csproj", "{39624393-E29B-43EC-AB86-42936A829296}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Version", "Version\Version.csproj", "{6814465C-43BA-4634-B5D8-4551CDC3F1E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectListView", "ObjectListView\ObjectListView.csproj", "{18FEDA0C-D147-4286-B39A-01204808106A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8B694862-E243-4527-AAE4-08BAB299B7A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B694862-E243-4527-AAE4-08BAB299B7A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B694862-E243-4527-AAE4-08BAB299B7A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B694862-E243-4527-AAE4-08BAB299B7A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1CE796-40E7-4117-BE3D-66C5CD836562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1CE796-40E7-4117-BE3D-66C5CD836562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1CE796-40E7-4117-BE3D-66C5CD836562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1CE796-40E7-4117-BE3D-66C5CD836562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45191FE0-3A2F-46D4-ADFC-626B69DBF7AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45191FE0-3A2F-46D4-ADFC-626B69DBF7AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45191FE0-3A2F-46D4-ADFC-626B69DBF7AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45191FE0-3A2F-46D4-ADFC-626B69DBF7AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39624393-E29B-43EC-AB86-42936A829296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39624393-E29B-43EC-AB86-42936A829296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39624393-E29B-43EC-AB86-42936A829296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39624393-E29B-43EC-AB86-42936A829296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6814465C-43BA-4634-B5D8-4551CDC3F1E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6814465C-43BA-4634-B5D8-4551CDC3F1E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6814465C-43BA-4634-B5D8-4551CDC3F1E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6814465C-43BA-4634-B5D8-4551CDC3F1E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18FEDA0C-D147-4286-B39A-01204808106A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18FEDA0C-D147-4286-B39A-01204808106A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18FEDA0C-D147-4286-B39A-01204808106A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18FEDA0C-D147-4286-B39A-01204808106A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
