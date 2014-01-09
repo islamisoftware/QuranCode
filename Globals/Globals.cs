@@ -4,7 +4,7 @@ public enum Edition { Lite, Standard, Grammar, Research }
 
 public static class Globals
 {
-    public static string VERSION = "4.1.0"; // updated by Version.bat (together with all AssemblyInfo of all assemblies)
+    public static string VERSION = "4.1.1"; // updated by Version.bat (together with all AssemblyInfo of all assemblies)
     public static Edition EDITION = Edition.Grammar;
 
     public static string SHORT_VERSION
