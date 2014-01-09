@@ -2407,7 +2407,7 @@ public static class Server
                                    )
                                 {
                                     found_verses.Add(verse);
-                                    result.Add(new Phrase(verse, text_mode, "", 0));
+                                    result.Add(new Phrase(verse, text_mode, "          ", 10));
                                 }
                             }
                             else if (text_location == FindByTextLocation.AnyWord)
