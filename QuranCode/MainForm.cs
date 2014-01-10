@@ -7711,7 +7711,7 @@ public partial class MainForm : Form
 
             // display values in nex radix
             DisplayVersesWordsLetters(verse_count, word_count, letter_count);
-            DisplayValueInRadix(value);
+            DisplayValue(value);
         }
         catch
         {
@@ -7735,7 +7735,7 @@ public partial class MainForm : Form
 
             // display values in nex radix
             DisplayVersesWordsLetters(verse_count, word_count, letter_count);
-            DisplayValueInRadix(value);
+            DisplayValue(value);
         }
         catch
         {
@@ -7759,25 +7759,31 @@ public partial class MainForm : Form
 
             // display values in nex radix
             DisplayVersesWordsLetters(verse_count, word_count, letter_count);
-            DisplayValueInRadix(value);
+            DisplayValue(value);
         }
         catch
         {
             // log exception
         }
     }
-    private void DisplayValueInRadix(long value)
+    private void DisplayValue(long value)
     {
-        ValueTextBox.Text = Radix.Encode(value, m_radix);
-        ValueTextBox.ForeColor = GetNumberTypeColor(ValueTextBox.Text, m_radix);
         ToolTip.SetToolTip(ValueTextBox, value.ToString());
+
+        ValueTextBox.Text = Radix.Encode(value, m_radix);
+
+        ValueTextBox.ForeColor = GetNumberTypeColor(ValueTextBox.Text, m_radix);
         ValueTextBox.SelectionStart = ValueTextBox.Text.Length;
         ValueTextBox.SelectionLength = 0;
         ValueTextBox.Refresh();
 
         DigitSumTextBox.Text = Numbers.DigitSum(ValueTextBox.Text).ToString();
-        DigitSumTextBox.ForeColor = GetNumberTypeColor(DigitSumTextBox.Text, 10);
+        DigitSumTextBox.ForeColor = GetNumberTypeColor(DigitSumTextBox.Text, m_radix);
         DigitSumTextBox.Refresh();
+
+        DigitalRootTextBox.Text = Numbers.DigitalRoot(ValueTextBox.Text).ToString();
+        DigitalRootTextBox.ForeColor = GetNumberTypeColor(DigitalRootTextBox.Text, m_radix);
+        DigitalRootTextBox.Refresh();
     }
     private void DisplayVersesWordsLetters(int verse_count, int word_count, int letter_count)
     {
@@ -8125,7 +8131,7 @@ public partial class MainForm : Form
                         this.Text = result;
 
                         value = (long)Math.Round((double.Parse(result)));
-                        ValueTextBox.Text = value.ToString();
+                        DisplayValue(value);
                     }
                     catch
                     {
@@ -8272,25 +8278,6 @@ public partial class MainForm : Form
         {
             this.Cursor = Cursors.Default;
         }
-    }
-    private void DisplayValue(long value)
-    {
-        ValueTextBox.Text = value.ToString();
-        ValueTextBox.ForeColor = GetNumberTypeColor((long)value);
-        ToolTip.SetToolTip(ValueTextBox, value.ToString());
-        ValueTextBox.SelectionStart = ValueTextBox.Text.Length;
-        ValueTextBox.SelectionLength = 0;
-        ValueTextBox.Refresh();
-
-        long digit_sum = Numbers.DigitSum(value);
-        DigitSumTextBox.Text = digit_sum.ToString();
-        DigitSumTextBox.ForeColor = GetNumberTypeColor(digit_sum);
-        DigitSumTextBox.Refresh();
-
-        long digital_root = Numbers.DigitalRoot(value);
-        DigitalRootTextBox.Text = digital_root.ToString();
-        DigitalRootTextBox.ForeColor = GetNumberTypeColor(digital_root);
-        DigitalRootTextBox.Refresh();
     }
     private string CalculateExpression(string expression)
     {
