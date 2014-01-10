@@ -259,12 +259,16 @@
         this.DrawingPictureBoxEx = new PictureBoxEx();
         this.FindByFrequencySumNumericUpDown = new System.Windows.Forms.NumericUpDown();
         this.StatisticsGroupBox = new System.Windows.Forms.GroupBox();
+        this.DecimalLettersTextBox = new System.Windows.Forms.TextBox();
+        this.DecimalWordsTextBox = new System.Windows.Forms.TextBox();
+        this.DecimalVersesTextBox = new System.Windows.Forms.TextBox();
         this.RadixValueUpLabel = new System.Windows.Forms.Label();
         this.RadixValueDownLabel = new System.Windows.Forms.Label();
         this.RadixValueLabel = new System.Windows.Forms.Label();
         this.RadixLabel = new System.Windows.Forms.Label();
         this.DynamicLetterScopeHighlightedTextRadioButton = new System.Windows.Forms.RadioButton();
         this.ValuePanel = new System.Windows.Forms.Panel();
+        this.DecimalValueTextBox = new System.Windows.Forms.TextBox();
         this.ValueNavigatorPanel = new System.Windows.Forms.Panel();
         this.DigitalRootTextBox = new System.Windows.Forms.TextBox();
         this.DigitSumTextBox = new System.Windows.Forms.TextBox();
@@ -4177,6 +4181,9 @@
         this.StatisticsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                     | System.Windows.Forms.AnchorStyles.Left)
                     | System.Windows.Forms.AnchorStyles.Right)));
+        this.StatisticsGroupBox.Controls.Add(this.DecimalLettersTextBox);
+        this.StatisticsGroupBox.Controls.Add(this.DecimalWordsTextBox);
+        this.StatisticsGroupBox.Controls.Add(this.DecimalVersesTextBox);
         this.StatisticsGroupBox.Controls.Add(this.RadixValueUpLabel);
         this.StatisticsGroupBox.Controls.Add(this.RadixValueDownLabel);
         this.StatisticsGroupBox.Controls.Add(this.RadixValueLabel);
@@ -4208,6 +4215,57 @@
         this.StatisticsGroupBox.TabIndex = 4;
         this.StatisticsGroupBox.TabStop = false;
         this.StatisticsGroupBox.Text = "Statistics";
+        // 
+        // DecimalLettersTextBox
+        // 
+        this.DecimalLettersTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right)));
+        this.DecimalLettersTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
+        this.DecimalLettersTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.DecimalLettersTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+        this.DecimalLettersTextBox.Location = new System.Drawing.Point(68, 118);
+        this.DecimalLettersTextBox.Name = "DecimalLettersTextBox";
+        this.DecimalLettersTextBox.ReadOnly = true;
+        this.DecimalLettersTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+        this.DecimalLettersTextBox.Size = new System.Drawing.Size(45, 20);
+        this.DecimalLettersTextBox.TabIndex = 187;
+        this.DecimalLettersTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.DecimalLettersTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
+        this.DecimalLettersTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
+        // 
+        // DecimalWordsTextBox
+        // 
+        this.DecimalWordsTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right)));
+        this.DecimalWordsTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
+        this.DecimalWordsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.DecimalWordsTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+        this.DecimalWordsTextBox.Location = new System.Drawing.Point(68, 99);
+        this.DecimalWordsTextBox.Name = "DecimalWordsTextBox";
+        this.DecimalWordsTextBox.ReadOnly = true;
+        this.DecimalWordsTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+        this.DecimalWordsTextBox.Size = new System.Drawing.Size(45, 20);
+        this.DecimalWordsTextBox.TabIndex = 186;
+        this.DecimalWordsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.DecimalWordsTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
+        this.DecimalWordsTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
+        // 
+        // DecimalVersesTextBox
+        // 
+        this.DecimalVersesTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right)));
+        this.DecimalVersesTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
+        this.DecimalVersesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.DecimalVersesTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+        this.DecimalVersesTextBox.Location = new System.Drawing.Point(68, 79);
+        this.DecimalVersesTextBox.Name = "DecimalVersesTextBox";
+        this.DecimalVersesTextBox.ReadOnly = true;
+        this.DecimalVersesTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+        this.DecimalVersesTextBox.Size = new System.Drawing.Size(45, 20);
+        this.DecimalVersesTextBox.TabIndex = 185;
+        this.DecimalVersesTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.DecimalVersesTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
+        this.DecimalVersesTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
         // 
         // RadixValueUpLabel
         // 
@@ -4287,6 +4345,7 @@
         // 
         // ValuePanel
         // 
+        this.ValuePanel.Controls.Add(this.DecimalValueTextBox);
         this.ValuePanel.Controls.Add(this.ValueNavigatorPanel);
         this.ValuePanel.Controls.Add(this.DigitalRootTextBox);
         this.ValuePanel.Controls.Add(this.DigitSumTextBox);
@@ -4332,6 +4391,23 @@
         this.ValuePanel.Name = "ValuePanel";
         this.ValuePanel.Size = new System.Drawing.Size(180, 251);
         this.ValuePanel.TabIndex = 99;
+        // 
+        // DecimalValueTextBox
+        // 
+        this.DecimalValueTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                    | System.Windows.Forms.AnchorStyles.Right)));
+        this.DecimalValueTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
+        this.DecimalValueTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.DecimalValueTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+        this.DecimalValueTextBox.Location = new System.Drawing.Point(62, 0);
+        this.DecimalValueTextBox.Name = "DecimalValueTextBox";
+        this.DecimalValueTextBox.ReadOnly = true;
+        this.DecimalValueTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+        this.DecimalValueTextBox.Size = new System.Drawing.Size(45, 20);
+        this.DecimalValueTextBox.TabIndex = 188;
+        this.DecimalValueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.DecimalValueTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
+        this.DecimalValueTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
         // 
         // ValueNavigatorPanel
         // 
@@ -5892,4 +5968,8 @@
     private System.Windows.Forms.Label RadixLabel;
     private System.Windows.Forms.Label FindBySimilaritySimilarityLabel;
     private System.Windows.Forms.TrackBar FindBySimilarityPercentageTrackBar;
+    private System.Windows.Forms.TextBox DecimalLettersTextBox;
+    private System.Windows.Forms.TextBox DecimalWordsTextBox;
+    private System.Windows.Forms.TextBox DecimalVersesTextBox;
+    private System.Windows.Forms.TextBox DecimalValueTextBox;
 }

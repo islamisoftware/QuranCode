@@ -5267,7 +5267,14 @@ public partial class MainForm : Form
                         string text = control.Text;
                         if (text.Length > 0)
                         {
-                            value = long.Parse(text);
+                            if (control.Name.StartsWith("Decimal"))
+                            {
+                                value = Radix.Decode(text, 10);
+                            }
+                            else
+                            {
+                                value = Radix.Decode(text, m_radix);
+                            }
                         }
                     }
                     catch
@@ -7768,14 +7775,16 @@ public partial class MainForm : Form
     }
     private void DisplayValue(long value)
     {
-        ToolTip.SetToolTip(ValueTextBox, value.ToString());
-
         ValueTextBox.Text = Radix.Encode(value, m_radix);
-
+        DecimalValueTextBox.Text = value.ToString();
+        ToolTip.SetToolTip(ValueTextBox, value.ToString());
         ValueTextBox.ForeColor = GetNumberTypeColor(ValueTextBox.Text, m_radix);
         ValueTextBox.SelectionStart = ValueTextBox.Text.Length;
         ValueTextBox.SelectionLength = 0;
         ValueTextBox.Refresh();
+        DecimalValueTextBox.Visible = (m_radix != DEFAULT_RADIX);
+        DecimalValueTextBox.ForeColor = GetNumberTypeColor(value);
+        DecimalValueTextBox.Refresh();
 
         DigitSumTextBox.Text = Numbers.DigitSum(ValueTextBox.Text).ToString();
         DigitSumTextBox.ForeColor = GetNumberTypeColor(DigitSumTextBox.Text, m_radix);
@@ -7791,14 +7800,28 @@ public partial class MainForm : Form
         VersesTextBox.ForeColor = GetNumberTypeColor(VersesTextBox.Text, m_radix);
         ToolTip.SetToolTip(VersesTextBox, verse_count.ToString());
         VersesTextBox.Refresh();
+        DecimalVersesTextBox.Text = verse_count.ToString();
+        DecimalVersesTextBox.ForeColor = GetNumberTypeColor(verse_count);
+        DecimalVersesTextBox.Visible = (m_radix != DEFAULT_RADIX);
+        VersesTextBox.Refresh();
+
         WordsTextBox.Text = Radix.Encode(word_count, m_radix);
         WordsTextBox.ForeColor = GetNumberTypeColor(WordsTextBox.Text, m_radix);
         ToolTip.SetToolTip(WordsTextBox, word_count.ToString());
         WordsTextBox.Refresh();
+        DecimalWordsTextBox.Text = word_count.ToString();
+        DecimalWordsTextBox.ForeColor = GetNumberTypeColor(word_count);
+        DecimalWordsTextBox.Visible = (m_radix != DEFAULT_RADIX);
+        DecimalWordsTextBox.Refresh();
+
         LettersTextBox.Text = Radix.Encode(letter_count, m_radix);
         LettersTextBox.ForeColor = GetNumberTypeColor(LettersTextBox.Text, m_radix);
         ToolTip.SetToolTip(LettersTextBox, letter_count.ToString());
         LettersTextBox.Refresh();
+        DecimalLettersTextBox.Text = letter_count.ToString();
+        DecimalLettersTextBox.ForeColor = GetNumberTypeColor(letter_count);
+        DecimalLettersTextBox.Visible = (m_radix != DEFAULT_RADIX);
+        DecimalLettersTextBox.Refresh();
     }
 
     private void CalculateCurrentText()
@@ -8693,7 +8716,7 @@ public partial class MainForm : Form
                     {
                         try
                         {
-                            long value = long.Parse(listview.Items[j].SubItems[i].Text);
+                            long value = long.Parse(listview.Items[j + listview.TopItem.Index].SubItems[i].Text);
                             FactorizeValue(value, "Frequency");
                         }
                         catch
