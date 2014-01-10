@@ -1440,11 +1440,11 @@ public static class Numbers
     }
     public static int DigitalRoot(string value)
     {
-        int result = 0;
-        do
+        int result = DigitSum(value);
+        while (result.ToString().Length > 1)
         {
             result = DigitSum(result);
-        } while (result.ToString().Length > 1);
+        }
         return result;
     }
     public static bool IsPrimeDigits(long number)

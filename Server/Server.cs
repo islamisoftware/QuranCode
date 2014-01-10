@@ -2378,74 +2378,184 @@ public static class Server
                         // do actual search
                         foreach (Verse verse in source)
                         {
+                            /////////////////////////
+                            // process negative_words
+                            /////////////////////////
+                            if (negative_words.Count > 0)
+                            {
+                                bool skip = false;
+                                foreach (string negative_word in negative_words)
+                                {
+                                    foreach (Word word in verse.Words)
+                                    {
+                                        // if any negative_word found, skip verse
+                                        if (word.Texts[text_mode].Contains(negative_word))
+                                        {
+                                            skip = true; // next verse
+                                            break;
+                                        }
+                                    }
+                                    if (skip)
+                                    {
+                                        break;
+                                    }
+                                }
+                                if (skip) continue; // next verse
+                            }
+
+                            /////////////////////////
+                            // process positive_words
+                            /////////////////////////
+                            if (positive_words.Count > 0)
+                            {
+                                int matches = 0;
+                                foreach (string positive_word in positive_words)
+                                {
+                                    foreach (Word word in verse.Words)
+                                    {
+                                        if (word.Texts[text_mode].Contains(positive_word))
+                                        {
+                                            matches++;
+                                            break; // next positive_word
+                                        }
+                                    }
+                                }
+
+                                // verse failed test, so skip it
+                                if (matches < positive_words.Count)
+                                {
+                                    continue; // next verse
+                                }
+                            }
+
+                            //////////////////////////////////////////////////////
+                            // both negative and positive conditions have been met
+                            //////////////////////////////////////////////////////
+
+                            /////////////////////////
+                            // process unsigned_words
+                            /////////////////////////
+                            //////////////////////////////////////////////////////////
+                            // FindByText WORDS All
+                            //////////////////////////////////////////////////////////
                             if (text_location == FindByTextLocation.AllWords)
                             {
-                                bool skip = false;
-                                foreach (string negative_word in negative_words)
+                                int matches = 0;
+                                foreach (string unsigned_word in unsigned_words)
                                 {
-                                    if (verse.GetText(text_mode).Contains(negative_word))
+                                    foreach (Word word in verse.Words)
                                     {
-                                        skip = true;
-                                        break;
+                                        if (word.Texts[text_mode].Contains(unsigned_word))
+                                        {
+                                            matches++;
+                                            break; // no need to continue even if there are more matches
+                                        }
                                     }
                                 }
-                                if (skip) continue;
 
-                                foreach (string positive_word in positive_words)
+                                if (matches == unsigned_words.Count)
                                 {
-                                    if (!verse.GetText(text_mode).Contains(positive_word))
+                                    ///////////////////////////////////////////////////////////////
+                                    // all negative, positive and unsigned conditions have been met
+                                    ///////////////////////////////////////////////////////////////
+
+                                    // add positive matches
+                                    foreach (string positive_word in positive_words)
                                     {
-                                        skip = true;
-                                        break;
+                                        foreach (Word word in verse.Words)
+                                        {
+                                            if (word.Texts[text_mode].Contains(positive_word))
+                                            {
+                                                found_verses.Add(verse);
+                                                result.Add(new Phrase(verse, text_mode, word.Texts[text_mode], word.Positions[text_mode]));
+                                                //break; // no break in case there are more matches
+                                            }
+                                        }
+                                    }
+
+                                    // add unsigned matches
+                                    foreach (string unsigned_word in unsigned_words)
+                                    {
+                                        foreach (Word word in verse.Words)
+                                        {
+                                            if (word.Texts[text_mode].Contains(unsigned_word))
+                                            {
+                                                found_verses.Add(verse);
+                                                result.Add(new Phrase(verse, text_mode, word.Texts[text_mode], word.Positions[text_mode]));
+                                                //break; // no break in case there are more matches
+                                            }
+                                        }
                                     }
                                 }
-                                if (skip) continue;
-
-                                if (
-                                     (unsigned_words.Count == 0) ||
-                                     (verse.GetText(text_mode).ContainsAllWordsOf(unsigned_words))
-                                   )
+                                else // verse failed test, so skip it
                                 {
-                                    found_verses.Add(verse);
-                                    result.Add(new Phrase(verse, text_mode, "          ", 10));
+                                    continue; // next verse
                                 }
                             }
+                            //////////////////////////////////////////////////////////
+                            // FindByText WORDS Any
+                            //////////////////////////////////////////////////////////
                             else if (text_location == FindByTextLocation.AnyWord)
                             {
-                                bool skip = false;
-                                foreach (string negative_word in negative_words)
+                                bool found = false;
+                                foreach (string unsigned_word in unsigned_words)
                                 {
-                                    if (verse.GetText(text_mode).Contains(negative_word))
+                                    foreach (Word word in verse.Words)
                                     {
-                                        skip = true;
+                                        if (word.Texts[text_mode].Contains(unsigned_word))
+                                        {
+                                            found = true;
+                                            break; // next unsigned_word
+                                        }
+                                    }
+                                    if (found)
+                                    {
                                         break;
                                     }
                                 }
-                                if (skip) continue;
 
-                                foreach (string positive_word in positive_words)
+                                if (found) // found 1 unsigned word in verse, which is enough
                                 {
-                                    if (!verse.GetText(text_mode).Contains(positive_word))
+                                    ///////////////////////////////////////////////////////////////
+                                    // all negative, positive and unsigned conditions have been met
+                                    ///////////////////////////////////////////////////////////////
+
+                                    // add positive matches
+                                    foreach (string positive_word in positive_words)
                                     {
-                                        skip = true;
-                                        break;
+                                        foreach (Word word in verse.Words)
+                                        {
+                                            if (word.Texts[text_mode].Contains(positive_word))
+                                            {
+                                                found_verses.Add(verse);
+                                                result.Add(new Phrase(verse, text_mode, word.Texts[text_mode], word.Positions[text_mode]));
+                                                //break; // no break in case there are more matches
+                                            }
+                                        }
+                                    }
+
+                                    // add unsigned matches
+                                    foreach (string unsigned_word in unsigned_words)
+                                    {
+                                        foreach (Word word in verse.Words)
+                                        {
+                                            if (word.Texts[text_mode].Contains(unsigned_word))
+                                            {
+                                                found_verses.Add(verse);
+                                                result.Add(new Phrase(verse, text_mode, word.Texts[text_mode], word.Positions[text_mode]));
+                                                //break; // no break in case there are more matches
+                                            }
+                                        }
                                     }
                                 }
-                                if (skip) continue;
-
-                                if (
-                                     (negative_words.Count > 0) ||
-                                     (positive_words.Count > 0) ||
-                                     (
-                                       (unsigned_words.Count == 0) ||
-                                       (verse.GetText(text_mode).ContainsWordOf(unsigned_words))
-                                     )
-                                   )
+                                else // verse failed test, so skip it
                                 {
-                                    found_verses.Add(verse);
-                                    result.Add(new Phrase(verse, text_mode, "", 0));
+                                    continue; // next verse
                                 }
                             }
+                            //////////////////////////////////////////////////////////
+                            // FindByText EXACT 
+                            //////////////////////////////////////////////////////////
                             else // at start, middle, end, or anywhere
                             {
                                 MatchCollection matches = Regex.Matches(verse.GetText(text_mode), pattern, regex_options);

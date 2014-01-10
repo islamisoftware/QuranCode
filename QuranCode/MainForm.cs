@@ -363,8 +363,8 @@ public partial class MainForm : Form
             }
 
             this.ActiveControl = MainTextBox;
-            this.ShowInTaskbar = false;
-            NotifyIcon.Visible = true;
+            this.ShowInTaskbar = true;
+            //NotifyIcon.Visible = true;
         }
         catch (Exception ex)
         {
@@ -586,9 +586,9 @@ public partial class MainForm : Form
     {
         if (this.WindowState == FormWindowState.Minimized)
         {
-            this.Visible = false;
+            //this.Visible = false;
         }
-        
+
         if (DrawingPictureBoxEx.Visible)
         {
             RedrawCurrentGraph();
@@ -639,8 +639,8 @@ public partial class MainForm : Form
         }
 
         // remove icon from tray
-        NotifyIcon.Visible = false;
-        NotifyIcon.Dispose();
+        //NotifyIcon.Visible = false;
+        //NotifyIcon.Dispose();
     }
     private void HandleEscapeKeyPress(object sender, KeyEventArgs e)
     {
@@ -6118,14 +6118,13 @@ public partial class MainForm : Form
             {
                 if (m_client.FoundVerses != null)
                 {
-                    int number = 0;
-                    if (m_client.FoundPhrases != null)
+                    int number = m_client.FoundVerses.Count;
+                    if (m_find_by_text_search_type != FindByTextSearchType.Proximity)
                     {
-                        number = m_client.FoundPhrases.Count;
-                    }
-                    else
-                    {
-                        number = m_client.FoundVerses.Count;
+                        if (m_client.FoundPhrases != null)
+                        {
+                            number = m_client.FoundPhrases.Count;
+                        }
                     }
                     HeaderLabel.ForeColor = GetNumberTypeColor(number);
                     HeaderLabel.Text = m_find_result_header;

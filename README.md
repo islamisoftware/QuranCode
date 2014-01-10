@@ -22,6 +22,6 @@ Derived projects can use the first two layers without any change and only replac
 
 Be a guiding light!
 
-Ali Adams<br>
-God > infinity<br>
+Ali Adams
+God > infinity
 www.heliwave.com
