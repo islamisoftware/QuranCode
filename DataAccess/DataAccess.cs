@@ -205,7 +205,7 @@ public static class DataAccess
                     {
                         for (int i = 0; i < Verse.MAX_NUMBER; i++)
                         {
-                            s_book.Verses[i].Translations[title] = null;
+                            s_book.Verses[i].Translations.Remove(title);
                         }
                         QuranTranslations.Remove(title);
                     }

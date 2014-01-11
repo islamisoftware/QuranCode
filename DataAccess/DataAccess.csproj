@@ -220,9 +220,6 @@
     <Content Include="Translations\Flags\uz.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Translations\Offline\ar.jalalayn.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Translations\Offline\en.pickthall.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

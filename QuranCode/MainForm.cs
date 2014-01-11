@@ -57,9 +57,8 @@ public partial class MainForm : Form
     //private const float DEFAULT_DPI_Y = 96.0F;
 
     private const string DEFAULT_EMLAAEI = "ar.emlaaei";
-    private const string DEFAULT_TAFSEER = "ar.jalalayn";
+    private const string DEFAULT_TAFSEER = "en.qarai";
     private const string DEFAULT_TRANSLATION = "en.pickthall";
-    private const string DEFAULT_TRANSLATION_2 = "en.qarai";
     private const string DEFAULT_TRANSLITERATION = "en.transliteration";
 
     private const string DEFAULT_RECITATION = "Alafasy_64kbps";
@@ -2524,6 +2523,48 @@ public partial class MainForm : Form
         }
     }
 
+    private List<string> m_downloaded_reciter_folders = null;
+    private void DownloadFile(string url, string path)
+    {
+        string download_folder = Path.GetDirectoryName(path);
+        if (!Directory.Exists(download_folder))
+        {
+            Directory.CreateDirectory(download_folder);
+        }
+
+        Downloader.Download(url, Application.StartupPath + "/" + path, 10000);
+        //using (WebClient web_client = new WebClient())
+        //{
+        //    web_client.DownloadDataCompleted += new DownloadDataCompletedEventHandler(DownloadDataCompleted);
+        //    web_client.DownloadDataAsync(new Uri(url));
+        //}
+    }
+    //private void DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
+    //{
+    //    // WARNING: runs on different thread to UI thread
+    //    byte[] raw = e.Result;
+    //}
+    private void AskUserToDownloadAudioFilesManually()
+    {
+        if (MessageBox.Show("Cannot auto-download audio files.\r\n\r\n"
+                          + "Would you like to manually download audio files\r\n"
+                          + "and unzip them to: "
+                          + "QuranCode\\Audio\\" + m_recitation_folder + "\\" + "\r\n"
+                          + "?",
+                          Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {
+            Control control = new Control();
+            foreach (string key in Client.Recitations.Keys)
+            {
+                if (Client.Recitations[key].Folder == m_recitation_folder)
+                {
+                    control.Tag = Recitation.DEFAULT_URL_PREFIX + Client.Recitations[key].Url;
+                    LinkLabel_Click(control, null);
+                    break;
+                }
+            }
+        }
+    }
     private bool DownloadVerseAudioFile(Verse verse)
     {
         // mirror remote_folder locally
@@ -2601,185 +2642,6 @@ public partial class MainForm : Form
             }
         }
     }
-    private void DownloadFile(string url, string path)
-    {
-        string download_folder = Path.GetDirectoryName(path);
-        if (!Directory.Exists(download_folder))
-        {
-            Directory.CreateDirectory(download_folder);
-        }
-
-        Downloader.Download(url, Application.StartupPath + "/" + path, 10000);
-        //using (WebClient web_client = new WebClient())
-        //{
-        //    web_client.DownloadDataCompleted += new DownloadDataCompletedEventHandler(DownloadDataCompleted);
-        //    web_client.DownloadDataAsync(new Uri(url));
-        //}
-    }
-    //private void DownloadDataCompleted(object sender, DownloadDataCompletedEventArgs e)
-    //{
-    //    // WARNING: runs on different thread to UI thread
-    //    byte[] raw = e.Result;
-    //}
-    private void RecitationsComboBox_SelectedIndexChanged(object sender, EventArgs e)
-    {
-        if (RecitationsComboBox.SelectedItem != null)
-        {
-            string reciter = RecitationsComboBox.SelectedItem.ToString();
-            foreach (string key in Client.Recitations.Keys)
-            {
-                if (Client.Recitations[key].Reciter == reciter)
-                {
-                    m_recitation_folder = Client.Recitations[key].Folder;
-                    break;
-                }
-            }
-            RecitationGroupBox.Text = reciter;
-        }
-    }
-    private void RecitationsApplySettingsLabel_Click(object sender, EventArgs e)
-    {
-        if (!RecitationsDownloadGroupBox.Visible)
-        {
-            UpdateRecitationsCheckedListBox();
-
-            RecitationsDownloadGroupBox.Visible = true;
-            RecitationsCancelSettingsLabel.Visible = true;
-            RecitationsDownloadGroupBox.BringToFront();
-
-            if (File.Exists("Images/arrow_down.png"))
-            {
-                RecitationsApplySettingsLabel.Image = new Bitmap("Images/arrow_down.png");
-            }
-            ToolTip.SetToolTip(RecitationsApplySettingsLabel, "Download complete Quran recitations");
-        }
-        else
-        {
-            RecitationsDownloadGroupBox.Visible = false;
-            RecitationsCancelSettingsLabel.Visible = false;
-            RecitationsDownloadGroupBox.SendToBack();
-
-            this.Cursor = Cursors.WaitCursor;
-            try
-            {
-                if (File.Exists("Images/settings.png"))
-                {
-                    RecitationsApplySettingsLabel.Image = new Bitmap("Images/settings.png");
-                }
-                ToolTip.SetToolTip(RecitationsApplySettingsLabel, "Download recitation audios");
-
-                List<string> keys_to_download = new List<string>();
-                foreach (int cheched_index in RecitationsCheckedListBox.CheckedIndices)
-                {
-                    if (RecitationsCheckedListBox.GetItemCheckState(cheched_index) != CheckState.Indeterminate)
-                    {
-                        foreach (string key in Client.Recitations.Keys)
-                        {
-                            string reciter = RecitationsCheckedListBox.Items[cheched_index].ToString();
-                            if (Client.Recitations[key].Reciter == reciter)
-                            {
-                                keys_to_download.Add(key);
-                                break;
-                            }
-                        }
-                    }
-                }
-
-                string recitations_folder = "Audio";
-                foreach (string reciter_folder in Client.Recitations.Keys)
-                {
-                    if (keys_to_download.Contains(reciter_folder))
-                    {
-                        ProgressBar.Minimum = Verse.MIN_NUMBER;
-                        ProgressBar.Maximum = Verse.MAX_NUMBER;
-                        ProgressBar.Value = 1;
-                        ProgressBar.Refresh();
-
-                        for (int i = 0; i < Verse.MAX_NUMBER; i++)
-                        {
-                            string download_folder = recitations_folder + "/" + reciter_folder;
-                            string filename = GetVerseAudioFilename(i); // e.g. i=8 ==> 002001.mp3
-                            string full_filename = GetVerseAudioFullFilename(i); // e.g. i=8 ==> 002/002001.mp3
-                            string full_path = download_folder + "/" + full_filename;
-                            if (File.Exists(full_path)) // file exist
-                            {
-                                long filesize = (new FileInfo(full_path)).Length;
-                                if (filesize < 1024) // if < 1kb invalid file then re-download
-                                {
-                                    DownloadFile(Recitation.UrlPrefix + Client.Recitations[reciter_folder].Url + "/" + filename, full_path);
-                                }
-                            }
-                            else // file not found so download it
-                            {
-                                DownloadFile(Recitation.UrlPrefix + Client.Recitations[reciter_folder].Url + "/" + filename, full_path);
-                            }
-
-                            ProgressBar.Value = i + 1;
-                            ProgressBar.Refresh();
-
-                            Application.DoEvents();
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName);
-            }
-            finally
-            {
-                if (m_client != null)
-                {
-                    if (m_client.Selection != null)
-                    {
-                        List<Verse> verses = m_client.Selection.Verses;
-                        if (verses.Count > 0)
-                        {
-                            ProgressBar.Minimum = Verse.MIN_NUMBER;
-                            ProgressBar.Maximum = Verse.MAX_NUMBER;
-                            ProgressBar.Value = verses[0].Number;
-                            ProgressBar.Refresh();
-                        }
-                        this.Cursor = Cursors.Default;
-                    }
-                }
-            }
-        }
-        RecitationsApplySettingsLabel.Refresh();
-    }
-    private void RecitationsCancelSettingsLabel_Click(object sender, EventArgs e)
-    {
-        RecitationsDownloadGroupBox.Visible = false;
-        RecitationsDownloadGroupBox.Refresh();
-        RecitationsCancelSettingsLabel.Visible = RecitationsDownloadGroupBox.Visible;
-        RecitationsCancelSettingsLabel.Refresh();
-        if (File.Exists("Images/settings.png"))
-        {
-            RecitationsApplySettingsLabel.Image = new Bitmap("Images/settings.png");
-        }
-        ToolTip.SetToolTip(RecitationsApplySettingsLabel, "Setup recitations");
-    }
-    private void AskUserToDownloadAudioFilesManually()
-    {
-        if (MessageBox.Show("Cannot auto-download audio files.\r\n\r\n"
-                          + "Would you like to manually download audio files\r\n"
-                          + "and unzip them to: "
-                          + "QuranCode\\Audio\\" + m_recitation_folder + "\\" + "\r\n"
-                          + "?",
-                          Application.ProductName, MessageBoxButtons.YesNo) == DialogResult.Yes)
-        {
-            Control control = new Control();
-            foreach (string key in Client.Recitations.Keys)
-            {
-                if (Client.Recitations[key].Folder == m_recitation_folder)
-                {
-                    control.Tag = Recitation.DEFAULT_URL_PREFIX + Client.Recitations[key].Url;
-                    LinkLabel_Click(control, null);
-                    break;
-                }
-            }
-        }
-    }
     private string GetVerseAudioFilename(int verse_index)
     {
         if (m_client != null)
@@ -2829,6 +2691,76 @@ public partial class MainForm : Form
             Thread.Sleep(100);
         }
     }
+    //private void MoveAudioFilesToFolders()
+    //{
+    //    this.Cursor = Cursors.WaitCursor;
+    //    try
+    //    {
+    //        string recitations_folder = "Audio";
+    //        foreach (string reciter_folder in Client.Recitations.Keys)
+    //        {
+    //            for (int i = 0; i < Verse.MAX_NUMBER; i++)
+    //            {
+    //                string download_folder = recitations_folder + "/" + reciter_folder;
+    //                string filename = GetVerseAudioFilename(i); // e.g. i=8 ==> 002001.mp3
+    //                string full_filename = GetVerseAudioFullFilename(i); // e.g. i=8 ==> 002/002001.mp3
+    //                string path = download_folder + "/" + filename;
+    //                string full_path = download_folder + "/" + full_filename;
+    //                if (File.Exists(path)) // file exist
+    //                {
+    //                    if (File.Exists(full_path)) // file exist
+    //                    {
+    //                        long filesize = (new FileInfo(full_path)).Length;
+    //                        if (filesize > 1024) // valid file
+    //                        {
+    //                            File.Delete(path);
+    //                        }
+    //                        else
+    //                        {
+    //                            filesize = (new FileInfo(path)).Length;
+    //                            if (filesize > 1024) // valid file
+    //                            {
+    //                                File.Move(path, full_path);
+    //                            }
+    //                            else
+    //                            {
+    //                                File.Delete(path);
+    //                            }
+    //                        }
+    //                    }
+    //                    else
+    //                    {
+    //                        long filesize = (new FileInfo(path)).Length;
+    //                        if (filesize > 1024) // valid file
+    //                        {
+    //                            string full_foldername = full_path.Substring(0, full_path.Length - 10);
+    //                            if (!Directory.Exists(full_foldername))
+    //                            {
+    //                                Directory.CreateDirectory(full_foldername);
+    //                            }
+    //                            if (Directory.Exists(full_foldername))
+    //                            {
+    //                                File.Move(path, full_path);
+    //                            }
+    //                        }
+    //                        else
+    //                        {
+    //                            File.Delete(path);
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    catch (Exception ex)
+    //    {
+    //        MessageBox.Show(ex.Message, Application.ProductName);
+    //    }
+    //    finally
+    //    {
+    //        this.Cursor = Cursors.Default;
+    //    }
+    //}
 
     private void NotifyIcon_MouseClick(object sender, MouseEventArgs e)
     {
@@ -3495,6 +3427,7 @@ public partial class MainForm : Form
         this.ToolTip.SetToolTip(this.FindByTextAllTextModesCheckBox, "All texts");
         this.ToolTip.SetToolTip(this.HadiLabel, "©2005 Hadi Al-Thahaby");
     }
+
     private void PopulateTextModeComboBox()
     {
         try
@@ -3566,77 +3499,59 @@ public partial class MainForm : Form
             ChaptersListBox.SelectedIndexChanged += new EventHandler(ChaptersListBox_SelectedIndexChanged);
         }
     }
-    private List<string> m_downloaded_reciter_folders = null;
-    //private void MoveAudioFilesToFolders()
-    //{
-    //    this.Cursor = Cursors.WaitCursor;
-    //    try
-    //    {
-    //        string recitations_folder = "Audio";
-    //        foreach (string reciter_folder in Client.Recitations.Keys)
-    //        {
-    //            for (int i = 0; i < Verse.MAX_NUMBER; i++)
-    //            {
-    //                string download_folder = recitations_folder + "/" + reciter_folder;
-    //                string filename = GetVerseAudioFilename(i); // e.g. i=8 ==> 002001.mp3
-    //                string full_filename = GetVerseAudioFullFilename(i); // e.g. i=8 ==> 002/002001.mp3
-    //                string path = download_folder + "/" + filename;
-    //                string full_path = download_folder + "/" + full_filename;
-    //                if (File.Exists(path)) // file exist
-    //                {
-    //                    if (File.Exists(full_path)) // file exist
-    //                    {
-    //                        long filesize = (new FileInfo(full_path)).Length;
-    //                        if (filesize > 1024) // valid file
-    //                        {
-    //                            File.Delete(path);
-    //                        }
-    //                        else
-    //                        {
-    //                            filesize = (new FileInfo(path)).Length;
-    //                            if (filesize > 1024) // valid file
-    //                            {
-    //                                File.Move(path, full_path);
-    //                            }
-    //                            else
-    //                            {
-    //                                File.Delete(path);
-    //                            }
-    //                        }
-    //                    }
-    //                    else
-    //                    {
-    //                        long filesize = (new FileInfo(path)).Length;
-    //                        if (filesize > 1024) // valid file
-    //                        {
-    //                            string full_foldername = full_path.Substring(0, full_path.Length - 10);
-    //                            if (!Directory.Exists(full_foldername))
-    //                            {
-    //                                Directory.CreateDirectory(full_foldername);
-    //                            }
-    //                            if (Directory.Exists(full_foldername))
-    //                            {
-    //                                File.Move(path, full_path);
-    //                            }
-    //                        }
-    //                        else
-    //                        {
-    //                            File.Delete(path);
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        MessageBox.Show(ex.Message, Application.ProductName);
-    //    }
-    //    finally
-    //    {
-    //        this.Cursor = Cursors.Default;
-    //    }
-    //}
+
+    private void PopulateRecitationsCheckedListBox()
+    {
+        try
+        {
+            // to disable item in a list, just ignore user check using this trick
+            RecitationsCheckedListBox.ItemCheck += new ItemCheckEventHandler(RecitationsCheckedListBox_ItemCheck);
+
+            RecitationsCheckedListBox.SelectedIndexChanged -= new EventHandler(RecitationsCheckedListBox_SelectedIndexChanged);
+            RecitationsCheckedListBox.BeginUpdate();
+            RecitationsCheckedListBox.Items.Clear();
+            foreach (string key in Client.Recitations.Keys)
+            {
+                string reciter = Client.Recitations[key].Reciter;
+                RecitationsCheckedListBox.Items.Add(reciter);
+            }
+        }
+        finally
+        {
+            RecitationsCheckedListBox.EndUpdate();
+            RecitationsCheckedListBox.SelectedIndexChanged += new EventHandler(RecitationsCheckedListBox_SelectedIndexChanged);
+        }
+    }
+    private void RecitationsCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+    {
+        if (e.CurrentValue == CheckState.Indeterminate)
+        {
+            e.NewValue = e.CurrentValue;
+        }
+    }
+    private void PopulateRecitationsComboBox()
+    {
+        try
+        {
+            RecitationsComboBox.BeginUpdate();
+            RecitationsComboBox.SelectedIndexChanged -= new EventHandler(RecitationsComboBox_SelectedIndexChanged);
+            RecitationsComboBox.Items.Clear();
+            foreach (string key in Client.Recitations.Keys)
+            {
+                string reciter = Client.Recitations[key].Reciter;
+                RecitationsComboBox.Items.Add(reciter);
+            }
+            if (RecitationsComboBox.Items.Count > 3)
+            {
+                RecitationsComboBox.SelectedIndex = 3;
+            }
+        }
+        finally
+        {
+            RecitationsComboBox.EndUpdate();
+            RecitationsComboBox.SelectedIndexChanged += new EventHandler(RecitationsComboBox_SelectedIndexChanged);
+        }
+    }
     private void UpdateRecitationsCheckedListBox()
     {
         this.Cursor = Cursors.WaitCursor;
@@ -3704,52 +3619,177 @@ public partial class MainForm : Form
             this.Cursor = Cursors.Default;
         }
     }
-    private void PopulateRecitationsCheckedListBox()
+    private void RecitationsCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        try
+    }
+    private void RecitationsCheckedListBox_MouseUp(object sender, MouseEventArgs e)
+    {
+        if (RecitationsCheckedListBox.SelectedItem != null)
         {
-            RecitationsCheckedListBox.SelectedIndexChanged -= new EventHandler(RecitationsCheckedListBox_SelectedIndexChanged);
-            RecitationsCheckedListBox.BeginUpdate();
-            RecitationsCheckedListBox.Items.Clear();
+            string reciter = RecitationsCheckedListBox.SelectedItem.ToString();
+
+            string reciter_folder = "";
             foreach (string key in Client.Recitations.Keys)
             {
-                string reciter = Client.Recitations[key].Reciter;
-                RecitationsCheckedListBox.Items.Add(reciter);
+                if (reciter == Client.Recitations[key].Reciter)
+                {
+                    reciter_folder = key;
+                    break;
+                }
+            }
+
+            if (m_downloaded_reciter_folders.Contains(reciter_folder))
+            {
+                RecitationsCheckedListBox.SetItemCheckState(RecitationsCheckedListBox.SelectedIndex, CheckState.Indeterminate);
             }
         }
-        finally
-        {
-            RecitationsCheckedListBox.EndUpdate();
-            RecitationsCheckedListBox.SelectedIndexChanged += new EventHandler(RecitationsCheckedListBox_SelectedIndexChanged);
-        }
     }
-    private void PopulateRecitationsComboBox()
+    private void RecitationsComboBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        try
+        if (RecitationsComboBox.SelectedItem != null)
         {
-            RecitationsComboBox.BeginUpdate();
-            RecitationsComboBox.SelectedIndexChanged -= new EventHandler(RecitationsComboBox_SelectedIndexChanged);
-            RecitationsComboBox.Items.Clear();
+            string reciter = RecitationsComboBox.SelectedItem.ToString();
             foreach (string key in Client.Recitations.Keys)
             {
-                string reciter = Client.Recitations[key].Reciter;
-                RecitationsComboBox.Items.Add(reciter);
+                if (Client.Recitations[key].Reciter == reciter)
+                {
+                    m_recitation_folder = Client.Recitations[key].Folder;
+                    break;
+                }
             }
-            if (RecitationsComboBox.Items.Count > 3)
-            {
-                RecitationsComboBox.SelectedIndex = 3;
-            }
-        }
-        finally
-        {
-            RecitationsComboBox.EndUpdate();
-            RecitationsComboBox.SelectedIndexChanged += new EventHandler(RecitationsComboBox_SelectedIndexChanged);
+            RecitationGroupBox.Text = reciter;
         }
     }
+    private void RecitationsApplySettingsLabel_Click(object sender, EventArgs e)
+    {
+        if (!RecitationsDownloadGroupBox.Visible)
+        {
+            UpdateRecitationsCheckedListBox();
+
+            RecitationsDownloadGroupBox.Visible = true;
+            RecitationsCancelSettingsLabel.Visible = true;
+            RecitationsDownloadGroupBox.BringToFront();
+
+            if (File.Exists("Images/arrow_down.png"))
+            {
+                RecitationsApplySettingsLabel.Image = new Bitmap("Images/arrow_down.png");
+            }
+            ToolTip.SetToolTip(RecitationsApplySettingsLabel, "Download complete Quran recitations");
+        }
+        else
+        {
+            RecitationsDownloadGroupBox.Visible = false;
+            RecitationsCancelSettingsLabel.Visible = false;
+            RecitationsDownloadGroupBox.SendToBack();
+
+            this.Cursor = Cursors.WaitCursor;
+            try
+            {
+                if (File.Exists("Images/settings.png"))
+                {
+                    RecitationsApplySettingsLabel.Image = new Bitmap("Images/settings.png");
+                }
+                ToolTip.SetToolTip(RecitationsApplySettingsLabel, "Download recitation audios");
+
+                List<string> keys_to_download = new List<string>();
+                foreach (int cheched_index in RecitationsCheckedListBox.CheckedIndices)
+                {
+                    if (RecitationsCheckedListBox.GetItemCheckState(cheched_index) != CheckState.Indeterminate)
+                    {
+                        foreach (string key in Client.Recitations.Keys)
+                        {
+                            string reciter = RecitationsCheckedListBox.Items[cheched_index].ToString();
+                            if (Client.Recitations[key].Reciter == reciter)
+                            {
+                                keys_to_download.Add(key);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                string recitations_folder = "Audio";
+                foreach (string reciter_folder in Client.Recitations.Keys)
+                {
+                    if (keys_to_download.Contains(reciter_folder))
+                    {
+                        ProgressBar.Minimum = Verse.MIN_NUMBER;
+                        ProgressBar.Maximum = Verse.MAX_NUMBER;
+                        ProgressBar.Value = 1;
+                        ProgressBar.Refresh();
+
+                        for (int i = 0; i < Verse.MAX_NUMBER; i++)
+                        {
+                            string download_folder = recitations_folder + "/" + reciter_folder;
+                            string filename = GetVerseAudioFilename(i); // e.g. i=8 ==> 002001.mp3
+                            string full_filename = GetVerseAudioFullFilename(i); // e.g. i=8 ==> 002/002001.mp3
+                            string full_path = download_folder + "/" + full_filename;
+                            if (File.Exists(full_path)) // file exist
+                            {
+                                long filesize = (new FileInfo(full_path)).Length;
+                                if (filesize < 1024) // if < 1kb invalid file then re-download
+                                {
+                                    DownloadFile(Recitation.UrlPrefix + Client.Recitations[reciter_folder].Url + "/" + filename, full_path);
+                                }
+                            }
+                            else // file not found so download it
+                            {
+                                DownloadFile(Recitation.UrlPrefix + Client.Recitations[reciter_folder].Url + "/" + filename, full_path);
+                            }
+
+                            ProgressBar.Value = i + 1;
+                            ProgressBar.Refresh();
+
+                            Application.DoEvents();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Application.ProductName);
+            }
+            finally
+            {
+                if (m_client != null)
+                {
+                    if (m_client.Selection != null)
+                    {
+                        List<Verse> verses = m_client.Selection.Verses;
+                        if (verses.Count > 0)
+                        {
+                            ProgressBar.Minimum = Verse.MIN_NUMBER;
+                            ProgressBar.Maximum = Verse.MAX_NUMBER;
+                            ProgressBar.Value = verses[0].Number;
+                            ProgressBar.Refresh();
+                        }
+                        this.Cursor = Cursors.Default;
+                    }
+                }
+            }
+        }
+        RecitationsApplySettingsLabel.Refresh();
+    }
+    private void RecitationsCancelSettingsLabel_Click(object sender, EventArgs e)
+    {
+        RecitationsDownloadGroupBox.Visible = false;
+        RecitationsDownloadGroupBox.Refresh();
+        RecitationsCancelSettingsLabel.Visible = RecitationsDownloadGroupBox.Visible;
+        RecitationsCancelSettingsLabel.Refresh();
+        if (File.Exists("Images/settings.png"))
+        {
+            RecitationsApplySettingsLabel.Image = new Bitmap("Images/settings.png");
+        }
+        ToolTip.SetToolTip(RecitationsApplySettingsLabel, "Setup recitations");
+    }
+
     private void PopulateTranslatorsCheckedListBox()
     {
         try
         {
+            // to disable item in a list, just ignore user check using this trick
+            TranslatorsCheckedListBox.ItemCheck += new ItemCheckEventHandler(TranslatorsCheckedListBox_ItemCheck);
+
             TranslatorsCheckedListBox.SelectedIndexChanged -= new EventHandler(TranslatorsCheckedListBox_SelectedIndexChanged);
             TranslatorsCheckedListBox.BeginUpdate();
             TranslatorsCheckedListBox.Items.Clear();
@@ -3765,26 +3805,35 @@ public partial class MainForm : Form
                         {
                             checked_keys.Add(key);
                         }
-                        AddTranslation(checked_keys, DEFAULT_EMLAAEI);
-                        AddTranslation(checked_keys, DEFAULT_TAFSEER);
-                        AddTranslation(checked_keys, DEFAULT_TRANSLATION);
-                        AddTranslation(checked_keys, DEFAULT_TRANSLATION_2);
-                        AddTranslation(checked_keys, DEFAULT_TRANSLITERATION);
 
+                        // populate TranslatorsCheckedListBox
                         foreach (string key in Client.Translations.Keys)
                         {
                             string name = Client.Translations[key].Name;
                             bool is_checked = checked_keys.Contains(key);
                             TranslatorsCheckedListBox.Items.Add(name, is_checked);
-                            if (
-                                (key == DEFAULT_EMLAAEI) ||
-                                (key == DEFAULT_TAFSEER) ||
-                                (key == DEFAULT_TRANSLATION) ||
-                                (key == DEFAULT_TRANSLATION_2) ||
-                                (key == DEFAULT_TRANSLITERATION)
-                               )
+                        }
+
+                        // disable list item if default so user cannot uncheck it
+                        for (int i = 0; i < TranslatorsCheckedListBox.Items.Count; i++)
+                        {
+                            string item_text = TranslatorsCheckedListBox.Items[i].ToString();
+                            foreach (string key in Client.Translations.Keys)
                             {
-                                TranslatorsCheckedListBox.SetItemCheckState(TranslatorsCheckedListBox.Items.Count - 1, CheckState.Indeterminate);
+                                string name = Client.Translations[key].Name;
+                                if (name == item_text)
+                                {
+                                    if (
+                                        (key == DEFAULT_EMLAAEI) ||
+                                        (key == DEFAULT_TAFSEER) ||
+                                        (key == DEFAULT_TRANSLATION) ||
+                                        (key == DEFAULT_TRANSLITERATION)
+                                       )
+                                    {
+                                        TranslatorsCheckedListBox.SetItemCheckState(i, CheckState.Indeterminate);
+                                    }
+                                    break;
+                                }
                             }
                         }
                     }
@@ -3796,6 +3845,13 @@ public partial class MainForm : Form
             TranslatorsCheckedListBox.Sorted = true;
             TranslatorsCheckedListBox.EndUpdate();
             TranslatorsCheckedListBox.SelectedIndexChanged += new EventHandler(TranslatorsCheckedListBox_SelectedIndexChanged);
+        }
+    }
+    private void TranslatorsCheckedListBox_ItemCheck(object sender, ItemCheckEventArgs e)
+    {
+        if (e.CurrentValue == CheckState.Indeterminate)
+        {
+            e.NewValue = e.CurrentValue;
         }
     }
     private void PopulateTranslatorComboBox()
@@ -3873,31 +3929,6 @@ public partial class MainForm : Form
             TranslatorComboBox.SelectedIndexChanged += new EventHandler(TranslatorComboBox_SelectedIndexChanged);
         }
     }
-    private void RecitationsCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
-    {
-    }
-    private void RecitationsCheckedListBox_MouseUp(object sender, MouseEventArgs e)
-    {
-        if (RecitationsCheckedListBox.SelectedItem != null)
-        {
-            string reciter = RecitationsCheckedListBox.SelectedItem.ToString();
-
-            string reciter_folder = "";
-            foreach (string key in Client.Recitations.Keys)
-            {
-                if (reciter == Client.Recitations[key].Reciter)
-                {
-                    reciter_folder = key;
-                    break;
-                }
-            }
-
-            if (m_downloaded_reciter_folders.Contains(reciter_folder))
-            {
-                RecitationsCheckedListBox.SetItemCheckState(RecitationsCheckedListBox.SelectedIndex, CheckState.Indeterminate);
-            }
-        }
-    }
     private void TranslatorsCheckedListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
     }
@@ -3910,27 +3941,11 @@ public partial class MainForm : Form
                 (name == Client.Translations[DEFAULT_EMLAAEI].Name) ||
                 (name == Client.Translations[DEFAULT_TAFSEER].Name) ||
                 (name == Client.Translations[DEFAULT_TRANSLATION].Name) ||
-                (name == Client.Translations[DEFAULT_TRANSLATION_2].Name) ||
                 (name == Client.Translations[DEFAULT_TRANSLITERATION].Name)
                )
             {
                 TranslatorsCheckedListBox.SetItemCheckState(TranslatorsCheckedListBox.SelectedIndex, CheckState.Indeterminate);
             }
-        }
-    }
-    private void AddTranslation(List<string> checked_keys, string title)
-    {
-        if (!checked_keys.Contains(title))
-        {
-            checked_keys.Add(title);
-            Client.LoadTranslationBook(title);
-        }
-    }
-    private void ClientSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
-    {
-        if ((ClientSplitContainer.Height - ClientSplitContainer.SplitterDistance) > 40)
-        {
-            m_translation_box_top = this.ClientSplitContainer.SplitterDistance;
         }
     }
     private void HideTranslationLabel_Click(object sender, EventArgs e)
@@ -4011,6 +4026,13 @@ public partial class MainForm : Form
         ToolTip.SetToolTip(TranslationsApplySettingsLabel, "Add/Remove translations");
         PopulateTranslatorsCheckedListBox();
     }
+    private void ClientSplitContainer_SplitterMoved(object sender, SplitterEventArgs e)
+    {
+        if ((ClientSplitContainer.Height - ClientSplitContainer.SplitterDistance) > 40)
+        {
+            m_translation_box_top = this.ClientSplitContainer.SplitterDistance;
+        }
+    }
     /// <summary>
     /// Download all new requested translations
     /// </summary>
@@ -4029,7 +4051,6 @@ public partial class MainForm : Form
                     (key == DEFAULT_EMLAAEI) ||
                     (key == DEFAULT_TAFSEER) ||
                     (key == DEFAULT_TRANSLATION) ||
-                    (key == DEFAULT_TRANSLATION_2) ||
                     (key == DEFAULT_TRANSLITERATION)
                    )
                 {
@@ -4054,7 +4075,10 @@ public partial class MainForm : Form
             ProgressBar.Maximum = checked_keys.Count;
             ProgressBar.Value = 0;
             ProgressBar.Refresh();
-            foreach (string key in Client.Translations.Keys)
+
+            string[] keys = new string[Client.Translations.Keys.Count];
+            Client.Translations.Keys.CopyTo(keys, 0);
+            foreach (string key in keys)
             {
                 if (checked_keys.Contains(key))
                 {
