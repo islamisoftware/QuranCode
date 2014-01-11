@@ -56,12 +56,6 @@ public partial class MainForm : Form
     private const float DEFAULT_DPI_X = 96.0F; // 100% = 96.0F,   125% = 120.0F,   150% = 144.0F
     //private const float DEFAULT_DPI_Y = 96.0F;
 
-    private const string DEFAULT_EMLAAEI = "ar.emlaaei";
-    private const string DEFAULT_TAFSEER = "en.qarai";
-    private const string DEFAULT_TRANSLATION = "en.pickthall";
-    private const string DEFAULT_TRANSLITERATION = "en.transliteration";
-
-    private const string DEFAULT_RECITATION = "Alafasy_64kbps";
     private const int DEFAULT_AUDIO_VOLUME = 1000;
     private const float DEFAULT_SILENCE_BETWEEN_VERSES = 0.0F; // in multiples of verses
     private const int MAX_SELECTON_SCOPE_LENGTH = 16;
@@ -1081,7 +1075,7 @@ public partial class MainForm : Form
                                             {
                                                 if (this.TranslatorComboBox.Items.Count >= 3)
                                                 {
-                                                    this.TranslatorComboBox.SelectedItem = Client.Translations[DEFAULT_TRANSLATION].Name;
+                                                    this.TranslatorComboBox.SelectedItem = Client.Translations[Client.DEFAULT_TRANSLATION].Name;
                                                 }
                                                 else
                                                 {
@@ -1241,7 +1235,7 @@ public partial class MainForm : Form
                                             }
                                             catch
                                             {
-                                                this.RecitationsComboBox.SelectedItem = Client.Recitations[DEFAULT_RECITATION].Reciter;
+                                                this.RecitationsComboBox.SelectedItem = Client.Recitations[Client.DEFAULT_RECITATION].Reciter;
                                             }
                                         }
                                         break;
@@ -1359,7 +1353,7 @@ public partial class MainForm : Form
 
             if (this.TranslatorComboBox.Items.Count >= 3)
             {
-                this.TranslatorComboBox.SelectedItem = Client.Translations[DEFAULT_TRANSLATION].Name;
+                this.TranslatorComboBox.SelectedItem = Client.Translations[Client.DEFAULT_TRANSLATION].Name;
             }
 
             if (m_client != null)
@@ -2022,7 +2016,7 @@ public partial class MainForm : Form
         }
     }
 
-    private string m_recitation_folder = DEFAULT_RECITATION;
+    private string m_recitation_folder = Client.DEFAULT_RECITATION;
     private MP3Player m_player = new MP3Player();
     private int m_audio_volume = DEFAULT_AUDIO_VOLUME;
     private string m_downloaded_audio_filename = "";
@@ -3100,7 +3094,7 @@ public partial class MainForm : Form
                 FindByTextTextBox.Text = text;
                 FindByTextLanguageType language_type = m_find_by_text_language_type;
 
-                string translation = DEFAULT_TRANSLATION;
+                string translation = Client.DEFAULT_TRANSLATION;
                 if (TranslatorComboBox.SelectedItem != null)
                 {
                     translation = Client.GetTranslationKey(TranslatorComboBox.SelectedItem.ToString());
@@ -3781,6 +3775,7 @@ public partial class MainForm : Form
             RecitationsApplySettingsLabel.Image = new Bitmap("Images/settings.png");
         }
         ToolTip.SetToolTip(RecitationsApplySettingsLabel, "Setup recitations");
+        PopulateRecitationsCheckedListBox();
     }
 
     private void PopulateTranslatorsCheckedListBox()
@@ -3824,10 +3819,10 @@ public partial class MainForm : Form
                                 if (name == item_text)
                                 {
                                     if (
-                                        (key == DEFAULT_EMLAAEI) ||
-                                        (key == DEFAULT_TAFSEER) ||
-                                        (key == DEFAULT_TRANSLATION) ||
-                                        (key == DEFAULT_TRANSLITERATION)
+                                        (key == Client.DEFAULT_EMLAAEI) ||
+                                        (key == Client.DEFAULT_TAFSEER) ||
+                                        (key == Client.DEFAULT_TRANSLATION) ||
+                                        (key == Client.DEFAULT_TRANSLITERATION)
                                        )
                                     {
                                         TranslatorsCheckedListBox.SetItemCheckState(i, CheckState.Indeterminate);
@@ -3894,14 +3889,14 @@ public partial class MainForm : Form
                         }
                         else
                         {
-                            this.TranslatorComboBox.SelectedItem = Client.Translations[DEFAULT_TRANSLATION].Name;
+                            this.TranslatorComboBox.SelectedItem = Client.Translations[Client.DEFAULT_TRANSLATION].Name;
                         }
                     }
                     else // if all translations were cleared, we still have the 3 mandatory ones at minimum
                     {
                         if (this.TranslatorComboBox.Items.Count >= 3)
                         {
-                            this.TranslatorComboBox.SelectedItem = Client.Translations[DEFAULT_TRANSLATION].Name;
+                            this.TranslatorComboBox.SelectedItem = Client.Translations[Client.DEFAULT_TRANSLATION].Name;
                         }
                         else // if user deleted one or more of the 3 mandatory translations manually
                         {
@@ -3938,10 +3933,10 @@ public partial class MainForm : Form
         {
             string name = TranslatorsCheckedListBox.SelectedItem.ToString();
             if (
-                (name == Client.Translations[DEFAULT_EMLAAEI].Name) ||
-                (name == Client.Translations[DEFAULT_TAFSEER].Name) ||
-                (name == Client.Translations[DEFAULT_TRANSLATION].Name) ||
-                (name == Client.Translations[DEFAULT_TRANSLITERATION].Name)
+                (name == Client.Translations[Client.DEFAULT_EMLAAEI].Name) ||
+                (name == Client.Translations[Client.DEFAULT_TAFSEER].Name) ||
+                (name == Client.Translations[Client.DEFAULT_TRANSLATION].Name) ||
+                (name == Client.Translations[Client.DEFAULT_TRANSLITERATION].Name)
                )
             {
                 TranslatorsCheckedListBox.SetItemCheckState(TranslatorsCheckedListBox.SelectedIndex, CheckState.Indeterminate);
@@ -4048,10 +4043,10 @@ public partial class MainForm : Form
             foreach (string key in Client.Translations.Keys)
             {
                 if (
-                    (key == DEFAULT_EMLAAEI) ||
-                    (key == DEFAULT_TAFSEER) ||
-                    (key == DEFAULT_TRANSLATION) ||
-                    (key == DEFAULT_TRANSLITERATION)
+                    (key == Client.DEFAULT_EMLAAEI) ||
+                    (key == Client.DEFAULT_TAFSEER) ||
+                    (key == Client.DEFAULT_TRANSLATION) ||
+                    (key == Client.DEFAULT_TRANSLITERATION)
                    )
                 {
                     checked_keys.Add(key);
@@ -9895,7 +9890,7 @@ public partial class MainForm : Form
         {
             FindByTextLanguageType language_type = m_find_by_text_language_type;
 
-            string translation = DEFAULT_TRANSLATION;
+            string translation = Client.DEFAULT_TRANSLATION;
             if (TranslatorComboBox.SelectedItem != null)
             {
                 translation = Client.GetTranslationKey(TranslatorComboBox.SelectedItem.ToString());

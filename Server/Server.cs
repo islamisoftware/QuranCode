@@ -8,6 +8,15 @@ using Model;
 
 public static class Server
 {
+    public const string DEFAULT_EMLAAEI = "ar.emlaaei";
+    public const string DEFAULT_TAFSEER = "en.qarai";
+    public const string DEFAULT_TRANSLATION = "en.pickthall";
+    public const string DEFAULT_TRANSLITERATION = "en.transliteration";
+    public const string DEFAULT_RECITATION = "Alafasy_64kbps";
+    public const string DEFAULT_TEXT_MODE = "Simplified29";
+    public const string DEFAULT_LETTER_ORDER = "Alphabet";
+    public const string DEFAULT_LETTER_VALUES = "Primes";
+
     static Server()
     {
     }
@@ -52,10 +61,6 @@ public static class Server
         get { return DataAccess.QuranRecitations; }
     }
 
-    public static string DEFAULT_TEXT_MODE = "Simplified29";
-    public static string DEFAULT_LETTER_ORDER = "Alphabet";
-    public static string DEFAULT_LETTER_VALUES = "Primes";
-
     private static bool s_initialized = false;
     public static bool Initialize()
     {
@@ -66,20 +71,23 @@ public static class Server
 
             if (DataAccess.Initialize())
             {
-                LoadTranslationBook("ar.emlaaei");
+                LoadTranslationBook(DEFAULT_EMLAAEI);
+                LoadTranslationBook(DEFAULT_TAFSEER);
+                LoadTranslationBook(DEFAULT_TRANSLATION);
+                LoadTranslationBook(DEFAULT_TRANSLITERATION);
 
                 if (LoadSimplificationRules())
                 {
                     if (LoadNumerologySystems())
                     {
-                        // simplify "ar.emlaaei" for EXACT text find
+                        // simplify DEFAULT_EMLAAEI for EXACT search
                         Book book = Book.Instance;
                         if (book != null)
                         {
                             foreach (Verse verse in book.Verses)
                             {
-                                string text = verse.Translations["ar.emlaaei"];
-                                verse.Translations["ar.emlaaei"] = SimplifyText(text, "Simplified37");
+                                string text = verse.Translations[DEFAULT_EMLAAEI];
+                                verse.Translations[DEFAULT_EMLAAEI] = SimplifyText(text, "Simplified37");
                             }
                         }
 
@@ -2604,7 +2612,7 @@ public static class Server
                                                 bool skip = false;
                                                 foreach (string pattern_word in negative_words)
                                                 {
-                                                    if (verse.Translations["ar.emlaaei"].Contains(pattern_word))
+                                                    if (verse.Translations[DEFAULT_EMLAAEI].Contains(pattern_word))
                                                     {
                                                         skip = true;
                                                         break;
@@ -2614,7 +2622,7 @@ public static class Server
 
                                                 foreach (string pattern_word in positive_words)
                                                 {
-                                                    if (!verse.Translations["ar.emlaaei"].Contains(pattern_word))
+                                                    if (!verse.Translations[DEFAULT_EMLAAEI].Contains(pattern_word))
                                                     {
                                                         skip = true;
                                                         break;
@@ -2624,10 +2632,10 @@ public static class Server
 
                                                 if (
                                                      (unsigned_words.Count == 0) ||
-                                                     (verse.Translations["ar.emlaaei"].ContainsAllWordsOf(unsigned_words))
+                                                     (verse.Translations[DEFAULT_EMLAAEI].ContainsAllWordsOf(unsigned_words))
                                                    )
                                                 {
-                                                    result.Add(new Phrase(book.Verses[verse.Number - 1], "ar.emlaaei", "", 0));
+                                                    result.Add(new Phrase(book.Verses[verse.Number - 1], DEFAULT_EMLAAEI, "", 0));
                                                 }
                                             }
                                             else if (text_location == FindByTextLocation.AnyWord)
@@ -2635,7 +2643,7 @@ public static class Server
                                                 bool skip = false;
                                                 foreach (string pattern_word in negative_words)
                                                 {
-                                                    if (verse.Translations["ar.emlaaei"].Contains(pattern_word))
+                                                    if (verse.Translations[DEFAULT_EMLAAEI].Contains(pattern_word))
                                                     {
                                                         skip = true;
                                                         break;
@@ -2645,7 +2653,7 @@ public static class Server
 
                                                 foreach (string pattern_word in positive_words)
                                                 {
-                                                    if (!verse.Translations["ar.emlaaei"].Contains(pattern_word))
+                                                    if (!verse.Translations[DEFAULT_EMLAAEI].Contains(pattern_word))
                                                     {
                                                         skip = true;
                                                         break;
@@ -2658,28 +2666,28 @@ public static class Server
                                                      (positive_words.Count > 0) ||
                                                      (
                                                        (unsigned_words.Count == 0) ||
-                                                       (verse.Translations["ar.emlaaei"].ContainsWordOf(unsigned_words))
+                                                       (verse.Translations[DEFAULT_EMLAAEI].ContainsWordOf(unsigned_words))
                                                      )
                                                    )
                                                 {
-                                                    result.Add(new Phrase(book.Verses[verse.Number - 1], "ar.emlaaei", "", 0));
+                                                    result.Add(new Phrase(book.Verses[verse.Number - 1], DEFAULT_EMLAAEI, "", 0));
                                                 }
                                             }
                                             else // at start, middle, end, or anywhere
                                             {
-                                                MatchCollection matches = Regex.Matches(verse.Translations["ar.emlaaei"], pattern, regex_options);
+                                                MatchCollection matches = Regex.Matches(verse.Translations[DEFAULT_EMLAAEI], pattern, regex_options);
                                                 if (multiplicity != -1) // with multiplicity
                                                 {
                                                     if (matches.Count == multiplicity)
                                                     {
-                                                        result.AddRange(BuildPhrases(verse, "ar.emlaaei", matches));
+                                                        result.AddRange(BuildPhrases(verse, DEFAULT_EMLAAEI, matches));
                                                     }
                                                 }
                                                 else // without multiplicity
                                                 {
                                                     if (matches.Count > 0)
                                                     {
-                                                        result.AddRange(BuildPhrases(verse, "ar.emlaaei", matches));
+                                                        result.AddRange(BuildPhrases(verse, DEFAULT_EMLAAEI, matches));
                                                     }
                                                 }
                                             }

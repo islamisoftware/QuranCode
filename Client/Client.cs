@@ -381,10 +381,15 @@ public class Client
 
     #endregion ### Server Proxy Methods ###
 
-    private static string DEFAULT_TEXT_MODE = Server.DEFAULT_TEXT_MODE;
-    private static string DEFAULT_LETTER_ORDER = Server.DEFAULT_LETTER_ORDER;
-    private static string DEFAULT_LETTER_VALUES = Server.DEFAULT_LETTER_VALUES;
-    public static string DEFAULT_NUMEROLOGY_SYSTEM = DEFAULT_TEXT_MODE + "_" + DEFAULT_LETTER_ORDER + "_" + DEFAULT_LETTER_VALUES;
+    public const string DEFAULT_EMLAAEI = Server.DEFAULT_EMLAAEI;
+    public const string DEFAULT_TAFSEER = Server.DEFAULT_TAFSEER;
+    public const string DEFAULT_TRANSLATION = Server.DEFAULT_TRANSLATION;
+    public const string DEFAULT_TRANSLITERATION = Server.DEFAULT_TRANSLITERATION;
+    public const string DEFAULT_RECITATION = Server.DEFAULT_RECITATION;
+    public const string DEFAULT_TEXT_MODE = Server.DEFAULT_TEXT_MODE;
+    public const string DEFAULT_LETTER_ORDER = Server.DEFAULT_LETTER_ORDER;
+    public const string DEFAULT_LETTER_VALUES = Server.DEFAULT_LETTER_VALUES;
+    public const string DEFAULT_NUMEROLOGY_SYSTEM = DEFAULT_TEXT_MODE + "_" + DEFAULT_LETTER_ORDER + "_" + DEFAULT_LETTER_VALUES;
 
     private string m_machine = "";
     public string Machine

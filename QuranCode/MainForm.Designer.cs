@@ -1725,7 +1725,7 @@
         this.LetterValuesPanel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValuesPanel.Location = new System.Drawing.Point(3, 16);
         this.LetterValuesPanel.Name = "LetterValuesPanel";
-        this.LetterValuesPanel.Size = new System.Drawing.Size(155, 22);
+        this.LetterValuesPanel.Size = new System.Drawing.Size(155, 41);
         this.LetterValuesPanel.TabIndex = 150;
         // 
         // LetterValuesSaveButton
@@ -1734,7 +1734,7 @@
         this.LetterValuesSaveButton.DialogResult = System.Windows.Forms.DialogResult.OK;
         this.LetterValuesSaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValuesSaveButton.Image = ((System.Drawing.Image)(resources.GetObject("LetterValuesSaveButton.Image")));
-        this.LetterValuesSaveButton.Location = new System.Drawing.Point(52, -18);
+        this.LetterValuesSaveButton.Location = new System.Drawing.Point(52, 1);
         this.LetterValuesSaveButton.Name = "LetterValuesSaveButton";
         this.LetterValuesSaveButton.Size = new System.Drawing.Size(53, 39);
         this.LetterValuesSaveButton.TabIndex = 9;
@@ -1750,7 +1750,7 @@
         this.LetterValuesCloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         this.LetterValuesCloseButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValuesCloseButton.Image = ((System.Drawing.Image)(resources.GetObject("LetterValuesCloseButton.Image")));
-        this.LetterValuesCloseButton.Location = new System.Drawing.Point(104, -18);
+        this.LetterValuesCloseButton.Location = new System.Drawing.Point(104, 1);
         this.LetterValuesCloseButton.Name = "LetterValuesCloseButton";
         this.LetterValuesCloseButton.Size = new System.Drawing.Size(53, 39);
         this.LetterValuesCloseButton.TabIndex = 10;
@@ -1765,7 +1765,7 @@
         this.LetterValuesRestoreButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
         this.LetterValuesRestoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValuesRestoreButton.Image = ((System.Drawing.Image)(resources.GetObject("LetterValuesRestoreButton.Image")));
-        this.LetterValuesRestoreButton.Location = new System.Drawing.Point(0, -18);
+        this.LetterValuesRestoreButton.Location = new System.Drawing.Point(0, 1);
         this.LetterValuesRestoreButton.Name = "LetterValuesRestoreButton";
         this.LetterValuesRestoreButton.Size = new System.Drawing.Size(53, 39);
         this.LetterValuesRestoreButton.TabIndex = 8;
@@ -1784,7 +1784,7 @@
         this.LetterValuesTabControl.Location = new System.Drawing.Point(0, 0);
         this.LetterValuesTabControl.Name = "LetterValuesTabControl";
         this.LetterValuesTabControl.SelectedIndex = 0;
-        this.LetterValuesTabControl.Size = new System.Drawing.Size(155, 0);
+        this.LetterValuesTabControl.Size = new System.Drawing.Size(155, 19);
         this.LetterValuesTabControl.TabIndex = 5;
         // 
         // LetterValuesTabPage
