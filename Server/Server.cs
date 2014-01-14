@@ -446,8 +446,8 @@ public static class Server
     private static string s_numerology_systems_directory = "Values";
     public static bool LoadNumerologySystems()
     {
-        // update dynamic numerology systems
-        UpdateDynamicNumerologySystems(DEFAULT_TEXT_MODE);
+        // update numerology systems
+        UpdateNumerologySystems(DEFAULT_TEXT_MODE);
 
         // load user-defined systems
         return LoadNumerologySystems("all");
@@ -506,41 +506,40 @@ public static class Server
             return false;
         }
     }
-    public static void UpdateNumerologySystems(string text_mode, string text, bool is_dynamic)
+    public static void UpdateNumerologySystems(string text_mode, string text, bool book_wide)
     {
-        // fill up dynamic letter statistics dictionary
-        CalculateDynamicLetterStatistics(text);
+        // update letter statistics dictionary
+        UpdateLetterStatistics(text);
 
-        // update dynamic numerology systems
-        UpdateDynamicNumerologySystems(text_mode);
+        // update numerology systems
+        UpdateNumerologySystems(text_mode);
 
         // re-load user-defined systems
-        if (!is_dynamic)
+        if (book_wide)
         {
             LoadNumerologySystems(text_mode);
         }
     }
 
-    // calculate s_dynamic_letter_statistics on the fly
-    // and fill up dynamic letter statistics dictionary
-    private static List<LetterStatistic> s_dynamic_letter_statistics = new List<LetterStatistic>();
-    private static void CalculateDynamicLetterStatistics(string text)
+    // calculate s_letter_statistics on the fly
+    private static List<LetterStatistic> s_letter_statistics = new List<LetterStatistic>();
+    private static void UpdateLetterStatistics(string text)
     {
         text = text.Replace("\r", "");
         text = text.Replace("\n", "");
         text = text.Replace(" ", "");
 
-        s_dynamic_letter_statistics.Clear();
+        s_letter_statistics.Clear();
         for (int i = 0; i < text.Length; i++)
         {
             // calculate letter frequency
             bool is_found = false;
-            for (int j = 0; j < s_dynamic_letter_statistics.Count; j++)
+            for (int j = 0; j < s_letter_statistics.Count; j++)
             {
-                if (text[i] == s_dynamic_letter_statistics[j].Letter)
+                if (text[i] == s_letter_statistics[j].Letter)
                 {
                     is_found = true;
-                    s_dynamic_letter_statistics[j].Frequency++;
+                    s_letter_statistics[j].Frequency++;
                 }
             }
 
@@ -548,44 +547,44 @@ public static class Server
             if (!is_found)
             {
                 LetterStatistic letter_statistic = new LetterStatistic();
-                letter_statistic.Order = s_dynamic_letter_statistics.Count + 1;
+                letter_statistic.Order = s_letter_statistics.Count + 1;
                 letter_statistic.Letter = text[i];
                 letter_statistic.Frequency++;
-                s_dynamic_letter_statistics.Add(letter_statistic);
+                s_letter_statistics.Add(letter_statistic);
             }
         }
     }
 
-    // setup all dynamic numerology systems { ↓↑→←▼▲ }
-    private static void UpdateDynamicNumerologySystems(string text_mode)
+    // setup all numerology systems { ↓↑→←▼▲ }
+    private static void UpdateNumerologySystems(string text_mode)
     {
-        UpdateAlphabetForwardDynamicNumerologySystems(text_mode);
+        UpdateAlphabetForwardNumerologySystems(text_mode);
         if (Globals.EDITION == Edition.Research)
         {
-            UpdateAlphabetBackwardDynamicNumerologySystems(text_mode);
+            UpdateAlphabetBackwardNumerologySystems(text_mode);
         }
 
-        UpdateAppearanceForwardDynamicNumerologySystems(text_mode);
+        UpdateAppearanceForwardNumerologySystems(text_mode);
         if (Globals.EDITION == Edition.Research)
         {
-            UpdateAppearanceBackwardDynamicNumerologySystems(text_mode);
+            UpdateAppearanceBackwardNumerologySystems(text_mode);
         }
 
         if (Globals.EDITION == Edition.Research)
         {
-            UpdateFrequencyAscendingDynamicNumerologySystems(text_mode);
+            UpdateFrequencyAscendingNumerologySystems(text_mode);
         }
-        UpdateFrequencyDescendingDynamicNumerologySystems(text_mode);
+        UpdateFrequencyDescendingNumerologySystems(text_mode);
 
         if (Globals.EDITION == Edition.Research)
         {
-            Update003154DynamicNumerologySystems(text_mode);
-            Update048029DynamicNumerologySystems(text_mode);
+            Update003154NumerologySystems(text_mode);
+            Update048029NumerologySystems(text_mode);
         }
     }
 
     // TextMode_003.154_Values
-    private static void Update003154DynamicNumerologySystems(string text_mode)
+    private static void Update003154NumerologySystems(string text_mode)
     {
         if ((text_mode != null) && (text_mode.StartsWith("Simplified")))
         {
@@ -598,7 +597,7 @@ public static class Server
                 {
                     if (chapter.Number == 3)
                     {
-                        CalculateDynamicLetterStatistics(chapter.Verses[153].GetText(text_mode));
+                        UpdateLetterStatistics(chapter.Verses[153].GetText(text_mode));
                         break;
                     }
                 }
@@ -607,7 +606,7 @@ public static class Server
         }
     }
     // TextMode_048.29_Values
-    private static void Update048029DynamicNumerologySystems(string text_mode)
+    private static void Update048029NumerologySystems(string text_mode)
     {
         if ((text_mode != null) && (text_mode.StartsWith("Simplified")))
         {
@@ -620,7 +619,7 @@ public static class Server
                 {
                     if (chapter.Number == 48)
                     {
-                        CalculateDynamicLetterStatistics(chapter.Verses[28].GetText(text_mode));
+                        UpdateLetterStatistics(chapter.Verses[28].GetText(text_mode));
                         break;
                     }
                 }
@@ -630,60 +629,60 @@ public static class Server
     }
 
     // TextMode_Alphabet_Values
-    private static void UpdateAlphabetForwardDynamicNumerologySystems(string text_mode)
+    private static void UpdateAlphabetForwardNumerologySystems(string text_mode)
     {
         string partial_numerology_system_name = "";
         partial_numerology_system_name = text_mode + "_" + "Alphabet" + "_" + "";
         LetterStatistic.SortOrder = StatisticSortOrder.Ascending;
         LetterStatistic.SortMethod = StatisticSortMethod.ByLetter;
-        s_dynamic_letter_statistics.Sort();
+        s_letter_statistics.Sort();
         UpdateNumerologySystemsStartingWith(partial_numerology_system_name);
     }
     // TextMode_Alphabet▼_Values
-    private static void UpdateAlphabetBackwardDynamicNumerologySystems(string text_mode)
+    private static void UpdateAlphabetBackwardNumerologySystems(string text_mode)
     {
         string partial_numerology_system_name = text_mode + "_" + "Alphabet▼" + "_" + "";
         LetterStatistic.SortOrder = StatisticSortOrder.Descending;
         LetterStatistic.SortMethod = StatisticSortMethod.ByLetter;
-        s_dynamic_letter_statistics.Sort();
+        s_letter_statistics.Sort();
         UpdateNumerologySystemsStartingWith(partial_numerology_system_name);
     }
     // TextMode_Appearance_Values
-    private static void UpdateAppearanceForwardDynamicNumerologySystems(string text_mode)
+    private static void UpdateAppearanceForwardNumerologySystems(string text_mode)
     {
         string partial_numerology_system_name = "";
         partial_numerology_system_name = text_mode + "_" + "Appearance" + "_" + "";
         LetterStatistic.SortOrder = StatisticSortOrder.Ascending;
         LetterStatistic.SortMethod = StatisticSortMethod.ByOrder;
-        s_dynamic_letter_statistics.Sort();
+        s_letter_statistics.Sort();
         UpdateNumerologySystemsStartingWith(partial_numerology_system_name);
     }
     // TextMode_Appearance▼_Values
-    private static void UpdateAppearanceBackwardDynamicNumerologySystems(string text_mode)
+    private static void UpdateAppearanceBackwardNumerologySystems(string text_mode)
     {
         string partial_numerology_system_name = text_mode + "_" + "Appearance▼" + "_" + "";
         LetterStatistic.SortOrder = StatisticSortOrder.Descending;
         LetterStatistic.SortMethod = StatisticSortMethod.ByOrder;
-        s_dynamic_letter_statistics.Sort();
+        s_letter_statistics.Sort();
         UpdateNumerologySystemsStartingWith(partial_numerology_system_name);
     }
     // TextMode_Frequency▲_Values
-    private static void UpdateFrequencyAscendingDynamicNumerologySystems(string text_mode)
+    private static void UpdateFrequencyAscendingNumerologySystems(string text_mode)
     {
         string partial_numerology_system_name = text_mode + "_" + "Frequency▲" + "_" + "";
         LetterStatistic.SortOrder = StatisticSortOrder.Ascending;
         LetterStatistic.SortMethod = StatisticSortMethod.ByFrequency;
-        s_dynamic_letter_statistics.Sort();
+        s_letter_statistics.Sort();
         UpdateNumerologySystemsStartingWith(partial_numerology_system_name);
     }
     // TextMode_Frequency_Values
-    private static void UpdateFrequencyDescendingDynamicNumerologySystems(string text_mode)
+    private static void UpdateFrequencyDescendingNumerologySystems(string text_mode)
     {
         string partial_numerology_system_name = "";
         partial_numerology_system_name = text_mode + "_" + "Frequency" + "_" + "";
         LetterStatistic.SortOrder = StatisticSortOrder.Descending;
         LetterStatistic.SortMethod = StatisticSortMethod.ByFrequency;
-        s_dynamic_letter_statistics.Sort();
+        s_letter_statistics.Sort();
         UpdateNumerologySystemsStartingWith(partial_numerology_system_name);
     }
 
@@ -692,7 +691,7 @@ public static class Server
     {
         string numerology_system_name = "";
         List<char> letter_order = new List<char>();
-        foreach (LetterStatistic letter_statistic in s_dynamic_letter_statistics)
+        foreach (LetterStatistic letter_statistic in s_letter_statistics)
         {
             letter_order.Add(letter_statistic.Letter);
         }
@@ -722,7 +721,7 @@ public static class Server
                 letter_values.Clear();
                 for (long i = 0; i < letter_order.Count; i++)
                 {
-                    letter_values.Add(2 * i);
+                    letter_values.Add(2 * (i + 1));
                 }
                 UpdateNumerologySystem(numerology_system_name, letter_order, letter_values);
             }
@@ -913,9 +912,9 @@ public static class Server
                 numerology_system_name = partial_numerology_system_name + "Frequency▲";
                 LetterStatistic.SortOrder = StatisticSortOrder.Ascending;
                 LetterStatistic.SortMethod = StatisticSortMethod.ByFrequency;
-                s_dynamic_letter_statistics.Sort();
+                s_letter_statistics.Sort();
                 letter_values.Clear();
-                foreach (LetterStatistic letter_statistic in s_dynamic_letter_statistics)
+                foreach (LetterStatistic letter_statistic in s_letter_statistics)
                 {
                     letter_values.Add(letter_statistic.Frequency);
                 }
@@ -926,9 +925,9 @@ public static class Server
             // letter-frequency mismacth: different letters for different frequencies
             LetterStatistic.SortOrder = StatisticSortOrder.Descending;
             LetterStatistic.SortMethod = StatisticSortMethod.ByFrequency;
-            s_dynamic_letter_statistics.Sort();
+            s_letter_statistics.Sort();
             letter_values.Clear();
-            foreach (LetterStatistic letter_statistic in s_dynamic_letter_statistics)
+            foreach (LetterStatistic letter_statistic in s_letter_statistics)
             {
                 letter_values.Add(letter_statistic.Frequency);
             }

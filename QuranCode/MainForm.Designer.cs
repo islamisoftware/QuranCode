@@ -257,8 +257,12 @@
         this.NoteCounterLabel = new System.Windows.Forms.Label();
         this.TranslationTextBox = new System.Windows.Forms.TextBox();
         this.DrawingPictureBoxEx = new PictureBoxEx();
+        this.TextScopeBookRadioButton = new System.Windows.Forms.RadioButton();
+        this.TextScopeHighlightedTextRadioButton = new System.Windows.Forms.RadioButton();
+        this.TextScopeSelectionRadioButton = new System.Windows.Forms.RadioButton();
         this.FindByFrequencySumNumericUpDown = new System.Windows.Forms.NumericUpDown();
         this.StatisticsGroupBox = new System.Windows.Forms.GroupBox();
+        this.LetterValuesButton = new System.Windows.Forms.Button();
         this.DecimalLettersTextBox = new System.Windows.Forms.TextBox();
         this.DecimalWordsTextBox = new System.Windows.Forms.TextBox();
         this.DecimalVersesTextBox = new System.Windows.Forms.TextBox();
@@ -266,7 +270,6 @@
         this.RadixValueDownLabel = new System.Windows.Forms.Label();
         this.RadixValueLabel = new System.Windows.Forms.Label();
         this.RadixLabel = new System.Windows.Forms.Label();
-        this.DynamicLetterScopeHighlightedTextRadioButton = new System.Windows.Forms.RadioButton();
         this.ValuePanel = new System.Windows.Forms.Panel();
         this.DecimalValueTextBox = new System.Windows.Forms.TextBox();
         this.ValueNavigatorPanel = new System.Windows.Forms.Panel();
@@ -306,7 +309,6 @@
         this.AddToChapterValueLabel = new System.Windows.Forms.Label();
         this.ValueLabel = new System.Windows.Forms.Label();
         this.PrimeCalculatorButton = new System.Windows.Forms.Button();
-        this.DynamicLetterScopeSelectionRadioButton = new System.Windows.Forms.RadioButton();
         this.LetterStatisticsTabControl = new System.Windows.Forms.TabControl();
         this.SelectionTabPage = new System.Windows.Forms.TabPage();
         this.SaveLetterStatisticsButton = new System.Windows.Forms.Button();
@@ -325,16 +327,11 @@
         this.PhraseLetterColumnHeader = new System.Windows.Forms.ColumnHeader();
         this.PhraseFrequencyColumnHeader = new System.Windows.Forms.ColumnHeader();
         this.FindByFrequencyPhraseTextBox = new System.Windows.Forms.TextBox();
-        this.DynamicLetterScopeCheckBox = new System.Windows.Forms.CheckBox();
         this.SaveLetterValuationButton = new System.Windows.Forms.Button();
-        this.LetterValuesButton = new System.Windows.Forms.Button();
         this.ResetNumerologySystemButton = new System.Windows.Forms.Button();
         this.VersesTextBox = new System.Windows.Forms.TextBox();
         this.LettersTextBox = new System.Windows.Forms.TextBox();
         this.WordsTextBox = new System.Windows.Forms.TextBox();
-        this.LetterValueLabel = new System.Windows.Forms.Label();
-        this.LetterOrderLabel = new System.Windows.Forms.Label();
-        this.TextModeLabel = new System.Windows.Forms.Label();
         this.VersesLabel = new System.Windows.Forms.Label();
         this.WordsLabel = new System.Windows.Forms.Label();
         this.LettersLabel = new System.Windows.Forms.Label();
@@ -917,7 +914,7 @@
         this.TextModeComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.TextModeComboBox.FormattingEnabled = true;
         this.TextModeComboBox.IntegralHeight = false;
-        this.TextModeComboBox.Location = new System.Drawing.Point(10, 15);
+        this.TextModeComboBox.Location = new System.Drawing.Point(10, 31);
         this.TextModeComboBox.Name = "TextModeComboBox";
         this.TextModeComboBox.Size = new System.Drawing.Size(148, 21);
         this.TextModeComboBox.TabIndex = 103;
@@ -934,7 +931,7 @@
         this.ValueTextBox.Location = new System.Drawing.Point(62, 0);
         this.ValueTextBox.Name = "ValueTextBox";
         this.ValueTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-        this.ValueTextBox.Size = new System.Drawing.Size(112, 20);
+        this.ValueTextBox.Size = new System.Drawing.Size(113, 20);
         this.ValueTextBox.TabIndex = 113;
         this.ValueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
         this.ValueTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
@@ -1044,7 +1041,7 @@
         // 
         this.NthPrimeTextBox.BackColor = System.Drawing.SystemColors.Window;
         this.NthPrimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.NthPrimeTextBox.Location = new System.Drawing.Point(20, 60);
+        this.NthPrimeTextBox.Location = new System.Drawing.Point(21, 60);
         this.NthPrimeTextBox.Name = "NthPrimeTextBox";
         this.NthPrimeTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
         this.NthPrimeTextBox.Size = new System.Drawing.Size(41, 20);
@@ -1162,7 +1159,7 @@
                     | System.Windows.Forms.AnchorStyles.Right)));
         this.NthAdditivePrimeTextBox.BackColor = System.Drawing.SystemColors.Window;
         this.NthAdditivePrimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.NthAdditivePrimeTextBox.Location = new System.Drawing.Point(87, 60);
+        this.NthAdditivePrimeTextBox.Location = new System.Drawing.Point(89, 60);
         this.NthAdditivePrimeTextBox.Name = "NthAdditivePrimeTextBox";
         this.NthAdditivePrimeTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
         this.NthAdditivePrimeTextBox.Size = new System.Drawing.Size(30, 20);
@@ -1178,7 +1175,7 @@
         this.NthPurePrimeTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         this.NthPurePrimeTextBox.BackColor = System.Drawing.SystemColors.Window;
         this.NthPurePrimeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.NthPurePrimeTextBox.Location = new System.Drawing.Point(143, 60);
+        this.NthPurePrimeTextBox.Location = new System.Drawing.Point(145, 60);
         this.NthPurePrimeTextBox.Name = "NthPurePrimeTextBox";
         this.NthPurePrimeTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
         this.NthPurePrimeTextBox.Size = new System.Drawing.Size(30, 20);
@@ -1198,7 +1195,7 @@
         this.LetterValueSystemComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterValueSystemComboBox.FormattingEnabled = true;
         this.LetterValueSystemComboBox.IntegralHeight = false;
-        this.LetterValueSystemComboBox.Location = new System.Drawing.Point(10, 57);
+        this.LetterValueSystemComboBox.Location = new System.Drawing.Point(10, 73);
         this.LetterValueSystemComboBox.Name = "LetterValueSystemComboBox";
         this.LetterValueSystemComboBox.Size = new System.Drawing.Size(148, 21);
         this.LetterValueSystemComboBox.TabIndex = 105;
@@ -1215,7 +1212,7 @@
         this.LetterOrderSystemComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterOrderSystemComboBox.FormattingEnabled = true;
         this.LetterOrderSystemComboBox.IntegralHeight = false;
-        this.LetterOrderSystemComboBox.Location = new System.Drawing.Point(10, 36);
+        this.LetterOrderSystemComboBox.Location = new System.Drawing.Point(10, 52);
         this.LetterOrderSystemComboBox.Name = "LetterOrderSystemComboBox";
         this.LetterOrderSystemComboBox.Size = new System.Drawing.Size(148, 21);
         this.LetterOrderSystemComboBox.TabIndex = 104;
@@ -1266,7 +1263,7 @@
         this.LetterCountLabel.BackColor = System.Drawing.Color.Transparent;
         this.LetterCountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterCountLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.LetterCountLabel.Location = new System.Drawing.Point(2, 119);
+        this.LetterCountLabel.Location = new System.Drawing.Point(2, 135);
         this.LetterCountLabel.Name = "LetterCountLabel";
         this.LetterCountLabel.Size = new System.Drawing.Size(39, 13);
         this.LetterCountLabel.TabIndex = 1;
@@ -4157,11 +4154,58 @@
         this.DrawingPictureBoxEx.ZoomFactor = 1F;
         this.DrawingPictureBoxEx.MouseHover += new System.EventHandler(this.PictureBoxEx_MouseHover);
         // 
+        // TextScopeBookRadioButton
+        // 
+        this.TextScopeBookRadioButton.AutoSize = true;
+        this.TextScopeBookRadioButton.BackColor = System.Drawing.Color.Transparent;
+        this.TextScopeBookRadioButton.Checked = true;
+        this.TextScopeBookRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.TextScopeBookRadioButton.ForeColor = System.Drawing.Color.Black;
+        this.TextScopeBookRadioButton.Location = new System.Drawing.Point(10, 14);
+        this.TextScopeBookRadioButton.Name = "TextScopeBookRadioButton";
+        this.TextScopeBookRadioButton.Size = new System.Drawing.Size(44, 16);
+        this.TextScopeBookRadioButton.TabIndex = 100;
+        this.TextScopeBookRadioButton.TabStop = true;
+        this.TextScopeBookRadioButton.Text = "Book";
+        this.TextScopeBookRadioButton.UseVisualStyleBackColor = false;
+        this.TextScopeBookRadioButton.Enter += new System.EventHandler(this.StatisticsControls_Enter);
+        this.TextScopeBookRadioButton.CheckedChanged += new System.EventHandler(this.TextScopeBookRadioButton_CheckedChanged);
+        // 
+        // TextScopeHighlightedTextRadioButton
+        // 
+        this.TextScopeHighlightedTextRadioButton.AutoSize = true;
+        this.TextScopeHighlightedTextRadioButton.BackColor = System.Drawing.Color.Transparent;
+        this.TextScopeHighlightedTextRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.TextScopeHighlightedTextRadioButton.ForeColor = System.Drawing.Color.Black;
+        this.TextScopeHighlightedTextRadioButton.Location = new System.Drawing.Point(117, 14);
+        this.TextScopeHighlightedTextRadioButton.Name = "TextScopeHighlightedTextRadioButton";
+        this.TextScopeHighlightedTextRadioButton.Size = new System.Drawing.Size(69, 16);
+        this.TextScopeHighlightedTextRadioButton.TabIndex = 102;
+        this.TextScopeHighlightedTextRadioButton.Text = "Highlighted";
+        this.TextScopeHighlightedTextRadioButton.UseVisualStyleBackColor = false;
+        this.TextScopeHighlightedTextRadioButton.Enter += new System.EventHandler(this.StatisticsControls_Enter);
+        this.TextScopeHighlightedTextRadioButton.CheckedChanged += new System.EventHandler(this.TextScopeHighlightedTextRadioButton_CheckedChanged);
+        // 
+        // TextScopeSelectionRadioButton
+        // 
+        this.TextScopeSelectionRadioButton.AutoSize = true;
+        this.TextScopeSelectionRadioButton.BackColor = System.Drawing.Color.Transparent;
+        this.TextScopeSelectionRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.TextScopeSelectionRadioButton.ForeColor = System.Drawing.Color.Black;
+        this.TextScopeSelectionRadioButton.Location = new System.Drawing.Point(55, 14);
+        this.TextScopeSelectionRadioButton.Name = "TextScopeSelectionRadioButton";
+        this.TextScopeSelectionRadioButton.Size = new System.Drawing.Size(61, 16);
+        this.TextScopeSelectionRadioButton.TabIndex = 101;
+        this.TextScopeSelectionRadioButton.Text = "Selection";
+        this.TextScopeSelectionRadioButton.UseVisualStyleBackColor = false;
+        this.TextScopeSelectionRadioButton.Enter += new System.EventHandler(this.StatisticsControls_Enter);
+        this.TextScopeSelectionRadioButton.CheckedChanged += new System.EventHandler(this.TextScopeSelectionRadioButton_CheckedChanged);
+        // 
         // FindByFrequencySumNumericUpDown
         // 
         this.FindByFrequencySumNumericUpDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
         this.FindByFrequencySumNumericUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.FindByFrequencySumNumericUpDown.Location = new System.Drawing.Point(48, 116);
+        this.FindByFrequencySumNumericUpDown.Location = new System.Drawing.Point(48, 132);
         this.FindByFrequencySumNumericUpDown.Maximum = new decimal(new int[] {
             9999999,
             0,
@@ -4181,6 +4225,7 @@
         this.StatisticsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                     | System.Windows.Forms.AnchorStyles.Left)
                     | System.Windows.Forms.AnchorStyles.Right)));
+        this.StatisticsGroupBox.Controls.Add(this.LetterValuesButton);
         this.StatisticsGroupBox.Controls.Add(this.DecimalLettersTextBox);
         this.StatisticsGroupBox.Controls.Add(this.DecimalWordsTextBox);
         this.StatisticsGroupBox.Controls.Add(this.DecimalVersesTextBox);
@@ -4188,13 +4233,9 @@
         this.StatisticsGroupBox.Controls.Add(this.RadixValueDownLabel);
         this.StatisticsGroupBox.Controls.Add(this.RadixValueLabel);
         this.StatisticsGroupBox.Controls.Add(this.RadixLabel);
-        this.StatisticsGroupBox.Controls.Add(this.DynamicLetterScopeHighlightedTextRadioButton);
         this.StatisticsGroupBox.Controls.Add(this.ValuePanel);
-        this.StatisticsGroupBox.Controls.Add(this.DynamicLetterScopeSelectionRadioButton);
         this.StatisticsGroupBox.Controls.Add(this.LetterStatisticsTabControl);
-        this.StatisticsGroupBox.Controls.Add(this.DynamicLetterScopeCheckBox);
         this.StatisticsGroupBox.Controls.Add(this.SaveLetterValuationButton);
-        this.StatisticsGroupBox.Controls.Add(this.LetterValuesButton);
         this.StatisticsGroupBox.Controls.Add(this.ResetNumerologySystemButton);
         this.StatisticsGroupBox.Controls.Add(this.VersesTextBox);
         this.StatisticsGroupBox.Controls.Add(this.LettersTextBox);
@@ -4202,12 +4243,12 @@
         this.StatisticsGroupBox.Controls.Add(this.LetterValueSystemComboBox);
         this.StatisticsGroupBox.Controls.Add(this.LetterOrderSystemComboBox);
         this.StatisticsGroupBox.Controls.Add(this.TextModeComboBox);
-        this.StatisticsGroupBox.Controls.Add(this.LetterValueLabel);
-        this.StatisticsGroupBox.Controls.Add(this.LetterOrderLabel);
-        this.StatisticsGroupBox.Controls.Add(this.TextModeLabel);
         this.StatisticsGroupBox.Controls.Add(this.VersesLabel);
         this.StatisticsGroupBox.Controls.Add(this.WordsLabel);
         this.StatisticsGroupBox.Controls.Add(this.LettersLabel);
+        this.StatisticsGroupBox.Controls.Add(this.TextScopeHighlightedTextRadioButton);
+        this.StatisticsGroupBox.Controls.Add(this.TextScopeSelectionRadioButton);
+        this.StatisticsGroupBox.Controls.Add(this.TextScopeBookRadioButton);
         this.StatisticsGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.StatisticsGroupBox.Location = new System.Drawing.Point(0, 38);
         this.StatisticsGroupBox.Name = "StatisticsGroupBox";
@@ -4216,6 +4257,22 @@
         this.StatisticsGroupBox.TabStop = false;
         this.StatisticsGroupBox.Text = "Statistics";
         // 
+        // LetterValuesButton
+        // 
+        this.LetterValuesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+        this.LetterValuesButton.BackColor = System.Drawing.SystemColors.ButtonFace;
+        this.LetterValuesButton.Cursor = System.Windows.Forms.Cursors.Hand;
+        this.LetterValuesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        this.LetterValuesButton.ForeColor = System.Drawing.SystemColors.WindowText;
+        this.LetterValuesButton.Image = ((System.Drawing.Image)(resources.GetObject("LetterValuesButton.Image")));
+        this.LetterValuesButton.Location = new System.Drawing.Point(158, 30);
+        this.LetterValuesButton.Name = "LetterValuesButton";
+        this.LetterValuesButton.Size = new System.Drawing.Size(25, 23);
+        this.LetterValuesButton.TabIndex = 106;
+        this.LetterValuesButton.UseVisualStyleBackColor = false;
+        this.LetterValuesButton.Click += new System.EventHandler(this.LetterValuesButton_Click);
+        this.LetterValuesButton.Enter += new System.EventHandler(this.StatisticsControls_Enter);
+        // 
         // DecimalLettersTextBox
         // 
         this.DecimalLettersTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
@@ -4223,13 +4280,14 @@
         this.DecimalLettersTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.DecimalLettersTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.DecimalLettersTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.DecimalLettersTextBox.Location = new System.Drawing.Point(68, 118);
+        this.DecimalLettersTextBox.Location = new System.Drawing.Point(11, 133);
         this.DecimalLettersTextBox.Name = "DecimalLettersTextBox";
         this.DecimalLettersTextBox.ReadOnly = true;
         this.DecimalLettersTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-        this.DecimalLettersTextBox.Size = new System.Drawing.Size(45, 20);
-        this.DecimalLettersTextBox.TabIndex = 187;
-        this.DecimalLettersTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.DecimalLettersTextBox.Size = new System.Drawing.Size(55, 20);
+        this.DecimalLettersTextBox.TabIndex = 0;
+        this.DecimalLettersTextBox.TabStop = false;
+        this.DecimalLettersTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
         this.DecimalLettersTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
         this.DecimalLettersTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
         // 
@@ -4240,13 +4298,14 @@
         this.DecimalWordsTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.DecimalWordsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.DecimalWordsTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.DecimalWordsTextBox.Location = new System.Drawing.Point(68, 99);
+        this.DecimalWordsTextBox.Location = new System.Drawing.Point(11, 114);
         this.DecimalWordsTextBox.Name = "DecimalWordsTextBox";
         this.DecimalWordsTextBox.ReadOnly = true;
         this.DecimalWordsTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-        this.DecimalWordsTextBox.Size = new System.Drawing.Size(45, 20);
-        this.DecimalWordsTextBox.TabIndex = 186;
-        this.DecimalWordsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.DecimalWordsTextBox.Size = new System.Drawing.Size(55, 20);
+        this.DecimalWordsTextBox.TabIndex = 0;
+        this.DecimalWordsTextBox.TabStop = false;
+        this.DecimalWordsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
         this.DecimalWordsTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
         this.DecimalWordsTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
         // 
@@ -4257,13 +4316,14 @@
         this.DecimalVersesTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.DecimalVersesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.DecimalVersesTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.DecimalVersesTextBox.Location = new System.Drawing.Point(68, 79);
+        this.DecimalVersesTextBox.Location = new System.Drawing.Point(11, 94);
         this.DecimalVersesTextBox.Name = "DecimalVersesTextBox";
         this.DecimalVersesTextBox.ReadOnly = true;
         this.DecimalVersesTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-        this.DecimalVersesTextBox.Size = new System.Drawing.Size(45, 20);
-        this.DecimalVersesTextBox.TabIndex = 185;
-        this.DecimalVersesTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.DecimalVersesTextBox.Size = new System.Drawing.Size(55, 20);
+        this.DecimalVersesTextBox.TabIndex = 0;
+        this.DecimalVersesTextBox.TabStop = false;
+        this.DecimalVersesTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
         this.DecimalVersesTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
         this.DecimalVersesTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
         // 
@@ -4318,30 +4378,12 @@
         this.RadixLabel.Cursor = System.Windows.Forms.Cursors.Default;
         this.RadixLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.RadixLabel.ForeColor = System.Drawing.Color.Black;
-        this.RadixLabel.Location = new System.Drawing.Point(96, 0);
+        this.RadixLabel.Location = new System.Drawing.Point(99, 0);
         this.RadixLabel.Name = "RadixLabel";
-        this.RadixLabel.Size = new System.Drawing.Size(38, 13);
+        this.RadixLabel.Size = new System.Drawing.Size(35, 13);
         this.RadixLabel.TabIndex = 184;
-        this.RadixLabel.Text = "Radix";
-        this.RadixLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-        // 
-        // DynamicLetterScopeHighlightedTextRadioButton
-        // 
-        this.DynamicLetterScopeHighlightedTextRadioButton.AutoSize = true;
-        this.DynamicLetterScopeHighlightedTextRadioButton.BackColor = System.Drawing.Color.Transparent;
-        this.DynamicLetterScopeHighlightedTextRadioButton.Enabled = false;
-        this.DynamicLetterScopeHighlightedTextRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.DynamicLetterScopeHighlightedTextRadioButton.ForeColor = System.Drawing.Color.Black;
-        this.DynamicLetterScopeHighlightedTextRadioButton.Location = new System.Drawing.Point(92, 152);
-        this.DynamicLetterScopeHighlightedTextRadioButton.Name = "DynamicLetterScopeHighlightedTextRadioButton";
-        this.DynamicLetterScopeHighlightedTextRadioButton.Size = new System.Drawing.Size(89, 16);
-        this.DynamicLetterScopeHighlightedTextRadioButton.TabIndex = 102;
-        this.DynamicLetterScopeHighlightedTextRadioButton.TabStop = true;
-        this.DynamicLetterScopeHighlightedTextRadioButton.Text = "Highlighted Text";
-        this.ToolTip.SetToolTip(this.DynamicLetterScopeHighlightedTextRadioButton, "Use highlighted text letters to build a dynamic valuation system on the fly");
-        this.DynamicLetterScopeHighlightedTextRadioButton.UseVisualStyleBackColor = false;
-        this.DynamicLetterScopeHighlightedTextRadioButton.Enter += new System.EventHandler(this.StatisticsControls_Enter);
-        this.DynamicLetterScopeHighlightedTextRadioButton.CheckedChanged += new System.EventHandler(this.DynamicLetterScopeHighlightedTextRadioButton_CheckedChanged);
+        this.RadixLabel.Text = "Base";
+        this.RadixLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
         // 
         // ValuePanel
         // 
@@ -4387,7 +4429,7 @@
         this.ValuePanel.Controls.Add(this.AddToChapterValueLabel);
         this.ValuePanel.Controls.Add(this.ValueLabel);
         this.ValuePanel.Controls.Add(this.PrimeCalculatorButton);
-        this.ValuePanel.Location = new System.Drawing.Point(6, 169);
+        this.ValuePanel.Location = new System.Drawing.Point(6, 153);
         this.ValuePanel.Name = "ValuePanel";
         this.ValuePanel.Size = new System.Drawing.Size(180, 251);
         this.ValuePanel.TabIndex = 99;
@@ -4399,13 +4441,14 @@
         this.DecimalValueTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.DecimalValueTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.DecimalValueTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.DecimalValueTextBox.Location = new System.Drawing.Point(62, 0);
+        this.DecimalValueTextBox.Location = new System.Drawing.Point(5, 0);
         this.DecimalValueTextBox.Name = "DecimalValueTextBox";
         this.DecimalValueTextBox.ReadOnly = true;
         this.DecimalValueTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-        this.DecimalValueTextBox.Size = new System.Drawing.Size(45, 20);
-        this.DecimalValueTextBox.TabIndex = 188;
-        this.DecimalValueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+        this.DecimalValueTextBox.Size = new System.Drawing.Size(55, 20);
+        this.DecimalValueTextBox.TabIndex = 0;
+        this.DecimalValueTextBox.TabStop = false;
+        this.DecimalValueTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
         this.DecimalValueTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
         this.DecimalValueTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
         // 
@@ -4428,7 +4471,7 @@
         this.DigitalRootTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.DigitalRootTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.DigitalRootTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.DigitalRootTextBox.Location = new System.Drawing.Point(62, 40);
+        this.DigitalRootTextBox.Location = new System.Drawing.Point(63, 40);
         this.DigitalRootTextBox.Name = "DigitalRootTextBox";
         this.DigitalRootTextBox.ReadOnly = true;
         this.DigitalRootTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -4443,7 +4486,7 @@
         this.DigitSumTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.DigitSumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.DigitSumTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.DigitSumTextBox.Location = new System.Drawing.Point(143, 40);
+        this.DigitSumTextBox.Location = new System.Drawing.Point(145, 40);
         this.DigitSumTextBox.Name = "DigitSumTextBox";
         this.DigitSumTextBox.ReadOnly = true;
         this.DigitSumTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -4499,10 +4542,10 @@
         this.PrimeFactorsTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.PrimeFactorsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.PrimeFactorsTextBox.ForeColor = System.Drawing.Color.Gray;
-        this.PrimeFactorsTextBox.Location = new System.Drawing.Point(6, 20);
+        this.PrimeFactorsTextBox.Location = new System.Drawing.Point(5, 20);
         this.PrimeFactorsTextBox.Name = "PrimeFactorsTextBox";
         this.PrimeFactorsTextBox.ReadOnly = true;
-        this.PrimeFactorsTextBox.Size = new System.Drawing.Size(168, 20);
+        this.PrimeFactorsTextBox.Size = new System.Drawing.Size(170, 20);
         this.PrimeFactorsTextBox.TabIndex = 114;
         this.PrimeFactorsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
         this.PrimeFactorsTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
@@ -4767,9 +4810,9 @@
         // 
         this.DigitSumLabel.BackColor = System.Drawing.Color.Transparent;
         this.DigitSumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.DigitSumLabel.Location = new System.Drawing.Point(91, 44);
+        this.DigitSumLabel.Location = new System.Drawing.Point(93, 44);
         this.DigitSumLabel.Name = "DigitSumLabel";
-        this.DigitSumLabel.Size = new System.Drawing.Size(52, 13);
+        this.DigitSumLabel.Size = new System.Drawing.Size(54, 13);
         this.DigitSumLabel.TabIndex = 111;
         this.DigitSumLabel.Text = "Digit sum";
         // 
@@ -4779,7 +4822,7 @@
         this.DigitalRootLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.DigitalRootLabel.Location = new System.Drawing.Point(2, 44);
         this.DigitalRootLabel.Name = "DigitalRootLabel";
-        this.DigitalRootLabel.Size = new System.Drawing.Size(59, 13);
+        this.DigitalRootLabel.Size = new System.Drawing.Size(66, 13);
         this.DigitalRootLabel.TabIndex = 111;
         this.DigitalRootLabel.Text = "Digital root";
         // 
@@ -4814,7 +4857,7 @@
         this.NthPurePrimeLabel.BackColor = System.Drawing.Color.Transparent;
         this.NthPurePrimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.NthPurePrimeLabel.ForeColor = System.Drawing.Color.Black;
-        this.NthPurePrimeLabel.Location = new System.Drawing.Point(124, 63);
+        this.NthPurePrimeLabel.Location = new System.Drawing.Point(125, 63);
         this.NthPurePrimeLabel.Name = "NthPurePrimeLabel";
         this.NthPurePrimeLabel.Size = new System.Drawing.Size(20, 12);
         this.NthPurePrimeLabel.TabIndex = 119;
@@ -4837,7 +4880,7 @@
         this.NthAdditivePrimeLabel.BackColor = System.Drawing.Color.Transparent;
         this.NthAdditivePrimeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.NthAdditivePrimeLabel.ForeColor = System.Drawing.Color.Black;
-        this.NthAdditivePrimeLabel.Location = new System.Drawing.Point(67, 64);
+        this.NthAdditivePrimeLabel.Location = new System.Drawing.Point(66, 64);
         this.NthAdditivePrimeLabel.Name = "NthAdditivePrimeLabel";
         this.NthAdditivePrimeLabel.Size = new System.Drawing.Size(20, 12);
         this.NthAdditivePrimeLabel.TabIndex = 118;
@@ -4899,24 +4942,6 @@
         this.PrimeCalculatorButton.UseVisualStyleBackColor = false;
         this.PrimeCalculatorButton.Click += new System.EventHandler(this.PrimeCalculatorButton_Click);
         // 
-        // DynamicLetterScopeSelectionRadioButton
-        // 
-        this.DynamicLetterScopeSelectionRadioButton.BackColor = System.Drawing.Color.Transparent;
-        this.DynamicLetterScopeSelectionRadioButton.Checked = true;
-        this.DynamicLetterScopeSelectionRadioButton.Enabled = false;
-        this.DynamicLetterScopeSelectionRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.DynamicLetterScopeSelectionRadioButton.ForeColor = System.Drawing.Color.Black;
-        this.DynamicLetterScopeSelectionRadioButton.Location = new System.Drawing.Point(29, 152);
-        this.DynamicLetterScopeSelectionRadioButton.Name = "DynamicLetterScopeSelectionRadioButton";
-        this.DynamicLetterScopeSelectionRadioButton.Size = new System.Drawing.Size(74, 16);
-        this.DynamicLetterScopeSelectionRadioButton.TabIndex = 101;
-        this.DynamicLetterScopeSelectionRadioButton.TabStop = true;
-        this.DynamicLetterScopeSelectionRadioButton.Text = "Selection";
-        this.ToolTip.SetToolTip(this.DynamicLetterScopeSelectionRadioButton, "Use selection letters to build a dynamic valuation system on the fly");
-        this.DynamicLetterScopeSelectionRadioButton.UseVisualStyleBackColor = false;
-        this.DynamicLetterScopeSelectionRadioButton.Enter += new System.EventHandler(this.StatisticsControls_Enter);
-        this.DynamicLetterScopeSelectionRadioButton.CheckedChanged += new System.EventHandler(this.DynamicLetterScopeSelectionRadioButton_CheckedChanged);
-        // 
         // LetterStatisticsTabControl
         // 
         this.LetterStatisticsTabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
@@ -4925,11 +4950,11 @@
         this.LetterStatisticsTabControl.Controls.Add(this.SelectionTabPage);
         this.LetterStatisticsTabControl.Controls.Add(this.PhraseTabPage);
         this.LetterStatisticsTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.LetterStatisticsTabControl.Location = new System.Drawing.Point(3, 420);
+        this.LetterStatisticsTabControl.Location = new System.Drawing.Point(3, 404);
         this.LetterStatisticsTabControl.Name = "LetterStatisticsTabControl";
         this.LetterStatisticsTabControl.SelectedIndex = 0;
         this.LetterStatisticsTabControl.ShowToolTips = true;
-        this.LetterStatisticsTabControl.Size = new System.Drawing.Size(180, 163);
+        this.LetterStatisticsTabControl.Size = new System.Drawing.Size(180, 179);
         this.LetterStatisticsTabControl.TabIndex = 180;
         // 
         // SelectionTabPage
@@ -4943,7 +4968,7 @@
         this.SelectionTabPage.Location = new System.Drawing.Point(4, 22);
         this.SelectionTabPage.Name = "SelectionTabPage";
         this.SelectionTabPage.Padding = new System.Windows.Forms.Padding(3);
-        this.SelectionTabPage.Size = new System.Drawing.Size(172, 137);
+        this.SelectionTabPage.Size = new System.Drawing.Size(172, 153);
         this.SelectionTabPage.TabIndex = 0;
         this.SelectionTabPage.Text = "Letter Frequency";
         this.SelectionTabPage.ToolTipText = "Selection letter frequency";
@@ -4960,7 +4985,7 @@
         this.SaveLetterStatisticsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.SaveLetterStatisticsButton.ForeColor = System.Drawing.Color.Transparent;
         this.SaveLetterStatisticsButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveLetterStatisticsButton.Image")));
-        this.SaveLetterStatisticsButton.Location = new System.Drawing.Point(147, 114);
+        this.SaveLetterStatisticsButton.Location = new System.Drawing.Point(147, 130);
         this.SaveLetterStatisticsButton.Name = "SaveLetterStatisticsButton";
         this.SaveLetterStatisticsButton.Size = new System.Drawing.Size(22, 22);
         this.SaveLetterStatisticsButton.TabIndex = 4;
@@ -4976,7 +5001,7 @@
         this.LetterFrequencySumValueLabel.BackColor = System.Drawing.Color.Transparent;
         this.LetterFrequencySumValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterFrequencySumValueLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.LetterFrequencySumValueLabel.Location = new System.Drawing.Point(78, 119);
+        this.LetterFrequencySumValueLabel.Location = new System.Drawing.Point(78, 135);
         this.LetterFrequencySumValueLabel.Margin = new System.Windows.Forms.Padding(0);
         this.LetterFrequencySumValueLabel.Name = "LetterFrequencySumValueLabel";
         this.LetterFrequencySumValueLabel.Size = new System.Drawing.Size(70, 13);
@@ -4992,7 +5017,7 @@
         this.LetterCountValueLabel.BackColor = System.Drawing.Color.Transparent;
         this.LetterCountValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.LetterCountValueLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.LetterCountValueLabel.Location = new System.Drawing.Point(50, 119);
+        this.LetterCountValueLabel.Location = new System.Drawing.Point(50, 135);
         this.LetterCountValueLabel.Name = "LetterCountValueLabel";
         this.LetterCountValueLabel.Size = new System.Drawing.Size(23, 13);
         this.LetterCountValueLabel.TabIndex = 2;
@@ -5013,7 +5038,7 @@
         this.LetterStatisticsListView.GridLines = true;
         this.LetterStatisticsListView.Location = new System.Drawing.Point(2, 3);
         this.LetterStatisticsListView.Name = "LetterStatisticsListView";
-        this.LetterStatisticsListView.Size = new System.Drawing.Size(166, 111);
+        this.LetterStatisticsListView.Size = new System.Drawing.Size(166, 127);
         this.LetterStatisticsListView.TabIndex = 0;
         this.LetterStatisticsListView.UseCompatibleStateImageBehavior = false;
         this.LetterStatisticsListView.View = System.Windows.Forms.View.Details;
@@ -5054,7 +5079,7 @@
         this.PhraseTabPage.Location = new System.Drawing.Point(4, 22);
         this.PhraseTabPage.Name = "PhraseTabPage";
         this.PhraseTabPage.Padding = new System.Windows.Forms.Padding(3);
-        this.PhraseTabPage.Size = new System.Drawing.Size(172, 137);
+        this.PhraseTabPage.Size = new System.Drawing.Size(172, 153);
         this.PhraseTabPage.TabIndex = 1;
         this.PhraseTabPage.Text = "Find by LF";
         this.PhraseTabPage.ToolTipText = "Find by letter frequency sum";
@@ -5070,7 +5095,7 @@
         this.SavePhraseLetterStatisticsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.SavePhraseLetterStatisticsButton.ForeColor = System.Drawing.Color.Transparent;
         this.SavePhraseLetterStatisticsButton.Image = ((System.Drawing.Image)(resources.GetObject("SavePhraseLetterStatisticsButton.Image")));
-        this.SavePhraseLetterStatisticsButton.Location = new System.Drawing.Point(147, 114);
+        this.SavePhraseLetterStatisticsButton.Location = new System.Drawing.Point(147, 130);
         this.SavePhraseLetterStatisticsButton.Name = "SavePhraseLetterStatisticsButton";
         this.SavePhraseLetterStatisticsButton.Size = new System.Drawing.Size(22, 22);
         this.SavePhraseLetterStatisticsButton.TabIndex = 107;
@@ -5086,7 +5111,7 @@
         this.FindByFrequencySumButton.Cursor = System.Windows.Forms.Cursors.Hand;
         this.FindByFrequencySumButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.FindByFrequencySumButton.ForeColor = System.Drawing.Color.RoyalBlue;
-        this.FindByFrequencySumButton.Location = new System.Drawing.Point(109, 115);
+        this.FindByFrequencySumButton.Location = new System.Drawing.Point(109, 131);
         this.FindByFrequencySumButton.Name = "FindByFrequencySumButton";
         this.FindByFrequencySumButton.Size = new System.Drawing.Size(39, 22);
         this.FindByFrequencySumButton.TabIndex = 106;
@@ -5104,7 +5129,7 @@
         this.FindByFrequencySumLabel.BackColor = System.Drawing.Color.Transparent;
         this.FindByFrequencySumLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.FindByFrequencySumLabel.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.FindByFrequencySumLabel.Location = new System.Drawing.Point(3, 119);
+        this.FindByFrequencySumLabel.Location = new System.Drawing.Point(3, 135);
         this.FindByFrequencySumLabel.Name = "FindByFrequencySumLabel";
         this.FindByFrequencySumLabel.Size = new System.Drawing.Size(43, 13);
         this.FindByFrequencySumLabel.TabIndex = 127;
@@ -5126,7 +5151,7 @@
         this.FindByFrequencyListView.GridLines = true;
         this.FindByFrequencyListView.Location = new System.Drawing.Point(2, 63);
         this.FindByFrequencyListView.Name = "FindByFrequencyListView";
-        this.FindByFrequencyListView.Size = new System.Drawing.Size(168, 52);
+        this.FindByFrequencyListView.Size = new System.Drawing.Size(168, 68);
         this.FindByFrequencyListView.TabIndex = 103;
         this.FindByFrequencyListView.UseCompatibleStateImageBehavior = false;
         this.FindByFrequencyListView.View = System.Windows.Forms.View.Details;
@@ -5166,21 +5191,6 @@
         this.FindByFrequencyPhraseTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FixMicrosoft);
         this.FindByFrequencyPhraseTextBox.Enter += new System.EventHandler(this.FindByFrequencyControls_Enter);
         // 
-        // DynamicLetterScopeCheckBox
-        // 
-        this.DynamicLetterScopeCheckBox.BackColor = System.Drawing.Color.Transparent;
-        this.DynamicLetterScopeCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.DynamicLetterScopeCheckBox.ForeColor = System.Drawing.Color.Black;
-        this.DynamicLetterScopeCheckBox.Location = new System.Drawing.Point(11, 138);
-        this.DynamicLetterScopeCheckBox.Name = "DynamicLetterScopeCheckBox";
-        this.DynamicLetterScopeCheckBox.Size = new System.Drawing.Size(172, 17);
-        this.DynamicLetterScopeCheckBox.TabIndex = 100;
-        this.DynamicLetterScopeCheckBox.Text = "Dynamic Letter Scope";
-        this.ToolTip.SetToolTip(this.DynamicLetterScopeCheckBox, "Use selection/highlighted letters to build a dynamic valuation system on the fly");
-        this.DynamicLetterScopeCheckBox.UseVisualStyleBackColor = false;
-        this.DynamicLetterScopeCheckBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
-        this.DynamicLetterScopeCheckBox.CheckedChanged += new System.EventHandler(this.DynamicLetterScopeCheckBox_CheckedChanged);
-        // 
         // SaveLetterValuationButton
         // 
         this.SaveLetterValuationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -5188,7 +5198,7 @@
         this.SaveLetterValuationButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.SaveLetterValuationButton.ForeColor = System.Drawing.SystemColors.WindowText;
         this.SaveLetterValuationButton.Image = ((System.Drawing.Image)(resources.GetObject("SaveLetterValuationButton.Image")));
-        this.SaveLetterValuationButton.Location = new System.Drawing.Point(158, 36);
+        this.SaveLetterValuationButton.Location = new System.Drawing.Point(158, 51);
         this.SaveLetterValuationButton.Name = "SaveLetterValuationButton";
         this.SaveLetterValuationButton.Size = new System.Drawing.Size(25, 23);
         this.SaveLetterValuationButton.TabIndex = 107;
@@ -5196,22 +5206,6 @@
         this.SaveLetterValuationButton.UseVisualStyleBackColor = false;
         this.SaveLetterValuationButton.Click += new System.EventHandler(this.SaveLetterValuationButton_Click);
         this.SaveLetterValuationButton.Enter += new System.EventHandler(this.StatisticsControls_Enter);
-        // 
-        // LetterValuesButton
-        // 
-        this.LetterValuesButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-        this.LetterValuesButton.BackColor = System.Drawing.SystemColors.ButtonFace;
-        this.LetterValuesButton.Cursor = System.Windows.Forms.Cursors.Hand;
-        this.LetterValuesButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.LetterValuesButton.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.LetterValuesButton.Image = ((System.Drawing.Image)(resources.GetObject("LetterValuesButton.Image")));
-        this.LetterValuesButton.Location = new System.Drawing.Point(158, 15);
-        this.LetterValuesButton.Name = "LetterValuesButton";
-        this.LetterValuesButton.Size = new System.Drawing.Size(25, 23);
-        this.LetterValuesButton.TabIndex = 106;
-        this.LetterValuesButton.UseVisualStyleBackColor = false;
-        this.LetterValuesButton.Click += new System.EventHandler(this.LetterValuesButton_Click);
-        this.LetterValuesButton.Enter += new System.EventHandler(this.StatisticsControls_Enter);
         // 
         // ResetNumerologySystemButton
         // 
@@ -5221,7 +5215,7 @@
         this.ResetNumerologySystemButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.ResetNumerologySystemButton.ForeColor = System.Drawing.SystemColors.WindowText;
         this.ResetNumerologySystemButton.Image = ((System.Drawing.Image)(resources.GetObject("ResetNumerologySystemButton.Image")));
-        this.ResetNumerologySystemButton.Location = new System.Drawing.Point(158, 56);
+        this.ResetNumerologySystemButton.Location = new System.Drawing.Point(158, 72);
         this.ResetNumerologySystemButton.Name = "ResetNumerologySystemButton";
         this.ResetNumerologySystemButton.Size = new System.Drawing.Size(25, 23);
         this.ResetNumerologySystemButton.TabIndex = 108;
@@ -5236,11 +5230,11 @@
         this.VersesTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.VersesTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         this.VersesTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-        this.VersesTextBox.Location = new System.Drawing.Point(68, 79);
+        this.VersesTextBox.Location = new System.Drawing.Point(68, 94);
         this.VersesTextBox.Name = "VersesTextBox";
         this.VersesTextBox.ReadOnly = true;
         this.VersesTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-        this.VersesTextBox.Size = new System.Drawing.Size(112, 20);
+        this.VersesTextBox.Size = new System.Drawing.Size(113, 20);
         this.VersesTextBox.TabIndex = 110;
         this.VersesTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
         this.VersesTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
@@ -5252,11 +5246,11 @@
                     | System.Windows.Forms.AnchorStyles.Right)));
         this.LettersTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.LettersTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.LettersTextBox.Location = new System.Drawing.Point(68, 118);
+        this.LettersTextBox.Location = new System.Drawing.Point(68, 133);
         this.LettersTextBox.Name = "LettersTextBox";
         this.LettersTextBox.ReadOnly = true;
         this.LettersTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-        this.LettersTextBox.Size = new System.Drawing.Size(112, 20);
+        this.LettersTextBox.Size = new System.Drawing.Size(113, 20);
         this.LettersTextBox.TabIndex = 112;
         this.LettersTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
         this.LettersTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
@@ -5268,48 +5262,21 @@
                     | System.Windows.Forms.AnchorStyles.Right)));
         this.WordsTextBox.BackColor = System.Drawing.SystemColors.ControlLight;
         this.WordsTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.WordsTextBox.Location = new System.Drawing.Point(68, 99);
+        this.WordsTextBox.Location = new System.Drawing.Point(68, 114);
         this.WordsTextBox.Name = "WordsTextBox";
         this.WordsTextBox.ReadOnly = true;
         this.WordsTextBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-        this.WordsTextBox.Size = new System.Drawing.Size(112, 20);
+        this.WordsTextBox.Size = new System.Drawing.Size(113, 20);
         this.WordsTextBox.TabIndex = 111;
         this.WordsTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
         this.WordsTextBox.Click += new System.EventHandler(this.StatisticsControls_Click);
         this.WordsTextBox.Enter += new System.EventHandler(this.StatisticsControls_Enter);
         // 
-        // LetterValueLabel
-        // 
-        this.LetterValueLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.LetterValueLabel.Location = new System.Drawing.Point(10, 62);
-        this.LetterValueLabel.Name = "LetterValueLabel";
-        this.LetterValueLabel.Size = new System.Drawing.Size(48, 13);
-        this.LetterValueLabel.TabIndex = 128;
-        this.LetterValueLabel.Text = "Values";
-        // 
-        // LetterOrderLabel
-        // 
-        this.LetterOrderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.LetterOrderLabel.Location = new System.Drawing.Point(10, 41);
-        this.LetterOrderLabel.Name = "LetterOrderLabel";
-        this.LetterOrderLabel.Size = new System.Drawing.Size(48, 13);
-        this.LetterOrderLabel.TabIndex = 127;
-        this.LetterOrderLabel.Text = "Order";
-        // 
-        // TextModeLabel
-        // 
-        this.TextModeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.TextModeLabel.Location = new System.Drawing.Point(10, 20);
-        this.TextModeLabel.Name = "TextModeLabel";
-        this.TextModeLabel.Size = new System.Drawing.Size(48, 13);
-        this.TextModeLabel.TabIndex = 126;
-        this.TextModeLabel.Text = "Text";
-        // 
         // VersesLabel
         // 
         this.VersesLabel.BackColor = System.Drawing.Color.Transparent;
         this.VersesLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.VersesLabel.Location = new System.Drawing.Point(8, 82);
+        this.VersesLabel.Location = new System.Drawing.Point(8, 97);
         this.VersesLabel.Name = "VersesLabel";
         this.VersesLabel.Size = new System.Drawing.Size(63, 13);
         this.VersesLabel.TabIndex = 115;
@@ -5319,7 +5286,7 @@
         // 
         this.WordsLabel.BackColor = System.Drawing.Color.Transparent;
         this.WordsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.WordsLabel.Location = new System.Drawing.Point(8, 101);
+        this.WordsLabel.Location = new System.Drawing.Point(8, 116);
         this.WordsLabel.Name = "WordsLabel";
         this.WordsLabel.Size = new System.Drawing.Size(63, 13);
         this.WordsLabel.TabIndex = 100;
@@ -5329,7 +5296,7 @@
         // 
         this.LettersLabel.BackColor = System.Drawing.Color.Transparent;
         this.LettersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-        this.LettersLabel.Location = new System.Drawing.Point(8, 121);
+        this.LettersLabel.Location = new System.Drawing.Point(8, 136);
         this.LettersLabel.Name = "LettersLabel";
         this.LettersLabel.Size = new System.Drawing.Size(63, 13);
         this.LettersLabel.TabIndex = 101;
@@ -5796,9 +5763,6 @@
     private System.Windows.Forms.Label FindByTextFaaLabel;
     private System.Windows.Forms.Label FindByTextDaalLabel;
     private System.Windows.Forms.CheckBox FindByProstrationTypeRecommendedRadioButton;
-    private System.Windows.Forms.Label TextModeLabel;
-    private System.Windows.Forms.Label LetterValueLabel;
-    private System.Windows.Forms.Label LetterOrderLabel;
     private System.Windows.Forms.Button FindHistoryForwardButton;
     private System.Windows.Forms.Button FindHistoryBackwardButton;
     private System.Windows.Forms.Label FindHistoryDeleteButton;  // changed to Label to look good next to the counter label
@@ -5930,9 +5894,8 @@
     private System.Windows.Forms.Button LetterValuesButton;
     private System.Windows.Forms.Button SaveLetterValuationButton;
     private System.Windows.Forms.Panel ValuePanel;
-    private System.Windows.Forms.RadioButton DynamicLetterScopeHighlightedTextRadioButton;
-    private System.Windows.Forms.RadioButton DynamicLetterScopeSelectionRadioButton;
-    private System.Windows.Forms.CheckBox DynamicLetterScopeCheckBox;
+    private System.Windows.Forms.RadioButton TextScopeHighlightedTextRadioButton;
+    private System.Windows.Forms.RadioButton TextScopeSelectionRadioButton;
     private System.Windows.Forms.CheckBox AddToChapterCNumberCheckBox;
     private System.Windows.Forms.CheckBox AddToVerseCDistanceCheckBox;
     private System.Windows.Forms.CheckBox AddToVerseCNumberCheckBox;
@@ -5972,4 +5935,5 @@
     private System.Windows.Forms.TextBox DecimalWordsTextBox;
     private System.Windows.Forms.TextBox DecimalVersesTextBox;
     private System.Windows.Forms.TextBox DecimalValueTextBox;
+    private System.Windows.Forms.RadioButton TextScopeBookRadioButton;
 }

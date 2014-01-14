@@ -885,14 +885,7 @@ public partial class MainForm : Form
                                                 parts = line.Split('=');
                                                 if (parts.Length == 2)
                                                 {
-                                                    m_client.IsDynamic = bool.Parse(parts[1].Trim());
-                                                }
-
-                                                line = reader.ReadLine();
-                                                parts = line.Split('=');
-                                                if (parts.Length == 2)
-                                                {
-                                                    m_client.IsHighlightedText = bool.Parse(parts[1].Trim());
+                                                    m_client.TextScope = (TextScope)Enum.Parse(typeof(TextScope), parts[1].Trim());
                                                 }
 
                                                 line = reader.ReadLine();
@@ -1027,32 +1020,6 @@ public partial class MainForm : Form
                                                 {
                                                     m_client.AddToChapterCNumber = bool.Parse(parts[1].Trim());
                                                 }
-
-                                                //???
-                                                //// if NOT Research Edition, then reset all numbers/positions/distances
-                                                //// in case last run was Research Edition and user enabled some of them
-                                                //if (Globals.EDITION != Edition.Research)
-                                                //{
-                                                //    m_client.AddToLetterLNumber = false;
-                                                //    m_client.AddToLetterWNumber = false;
-                                                //    m_client.AddToLetterVNumber = false;
-                                                //    m_client.AddToLetterCNumber = false;
-                                                //    m_client.AddToLetterLDistance = false;
-                                                //    m_client.AddToLetterWDistance = false;
-                                                //    m_client.AddToLetterVDistance = false;
-                                                //    m_client.AddToLetterCDistance = false;
-                                                //    m_client.AddToWordWNumber = false;
-                                                //    m_client.AddToWordVNumber = false;
-                                                //    m_client.AddToWordCNumber = false;
-                                                //    m_client.AddToWordWDistance = false;
-                                                //    m_client.AddToWordVDistance = false;
-                                                //    m_client.AddToWordCDistance = false;
-                                                //    m_client.AddToVerseVNumber = false;
-                                                //    m_client.AddToVerseCNumber = false;
-                                                //    m_client.AddToVerseVDistance = false;
-                                                //    m_client.AddToVerseCDistance = false;
-                                                //    m_client.AddToChapterCNumber = false;
-                                                //}
                                             }
                                         }
                                         break;
@@ -1240,30 +1207,30 @@ public partial class MainForm : Form
                                         }
                                         break;
                                     // [Downloads]
-                                    case "PageUrlPrefix":
-                                        {
-                                            try
-                                            {
-                                                Page.UrlPrefix = parts[1].Trim();
-                                            }
-                                            catch
-                                            {
-                                                Page.UrlPrefix = Page.DEFAULT_URL_PREFIX;
-                                            }
-                                        }
-                                        break;
-                                    case "PageFileType":
-                                        {
-                                            try
-                                            {
-                                                Page.FileType = parts[1].Trim();
-                                            }
-                                            catch
-                                            {
-                                                Page.FileType = Page.DEFAULT_FILE_TYPE;
-                                            }
-                                        }
-                                        break;
+                                    //case "PageUrlPrefix":
+                                    //    {
+                                    //        try
+                                    //        {
+                                    //            Page.UrlPrefix = parts[1].Trim();
+                                    //        }
+                                    //        catch
+                                    //        {
+                                    //            Page.UrlPrefix = Page.DEFAULT_URL_PREFIX;
+                                    //        }
+                                    //    }
+                                    //    break;
+                                    //case "PageFileType":
+                                    //    {
+                                    //        try
+                                    //        {
+                                    //            Page.FileType = parts[1].Trim();
+                                    //        }
+                                    //        catch
+                                    //        {
+                                    //            Page.FileType = Page.DEFAULT_FILE_TYPE;
+                                    //        }
+                                    //    }
+                                    //    break;
                                     case "TranslationUrlPrefix":
                                         {
                                             try
@@ -1414,8 +1381,7 @@ public partial class MainForm : Form
                     writer.WriteLine("TextMode=" + m_client.TextMode);
                     writer.WriteLine("LetterOrderSystem=" + m_client.LetterOrderSystem);
                     writer.WriteLine("LetterValueSystem=" + m_client.LetterValueSystem);
-                    writer.WriteLine("IsDynamic=" + m_client.IsDynamic.ToString());
-                    writer.WriteLine("IsHighlightedText=" + m_client.IsHighlightedText.ToString());
+                    writer.WriteLine("TextScope=" + m_client.TextScope.ToString());
                     writer.WriteLine("AddToLetterLNumber=" + m_client.AddToLetterLNumber.ToString());
                     writer.WriteLine("AddToLetterWNumber=" + m_client.AddToLetterWNumber.ToString());
                     writer.WriteLine("AddToLetterVNumber=" + m_client.AddToLetterVNumber.ToString());
@@ -1472,8 +1438,8 @@ public partial class MainForm : Form
                 writer.WriteLine();
 
                 writer.WriteLine("[Downloads]");
-                writer.WriteLine("PageUrlPrefix=" + Page.UrlPrefix);
-                writer.WriteLine("PageFileType=" + Page.FileType);
+                //writer.WriteLine("PageUrlPrefix=" + Page.UrlPrefix);
+                //writer.WriteLine("PageFileType=" + Page.FileType);
                 writer.WriteLine("TranslationUrlPrefix=" + Translation.UrlPrefix);
                 writer.WriteLine("TranslationFileType=" + Translation.FileType);
                 writer.WriteLine("TranslationIconUrlPrefix=" + Translation.IconUrlPrefix);
@@ -1494,25 +1460,40 @@ public partial class MainForm : Form
             LetterOrderSystemComboBox.SelectedItem = m_client.LetterOrderSystem;
             LetterValueSystemComboBox.SelectedItem = m_client.LetterValueSystem;
 
-            DynamicLetterScopeCheckBox.Enabled = true;
-            DynamicLetterScopeSelectionRadioButton.Enabled = m_client.IsDynamic;
-            DynamicLetterScopeHighlightedTextRadioButton.Enabled = m_client.IsDynamic;
-
             try
             {
-                DynamicLetterScopeCheckBox.CheckedChanged -= new EventHandler(DynamicLetterScopeCheckBox_CheckedChanged);
-                DynamicLetterScopeSelectionRadioButton.CheckedChanged -= new EventHandler(DynamicLetterScopeSelectionRadioButton_CheckedChanged);
-                DynamicLetterScopeHighlightedTextRadioButton.CheckedChanged -= new EventHandler(DynamicLetterScopeHighlightedTextRadioButton_CheckedChanged);
+                TextScopeBookRadioButton.CheckedChanged -= new EventHandler(TextScopeBookRadioButton_CheckedChanged);
+                TextScopeSelectionRadioButton.CheckedChanged -= new EventHandler(TextScopeSelectionRadioButton_CheckedChanged);
+                TextScopeHighlightedTextRadioButton.CheckedChanged -= new EventHandler(TextScopeHighlightedTextRadioButton_CheckedChanged);
 
-                DynamicLetterScopeCheckBox.Checked = m_client.IsDynamic;
-                DynamicLetterScopeSelectionRadioButton.Checked = !m_client.IsHighlightedText;
-                DynamicLetterScopeHighlightedTextRadioButton.Checked = m_client.IsHighlightedText;
+                switch (m_client.TextScope)
+                {
+                    case TextScope.Book:
+                        {
+                            TextScopeBookRadioButton.Checked = true;
+                        }
+                        break;
+                    case TextScope.Selection:
+                        {
+                            TextScopeSelectionRadioButton.Checked = true;
+                        }
+                        break;
+                    case TextScope.HighlightedText:
+                        {
+                            TextScopeHighlightedTextRadioButton.Checked = true;
+                        }
+                        break;
+                    default:
+                        {
+                        }
+                        break;
+                }
             }
             finally
             {
-                DynamicLetterScopeCheckBox.CheckedChanged += new EventHandler(DynamicLetterScopeCheckBox_CheckedChanged);
-                DynamicLetterScopeSelectionRadioButton.CheckedChanged += new EventHandler(DynamicLetterScopeSelectionRadioButton_CheckedChanged);
-                DynamicLetterScopeHighlightedTextRadioButton.CheckedChanged += new EventHandler(DynamicLetterScopeHighlightedTextRadioButton_CheckedChanged);
+                TextScopeBookRadioButton.CheckedChanged += new EventHandler(TextScopeBookRadioButton_CheckedChanged);
+                TextScopeSelectionRadioButton.CheckedChanged += new EventHandler(TextScopeSelectionRadioButton_CheckedChanged);
+                TextScopeHighlightedTextRadioButton.CheckedChanged += new EventHandler(TextScopeHighlightedTextRadioButton_CheckedChanged);
             }
 
             RefreshAddNumberCheckBoxes();
@@ -3338,8 +3319,11 @@ public partial class MainForm : Form
         this.ToolTip.SetToolTip(this.VerseByWordNumberLabel, "Go to verse containing word number = current value");
         this.ToolTip.SetToolTip(this.UndoValueNavigationLabel, "Back");
         this.ToolTip.SetToolTip(this.RedoValueNavigationLabel, "Forward");
-        this.ToolTip.SetToolTip(this.TextModeComboBox, "Text Mode نظام تبسيط النص");
-        this.ToolTip.SetToolTip(this.ValueTextBox, "Enter an expression to factor");
+        this.ToolTip.SetToolTip(this.TextModeComboBox, "Text Mode  نظام تبسيط النص");
+        this.ToolTip.SetToolTip(this.VersesTextBox, "Verses in selection  عدد الءايات");
+        this.ToolTip.SetToolTip(this.WordsTextBox, "Words in selection  عدد الكلمات");
+        this.ToolTip.SetToolTip(this.LettersTextBox, "Letters in selection  عدد الحروف");
+        this.ToolTip.SetToolTip(this.ValueTextBox, "Value of selection  القيمة حسب نظام الترقيم الحالي");
         this.ToolTip.SetToolTip(this.FindScopeLabel, "Search in Entire Book");
         this.ToolTip.SetToolTip(this.FindByTextLanguageTypeLabel, "Search in Uthmani or emlaaei Arabic");
         this.ToolTip.SetToolTip(this.FindByTextSearchTypeLabel, "Search for exact word or phrase");
@@ -3382,15 +3366,15 @@ public partial class MainForm : Form
         this.ToolTip.SetToolTip(this.FindByNumbersUniqueLettersLabel, "unique letters");
         this.ToolTip.SetToolTip(this.FindByNumbersValueLabel, "numerology value");
         this.ToolTip.SetToolTip(this.FindByFrequencySumTypeLabel, "include duplicate phrase letters");
-        this.ToolTip.SetToolTip(this.LetterOrderSystemComboBox, "Letter Order نظام ترتيب الحروف");
-        this.ToolTip.SetToolTip(this.LetterValueSystemComboBox, "Letter Values نظام تقيم الحروف");
+        this.ToolTip.SetToolTip(this.LetterOrderSystemComboBox, "Letter Order  نظام ترتيب الحروف");
+        this.ToolTip.SetToolTip(this.LetterValueSystemComboBox, "Letter Values  نظام تقيم الحروف");
         this.ToolTip.SetToolTip(this.SaveLetterValuationButton, "Save Letter Valuation");
         this.ToolTip.SetToolTip(this.ResetNumerologySystemButton, "Primalogy System");
         this.ToolTip.SetToolTip(this.SaveLetterStatisticsButton, "Save Letter Statistics");
         this.ToolTip.SetToolTip(this.SavePhraseLetterStatisticsButton, "Save Phrase Letter Statistics");
-        this.ToolTip.SetToolTip(this.DynamicLetterScopeCheckBox, "Build letter valuation system dynamically");
-        this.ToolTip.SetToolTip(this.DynamicLetterScopeSelectionRadioButton, "Use letters of current selection to build  a dynamic valuation system");
-        this.ToolTip.SetToolTip(this.DynamicLetterScopeHighlightedTextRadioButton, "Use letters of current line or highlighted text to build a dynamic valuation system");
+        this.ToolTip.SetToolTip(this.TextScopeBookRadioButton, "Use letters of the whole book to re-build the valuation system");
+        this.ToolTip.SetToolTip(this.TextScopeSelectionRadioButton, "Use letters of current selection to re-build the valuation system");
+        this.ToolTip.SetToolTip(this.TextScopeHighlightedTextRadioButton, "Use letters of current line or highlighted text to re-build the valuation system");
         this.ToolTip.SetToolTip(this.AddToLetterLNumberCheckBox, "Add L (letter number in word)");
         this.ToolTip.SetToolTip(this.AddToLetterWNumberCheckBox, "Add W (word number in verse)");
         this.ToolTip.SetToolTip(this.AddToLetterVNumberCheckBox, "Add V (verse number in chapter)");
@@ -4549,32 +4533,36 @@ public partial class MainForm : Form
     {
         if (m_client != null)
         {
-            if (m_client.IsDynamic)
+            switch (m_client.TextScope)
             {
-                if (m_client.IsHighlightedText)
-                {
-                    // CurrentText-wide numerology system
-                    Client.UpdateNumerologySystems(m_client.TextMode, m_current_text, true);
-                }
-                else
-                {
-                    if (m_client.Selection != null)
+                case TextScope.Book:
                     {
-                        // Selection-wide numerology system
-                        Client.UpdateNumerologySystems(m_client.TextMode, m_client.Selection.GetText(m_client.TextMode), true);
+                        if (Book.Instance != null)
+                        {
+                            Client.UpdateNumerologySystems(m_client.TextMode, Book.Instance.GetText(m_client.TextMode), true);
+                        }
                     }
-                }
-            }
-            else
-            {
-                // Book-wide numerology system
-                if (Book.Instance != null)
-                {
-                    Client.UpdateNumerologySystems(m_client.TextMode, Book.Instance.GetText(m_client.TextMode), false);
-                }
+                    break;
+                case TextScope.Selection:
+                    {
+                        if (m_client.Selection != null)
+                        {
+                            Client.UpdateNumerologySystems(m_client.TextMode, m_client.Selection.GetText(m_client.TextMode), false);
+                        }
+                    }
+                    break;
+                case TextScope.HighlightedText:
+                    {
+                        Client.UpdateNumerologySystems(m_client.TextMode, m_current_text, false);
+                    }
+                    break;
+                default:
+                    {
+                    }
+                    break;
             }
 
-            RefreshDynamicLetterScopeCheckBoxes();
+            RefreshTextScopeBookRadioButtones();
 
             // refresh ObjectListView
             if (LetterValuesObjectListView != null)
@@ -4584,39 +4572,69 @@ public partial class MainForm : Form
             }
         }
     }
-    private void RefreshDynamicLetterScopeCheckBoxes()
+    private void RefreshTextScopeBookRadioButtones()
     {
         if (m_client != null)
         {
             try
             {
-                DynamicLetterScopeCheckBox.CheckedChanged -= new EventHandler(DynamicLetterScopeCheckBox_CheckedChanged);
-                DynamicLetterScopeSelectionRadioButton.CheckedChanged -= new EventHandler(DynamicLetterScopeSelectionRadioButton_CheckedChanged);
-                DynamicLetterScopeHighlightedTextRadioButton.CheckedChanged -= new EventHandler(DynamicLetterScopeHighlightedTextRadioButton_CheckedChanged);
+                TextScopeBookRadioButton.CheckedChanged -= new EventHandler(TextScopeBookRadioButton_CheckedChanged);
+                TextScopeSelectionRadioButton.CheckedChanged -= new EventHandler(TextScopeSelectionRadioButton_CheckedChanged);
+                TextScopeHighlightedTextRadioButton.CheckedChanged -= new EventHandler(TextScopeHighlightedTextRadioButton_CheckedChanged);
 
-                DynamicLetterScopeCheckBox.Checked = m_client.IsDynamic;
-                DynamicLetterScopeSelectionRadioButton.Checked = !m_client.IsHighlightedText;
-                DynamicLetterScopeHighlightedTextRadioButton.Checked = m_client.IsHighlightedText;
+                switch (m_client.TextScope)
+                {
+                    case TextScope.Book:
+                        {
+                            TextScopeBookRadioButton.Checked = true;
+                        }
+                        break;
+                    case TextScope.Selection:
+                        {
+                            TextScopeSelectionRadioButton.Checked = true;
+                        }
+                        break;
+                    case TextScope.HighlightedText:
+                        {
+                            TextScopeHighlightedTextRadioButton.Checked = true;
+                        }
+                        break;
+                    default:
+                        {
+                        }
+                        break;
+                }
             }
             finally
             {
-                DynamicLetterScopeCheckBox.CheckedChanged += new EventHandler(DynamicLetterScopeCheckBox_CheckedChanged);
-                DynamicLetterScopeSelectionRadioButton.CheckedChanged += new EventHandler(DynamicLetterScopeSelectionRadioButton_CheckedChanged);
-                DynamicLetterScopeHighlightedTextRadioButton.CheckedChanged += new EventHandler(DynamicLetterScopeHighlightedTextRadioButton_CheckedChanged);
+                TextScopeBookRadioButton.CheckedChanged += new EventHandler(TextScopeBookRadioButton_CheckedChanged);
+                TextScopeSelectionRadioButton.CheckedChanged += new EventHandler(TextScopeSelectionRadioButton_CheckedChanged);
+                TextScopeHighlightedTextRadioButton.CheckedChanged += new EventHandler(TextScopeHighlightedTextRadioButton_CheckedChanged);
             }
         }
     }
 
-    private void DynamicLetterScopeCheckBox_CheckedChanged(object sender, EventArgs e)
+    private void UpdateClientTextScope()
+    {
+        if (TextScopeBookRadioButton.Checked)
+        {
+            m_client.TextScope = TextScope.Book;
+        }
+        else if (TextScopeSelectionRadioButton.Checked)
+        {
+            m_client.TextScope = TextScope.Selection;
+        }
+        else if (TextScopeHighlightedTextRadioButton.Checked)
+        {
+            m_client.TextScope = TextScope.HighlightedText;
+        }
+    }
+    private void TextScopeBookRadioButton_CheckedChanged(object sender, EventArgs e)
     {
         if (m_client != null)
         {
-            DynamicLetterScopeSelectionRadioButton.Enabled = DynamicLetterScopeCheckBox.Checked;
-            DynamicLetterScopeHighlightedTextRadioButton.Enabled = DynamicLetterScopeCheckBox.Checked;
-
             // update client's current numerology system
-            m_client.IsDynamic = DynamicLetterScopeCheckBox.Checked;
-            m_client.IsHighlightedText = DynamicLetterScopeHighlightedTextRadioButton.Checked;
+            UpdateClientTextScope();
 
             // re-calculate numerology value
             CalculateCurrentText();
@@ -4624,12 +4642,12 @@ public partial class MainForm : Form
             CalculateCurrentValue();
         }
     }
-    private void DynamicLetterScopeSelectionRadioButton_CheckedChanged(object sender, EventArgs e)
+    private void TextScopeSelectionRadioButton_CheckedChanged(object sender, EventArgs e)
     {
         if (m_client != null)
         {
             // update client's current numerology system
-            m_client.IsHighlightedText = !DynamicLetterScopeSelectionRadioButton.Checked;
+            UpdateClientTextScope();
 
             // re-calculate numerology value
             CalculateCurrentText();
@@ -4637,12 +4655,12 @@ public partial class MainForm : Form
             CalculateCurrentValue();
         }
     }
-    private void DynamicLetterScopeHighlightedTextRadioButton_CheckedChanged(object sender, EventArgs e)
+    private void TextScopeHighlightedTextRadioButton_CheckedChanged(object sender, EventArgs e)
     {
         if (m_client != null)
         {
             // update client's current numerology system
-            m_client.IsHighlightedText = DynamicLetterScopeHighlightedTextRadioButton.Checked;
+            UpdateClientTextScope();
 
             // re-calculate numerology value
             CalculateCurrentText();
@@ -7697,21 +7715,6 @@ public partial class MainForm : Form
             DisplayVersesWordsLetters(verse_count, word_count, letter_count);
         }
     }
-    //private void DisplayVersesWordsLetters(int verse_count, int word_count, int letter_count)
-    //{
-    //    VersesTextBox.Text = verse_count.ToString();
-    //    VersesTextBox.ForeColor = GetNumberTypeColor(verse_count);
-    //    ToolTip.SetToolTip(VersesTextBox, verse_count.ToString());
-    //    VersesTextBox.Refresh();
-    //    WordsTextBox.Text = word_count.ToString();
-    //    WordsTextBox.ForeColor = GetNumberTypeColor(word_count);
-    //    ToolTip.SetToolTip(WordsTextBox, word_count.ToString());
-    //    WordsTextBox.Refresh();
-    //    LettersTextBox.Text = letter_count.ToString();
-    //    LettersTextBox.ForeColor = GetNumberTypeColor(letter_count);
-    //    ToolTip.SetToolTip(LettersTextBox, letter_count.ToString());
-    //    LettersTextBox.Refresh();
-    //}
 
     private long m_radix = DEFAULT_RADIX;
     private void RadixValueLabel_Click(object sender, EventArgs e)
@@ -7796,7 +7799,6 @@ public partial class MainForm : Form
     {
         ValueTextBox.Text = Radix.Encode(value, m_radix);
         DecimalValueTextBox.Text = value.ToString();
-        ToolTip.SetToolTip(ValueTextBox, value.ToString());
         ValueTextBox.ForeColor = GetNumberTypeColor(ValueTextBox.Text, m_radix);
         ValueTextBox.SelectionStart = ValueTextBox.Text.Length;
         ValueTextBox.SelectionLength = 0;
@@ -7817,7 +7819,6 @@ public partial class MainForm : Form
     {
         VersesTextBox.Text = Radix.Encode(verse_count, m_radix);
         VersesTextBox.ForeColor = GetNumberTypeColor(VersesTextBox.Text, m_radix);
-        ToolTip.SetToolTip(VersesTextBox, verse_count.ToString());
         VersesTextBox.Refresh();
         DecimalVersesTextBox.Text = verse_count.ToString();
         DecimalVersesTextBox.ForeColor = GetNumberTypeColor(verse_count);
@@ -7826,7 +7827,6 @@ public partial class MainForm : Form
 
         WordsTextBox.Text = Radix.Encode(word_count, m_radix);
         WordsTextBox.ForeColor = GetNumberTypeColor(WordsTextBox.Text, m_radix);
-        ToolTip.SetToolTip(WordsTextBox, word_count.ToString());
         WordsTextBox.Refresh();
         DecimalWordsTextBox.Text = word_count.ToString();
         DecimalWordsTextBox.ForeColor = GetNumberTypeColor(word_count);
@@ -7835,7 +7835,6 @@ public partial class MainForm : Form
 
         LettersTextBox.Text = Radix.Encode(letter_count, m_radix);
         LettersTextBox.ForeColor = GetNumberTypeColor(LettersTextBox.Text, m_radix);
-        ToolTip.SetToolTip(LettersTextBox, letter_count.ToString());
         LettersTextBox.Refresh();
         DecimalLettersTextBox.Text = letter_count.ToString();
         DecimalLettersTextBox.ForeColor = GetNumberTypeColor(letter_count);
@@ -8200,6 +8199,14 @@ public partial class MainForm : Form
         try
         {
             ValueLabel.Text = caption;
+            if (caption == "Value")
+            {
+                this.ToolTip.SetToolTip(this.ValueTextBox, "Value of selection  القيمة حسب نظام الترقيم الحالي");
+            }
+            else
+            {
+                this.ToolTip.SetToolTip(this.ValueTextBox, caption);
+            }
             ValueLabel.Refresh();
 
             DisplayValue(value);

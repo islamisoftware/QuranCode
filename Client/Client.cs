@@ -63,9 +63,9 @@ public class Client
         return Server.GetRelatedVerses(text_mode, root);
     }
 
-    public static void UpdateNumerologySystems(string text_mode, string text, bool is_dynamic)
+    public static void UpdateNumerologySystems(string text_mode, string text, bool book_wide)
     {
-        Server.UpdateNumerologySystems(text_mode, text, is_dynamic);
+        Server.UpdateNumerologySystems(text_mode, text, book_wide);
     }
 
     public static string GetTranslationKey(string name)
@@ -468,29 +468,33 @@ public class Client
                         m_letter_value_system = parts[2];
                     }
 
-                    if (m_is_dynamic)
+                    switch (m_text_scope)
                     {
-                        if (m_is_highlighted_text)
-                        {
-                            // CurrentText-wide numerology system
-                            Server.UpdateNumerologySystems(m_text_mode, "", true);
-                        }
-                        else
-                        {
-                            // Selection-wide numerology system
-                            if (m_selection != null)
+                        case TextScope.Book:
                             {
-                                Server.UpdateNumerologySystems(m_text_mode, m_selection.GetText(m_text_mode), true);
+                                if (Book.Instance != null)
+                                {
+                                    Server.UpdateNumerologySystems(m_text_mode, Book.Instance.GetText(m_text_mode), true);
+                                }
                             }
-                        }
-                    }
-                    else
-                    {
-                        // Book-wide numerology system
-                        if (Book.Instance != null)
-                        {
-                            Server.UpdateNumerologySystems(m_text_mode, Book.Instance.GetText(m_text_mode), false);
-                        }
+                            break;
+                        case TextScope.Selection:
+                            {
+                                if (m_selection != null)
+                                {
+                                    Server.UpdateNumerologySystems(m_text_mode, m_selection.GetText(m_text_mode), false);
+                                }
+                            }
+                            break;
+                        case TextScope.HighlightedText:
+                            {
+                                Server.UpdateNumerologySystems(m_text_mode, "", false);
+                            }
+                            break;
+                        default:
+                            {
+                            }
+                            break;
                     }
                 }
             }
@@ -562,8 +566,7 @@ public class Client
 
     public void ResetNumerologySystem()
     {
-        m_is_dynamic = false;
-        m_is_highlighted_text = false;
+        m_text_scope = TextScope.Book;
         m_add_to_letter_l_number = false;
         m_add_to_letter_w_number = false;
         m_add_to_letter_v_number = false;
@@ -630,23 +633,13 @@ public class Client
         }
     }
 
-    private bool m_is_dynamic = false;
-    public bool IsDynamic
+    private TextScope m_text_scope = TextScope.Book;
+    public TextScope TextScope
     {
-        get { return m_is_dynamic; }
+        get { return m_text_scope; }
         set
         {
-            m_is_dynamic = value;
-            NumerologySystemName = m_numerology_system_name;
-        }
-    }
-    private bool m_is_highlighted_text = false;
-    public bool IsHighlightedText
-    {
-        get { return m_is_highlighted_text; }
-        set
-        {
-            m_is_highlighted_text = value;
+            m_text_scope = value;
             NumerologySystemName = m_numerology_system_name;
         }
     }
@@ -1890,30 +1883,37 @@ public class Client
             using (StreamWriter writer = new StreamWriter(filename, false, Encoding.Unicode))
             {
                 writer.WriteLine("----------------------------------------");
-                if (IsDynamic)
+                switch (TextScope)
                 {
-                    if (IsHighlightedText)
-                    {
-                        StringBuilder str = new StringBuilder();
-                        writer.Write(NumerologySystemName + "\r\n" + "Scope = Highlighted Text");
-                    }
-                    else
-                    {
-                        StringBuilder str = new StringBuilder();
-                        foreach (int index in Selection.Indexes)
+                    case TextScope.Book:
                         {
-                            str.Append((index + 1).ToString() + ", ");
+                            writer.Write(NumerologySystemName + "\r\n" + "Scope = Entire Book");
                         }
-                        if (str.Length > 0)
+                        break;
+                    case TextScope.Selection:
                         {
-                            str.Remove(str.Length - ", ".Length, ", ".Length);
+                            StringBuilder str = new StringBuilder();
+                            foreach (int index in Selection.Indexes)
+                            {
+                                str.Append((index + 1).ToString() + ", ");
+                            }
+                            if (str.Length > 0)
+                            {
+                                str.Remove(str.Length - ", ".Length, ", ".Length);
+                            }
+                            writer.Write(NumerologySystemName + "\r\n" + "Scope = " + Selection.Scope.ToString() + ((Selection.Indexes.Count > 1) ? "s " : " ") + str.ToString());
                         }
-                        writer.Write(NumerologySystemName + "\r\n" + "Scope = " + Selection.Scope.ToString() + ((Selection.Indexes.Count > 1) ? "s " : " ") + str.ToString());
-                    }
-                }
-                else
-                {
-                    writer.Write(NumerologySystemName + "\r\n" + "Scope = Entire Book");
+                        break;
+                    case TextScope.HighlightedText:
+                        {
+                            StringBuilder str = new StringBuilder();
+                            writer.Write(NumerologySystemName + "\r\n" + "Scope = Highlighted Text");
+                        }
+                        break;
+                    default:
+                        {
+                        }
+                        break;
                 }
 
                 if (

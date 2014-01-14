@@ -2,6 +2,7 @@
 
 namespace Model
 {
+    public enum TextScope { Book, Selection, HighlightedText };
     public enum SelectionScope { Book, Chapter, Page, Station, Part, Group, Quarter, Bowing, Verse, Word, Letter };
 
     public enum FindScope { Book, Selection, SearchResult };

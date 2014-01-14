@@ -6,10 +6,10 @@ namespace Model
 {
     public class Page
     {
-        public const string DEFAULT_URL_PREFIX = "http://www.searchtruth.org/quran/images1/";
-        public const string DEFAULT_FILE_TYPE = "jpg";
-        public static string UrlPrefix = DEFAULT_URL_PREFIX;
-        public static string FileType = DEFAULT_FILE_TYPE;
+        //public const string DEFAULT_URL_PREFIX = "http://www.searchtruth.org/quran/images1/";
+        //public const string DEFAULT_FILE_TYPE = "jpg";
+        //public static string UrlPrefix = DEFAULT_URL_PREFIX;
+        //public static string FileType = DEFAULT_FILE_TYPE;
 
         public const int MIN_NUMBER = 1;
         public const int MAX_NUMBER = 604;

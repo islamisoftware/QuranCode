@@ -181,7 +181,7 @@ public class Radix
                     result *= radix;
                     char c = ws[i];
                     long l = digits.IndexOf(c);
-                    if (l >= radix) throw new Exception(ErrRadixFormat);
+                    if (l >= radix) break;//AliAdams //throw new Exception(ErrRadixFormat);
                     result += l;
                 }
                 // add sign
